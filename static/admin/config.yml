@@ -1,6 +1,6 @@
 backend:
   name: git-gateway
-  repo: v4iv/theleakycauldronblog
+  repo: aboelkassem/blog
   branch: master
   accept_roles:
     - admin
@@ -8,9 +8,9 @@ backend:
     - author
     - guest
 
-site_url: https://theleakycauldronblog.com
-display_url: https://theleakycauldronblog.com
-logo_url: https://theleakycauldronblog.com/icons/icon-512x512.png
+site_url: https://blog.aboelkassem.com
+display_url: https://blog.aboelkassem.com
+logo_url: https://blog.aboelkassem.com/icons/icon-512x512.png
 publish_mode: editorial_workflow
 media_folder: static/img
 public_folder: /img
