@@ -9,11 +9,11 @@ const UnsubscribedPage = () => (
       htmlAttributes={{
         lang: `en`,
       }}
-      title='Unsubscribed | The Leaky Cauldron Blog'
+      title='Unsubscribed | Aboelkassem Blog'
       meta={[
         {
           name: `description`,
-          content: `Unsubscribed The Leaky Cauldron Blog Newsletter!`,
+          content: `Unsubscribed Aboelkassem Blog Newsletter!`,
         },
         {
           name: `viewport`,
@@ -25,7 +25,7 @@ const UnsubscribedPage = () => (
       <header className='tc ph5 lh-copy'>
         <h1 className='f1 f-headline-l code mb3 fw9 dib tracked-tight light-pink'>Unsubscribed!</h1>
 
-        <h2 className='tc f1-l fw1'>You've unsubscribed to the The Leaky Cauldron Blog NewsLetter</h2>
+        <h2 className='tc f1-l fw1'>You've unsubscribed to Aboelkassem Blog NewsLetter</h2>
       </header>
 
       <p className='fw1 i tc mt4 mt5-l f4 f3-l'>You'll not hear from us anymore.</p>

@@ -126,17 +126,40 @@ module.exports = {
     {
       resolve: `gatsby-plugin-disqus`,
       options: {
-        shortname: process.env.DISQUS_SHORTNAME,
+        shortname: 'aboelkassem', // DISQUS_SHORTNAME
       },
     },
     {
       resolve: `gatsby-plugin-gdpr-cookies`,
       options: {
         googleTagManager: {
-          trackingId: process.env.GTM_ID, // leave empty if you want to disable the tracker
+          trackingId: 'GTM-57J8VXW', // leave empty if you want to disable the tracker // GTM_ID
           cookieName: 'gatsby-gdpr-google-tagmanager', // default
           dataLayerName: 'dataLayer', // default
         },
+      },
+    },
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        // The property ID; the tracking code won't be generated without it // GTAGJS_ID
+        trackingId: "UA-153855958-2",
+        // Defines where to place the tracking script - `true` in the head and `false` in the body
+        head: false,
+        // Delays sending pageview hits on route update (in milliseconds)
+        pageTransitionDelay: 0,
+        // Enables Google Optimize using your container Id
+        optimizeId: "GTM-57J8VXW",
+        // Enables Google Optimize Experiment ID
+        experimentId: "hIwDYM3XS4mhBXoDrSLk7A",
+        // Set Variation ID. 0 for original 1,2,3....
+        variationId: "hIwDYM3XS4mhBXoDrSLk7A:0",
+        // Defers execution of google analytics script after page load
+        defer: false,
+        // Any additional optional fields
+        sampleRate: 5,
+        siteSpeedSampleRate: 10,
+        cookieDomain: "https://blog.aboelkassem.com",
       },
     },
     {

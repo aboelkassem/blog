@@ -12,11 +12,11 @@ const SearchPage = (props) => {
       htmlAttributes={{
         lang: `en`,
       }}
-      title='Search | The Leaky Cauldron Blog'
+      title='Search | Aboelkassem Blog'
       meta={[
         {
           name: `description`,
-          content: `Search The Leaky Cauldron Blog!`,
+          content: `Search Aboelkassem Blog!`,
         },
         {
           name: `viewport`,

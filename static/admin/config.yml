@@ -25,8 +25,8 @@ collections:
       - {label: "Template Key", name: "templateKey", widget: "hidden", default: "article-page"}
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Slug", name: "slug", widget: "string"}
-      - {label: "Author", name: "author", widget: "string", default: "Vaibhav Sharma"}
-      - {label: "Author Link", name: "authorLink", widget: "string", default: "https://twitter.com/vaibhaved"}
+      - {label: "Author", name: "author", widget: "string", default: "aboelkassem"}
+      - {label: "Author Link", name: "authorLink", widget: "string", default: "https://twitter.com/aboel_kassem"}
       - {label: "Publish Date", name: "date", widget: "datetime"}
       - {label: "Cover", name: "cover", widget: "image"}
       - {label: "Body", name: "body", widget: "markdown"}

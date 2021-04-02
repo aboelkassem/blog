@@ -1,4 +1,4 @@
-[![Netlify Status](https://api.netlify.com/api/v1/badges/a3b02aa4-93ac-47d9-b914-7eb42de75a83/deploy-status)](https://app.netlify.com/sites/theleakycauldronblog/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/f43dd0bc-ce3d-4262-bef2-29b4c9347442/deploy-status)](https://app.netlify.com/sites/blog-aboelkassem/deploys)
 
 # Gatsby Starter Blog Tachyons
 
@@ -24,11 +24,12 @@ A truly complete & feature rich Gatsby Blog Starter. Powered by Gatsby and Netli
 Create your own project with Gatsby CLI:
 
 ```shell
-gatsby new myblogname https://github.com/v4iv/theleakycauldronblog.git 
+gatsby new <my-blog-name> https://github.com/aboelkassem/blog.git 
 ```
 ## Environment Variables
 
 * GTM_ID
+* GTAGJS_ID
 * DISQUS_SHORTNAME
 
 ## Available NPM Commands
@@ -87,18 +88,18 @@ To personalize and configure this Starter open `config.js` file and replace the 
 
 ```javascript
 const config = {
-  siteTitle: `The Leaky Cauldron Blog`, // Site title.
-  siteTitleAlt: `TLC Blog`, // Alternative site title for SEO.
+  siteTitle: `aboelkassem Blog`, // Site title.
+  siteTitleAlt: `qassem blog`, // Alternative site title for SEO.
   siteLogo: `/icons/icon-512x512.png`, // Logo used for SEO and manifest.
-  siteUrl: `https://theleakycauldronblog.com`, // Domain of your website without pathPrefix.
+  siteUrl: `https://blog.aboelkassem.com/`, // Domain of your website without pathPrefix.
   pathPrefix: '', // Prefixes all links. For cases when deployed to example.github.io/gatsby-starter-business/.
-  siteDescription: `The Leaky Cauldron Blog is the personal blog of Vaibhav Sharma. A Brew of Awesomeness with a Pinch of Magic...`, // Website description used for RSS feeds/meta description tag.
+  siteDescription: `aboelkassem Blog is the personal blog of Mohamed Abdelrahman. A Brew of Awesomeness with a Pinch of Magic...`, // Website description used for RSS feeds/meta description tag.
   siteRss: `/rss.xml`,
-  userName: `Vaibhav Sharma`,
-  userTwitter: `aleakycauldron`,
+  userName: `Mohamed Abdelrahman`,
+  userTwitter: `aboel_kassem`,
   siteFBAppID: ``,
-  userLocation: `Delhi NCR, India`,
-  copyright: `Copyright © The Leaky Cauldron Blog 2018-${new Date().getFullYear().toString().substr(2, 2)}. All Rights Reserved.`, // Copyright string for the footer of the website and RSS feed.
+  userLocation: `Beni Suef, Egypt`,
+  copyright: `Copyright © aboelkassem Blog 2020-${new Date().getFullYear().toString().substr(2, 2)}. All Rights Reserved.`, // Copyright string for the footer of the website and RSS feed.
   themeColor: `#676767`, // Used for setting manifest and progress theme colors.
   backgroundColor: `#ffffff`, // Used for setting manifest background color.
   cookieConsent: `This website uses cookies which are used to collect anonymous information to improve your browsing experience and for analytics and metrics.`,
