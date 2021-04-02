@@ -76,7 +76,7 @@ const Socials = (props) => {
       </a>
 
        <a 
-       href='https://www.linkedin.com/in/aboelkassem' className='link hover-blue dib black-70' target='_blank'
+       href='https://www.linkedin.com/in/aboelkassem' className='link hover-blue dib black-70' target='_blank' style="margin-left:12px;"
         title='aboelkassem on Linked In'
         rel='noopener nofollow noreferrer'
        >
