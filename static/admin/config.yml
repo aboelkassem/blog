@@ -1,5 +1,5 @@
 backend:
-  name: git-gateway
+  name: github
   repo: aboelkassem/blog
   branch: master
   accept_roles:
