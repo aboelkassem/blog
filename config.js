@@ -4,7 +4,7 @@ const config = {
   siteLogo: `/icons/icon-512x512.png`, // Logo used for SEO and manifest.
   siteUrl: `https://blog.aboelkassem.com`, // Domain of your website without pathPrefix.
   pathPrefix: '', // Prefixes all links. For cases when deployed to example.github.io/gatsby-starter-business/.
-  siteDescription: `aboelkassem Blog is the personal blog of Mohamed Abdelrahman. A Brew of Awesomeness with a Pinch of Magic...`, // Website description used for RSS feeds/meta description tag.
+  siteDescription: `aboelkassem blog is the personal blog of Mohamed Abdelrahman. My digital garden, a place to share my thoughts. A Brew of Awesomeness with a Pinch of Magic...`, // Website description used for RSS feeds/meta description tag.
   siteRss: `/rss.xml`,
   googleTagManagerID: `GTM-57J8VXW`, // GTM tracking ID //GTM_ID.
   userName: `Mohamed Abdelrahman`,
