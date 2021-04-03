@@ -9,11 +9,11 @@ const SuccessPage = () => (
       htmlAttributes={{
         lang: `en`,
       }}
-      title='Unsubscribed | Aboelkassem Blog'
+      title='Message Sent | Aboelkassem Blog'
       meta={[
         {
           name: `description`,
-          content: `Unsubscribed Aboelkassem Newsletter!`,
+          content: `Your message has been sent to aboelkassem blog, we will call back you ASAP`,
         },
         {
           name: `viewport`,

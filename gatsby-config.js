@@ -165,7 +165,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-tagmanager`,
       options: {
-        id: process.env.GTM_ID,
+        id: 'GTM-57J8VXW',
         includeInDevelopment: false,
         defaultDataLayer: { platform: 'gatsby' },
       },

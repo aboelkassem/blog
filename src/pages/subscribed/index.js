@@ -13,7 +13,7 @@ const SubscribedPage = () => (
       meta={[
         {
           name: `description`,
-          content: `You're now subscribed to the Aboelkassem Blog NewsLetter!`,
+          content: `You're now subscribed to the aboelkassem Blog NewsLetter!`,
         },
         {
           name: `viewport`,

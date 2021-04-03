@@ -13,7 +13,7 @@ const SuccessPage = () => (
       meta={[
         {
           name: `description`,
-          content: `Unsubscribe Aboelkassem Blog Newsletter!`,
+          content: `Unsubscribe aboelkassem Blog Newsletter!`,
         },
         {
           name: `viewport`,

@@ -21,7 +21,7 @@ const ContactForm = () => {
       })
       .catch(error => {
         console.log(error)
-        alert('Error: Please Try Again!')                            //eslint-disable-line
+        //alert('Error: Please Try Again!')                            //eslint-disable-line
         setSubmitting(false)
       })
   }
