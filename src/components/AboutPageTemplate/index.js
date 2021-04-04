@@ -21,7 +21,7 @@ const AboutPageTemplate = (props) => {
         <time className='f6 ttu tracked gray'>{author}</time>
       </header>
 
-      <div className='fn fl-ns w-50-ns'>
+      <div className='fn fl-ns mb4 w-50-ns'>
         <ProgressiveImageContainer
           className='w-100 dib f4'
           image={image}
@@ -29,8 +29,8 @@ const AboutPageTemplate = (props) => {
         />
 
       </div>
-      
-      <PageContent content={content} className='avenir lh-copy measure f4 mt0 fw1 html-content' />
+
+      <PageContent content={content} className='avenir lh-copy f4 mt0 fw1 html-content' />
 
     </article>
   </section>
