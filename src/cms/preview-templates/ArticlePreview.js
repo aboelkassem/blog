@@ -10,7 +10,7 @@ const ArticlePreview = (props) => {
   const authorLink = entry.getIn(['data', 'authorLink'])
   const cover = { publicURL: entry.getIn(['data', 'cover']) }
   const date = entry.getIn(['data', 'date'])
-  // const tags = entry.getIn(['data', 'tags'])
+  const tags = entry.getIn(['data', 'tags'])
   const content = widgetFor('body')
 
   return <div>
@@ -20,7 +20,7 @@ const ArticlePreview = (props) => {
       authorLink={authorLink}
       cover={cover}
       date={date && date.toLocaleString()}
-      // tags={tags}
+      tags={tags}
       content={content}
     />
   </div>
