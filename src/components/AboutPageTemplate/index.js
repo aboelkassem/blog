@@ -28,8 +28,10 @@ const AboutPageTemplate = (props) => {
           alt={title}
         />
 
-        <PageContent content={content} className='avenir lh-copy measure f4 mt0 fw1 html-content' />
       </div>
+      
+      <PageContent content={content} className='avenir lh-copy measure f4 mt0 fw1 html-content' />
+
     </article>
   </section>
 }
