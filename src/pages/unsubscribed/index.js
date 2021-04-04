@@ -38,8 +38,6 @@ const UnsubscribedPage = () => (
         <li className='dib'><Link className='f5 f4-ns link black db pv2 ph3 hover-light-yellow' to='/contact' replace>Contact</Link></li>
 
         <li className='dib'><Link className='f5 f4-ns link black db pv2 ph3 hover-light-pink' to='/search' replace>Search</Link></li>
-
-        <li className='dib'><Tags className='f5 f4-ns link black db pv2 ph3 hover-light-pink' to='/tags' replace>Search</Tags></li>
       </ul>
     </section>
   </>
