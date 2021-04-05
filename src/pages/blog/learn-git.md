@@ -6,8 +6,8 @@ author: aboelkassem
 authorLink: https://www.aboelkassem.com
 date: 2020-04-27T13:12:13.627Z
 cover: /img/git.jpg
-metaTitle: learn git
-metaDescription: learn basics of a version control system, git, and Github
+metaTitle: Learn Git | Aboelkassem Blog
+metaDescription: aboelkassem blog, learn basics of a version control system, git, and Github
 tags:
   - git
   - github
