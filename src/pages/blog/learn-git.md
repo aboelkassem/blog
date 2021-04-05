@@ -28,6 +28,10 @@ Git is the world’s most popular version control system.
 * Managing your project’s files. For example, when building a website, you will
   have a lot of files, like CSS, HTML, JS, images.
 
+## Why Git?
+
+Git maintains a complete history of the changes made to any project, it makes collaboration simpler and more productive, and it allows working on multiple features at once.
+
 ## Three Stages of a File
 
 there are three-stage of any file in the source control systems
