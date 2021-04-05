@@ -193,3 +193,7 @@ $ git reset --soft <head-of-commit>
 $ git reset --mixed <head-of-commit>
 $ git reset --hard <head-of-commit>
 ```
+
+<hr>
+
+[Edit this page in Github](https://github.com/aboelkassem/Git/blob/master/README.md)
