@@ -1,448 +1,109 @@
 ---
 templateKey: article-page
-title: Basic Serverless Typeahead Search with Cloudflare Workers
-slug: serverless-typeahead-search-cloudflare-workers
-author: Vaibhav Sharma
-authorLink: https://instagram.com/waybove
-date: 2021-03-12T10:13:34.119Z
-cover: /img/michael-rivera-serverless-typeahead-search.jpg
-metaTitle: Leverage Cloudflare Workers to make a Serverless Typeahead Search API
-metaDescription: Use Cloudflare Workers and React to make a Basic Typeahead Search for Pokedex.
+title: Awesome roadmaps for learning computer science and technologies
+slug: awesome-roadmaps
+author: Mohamed Abdelrahman
+authorLink: https://www.aboelkassem.com
+date: 2020-04-26T10:13:34.119Z
+cover: /img/awesome-roadmaps.png
+metaTitle: Awesome roadmaps for learning computer science and technologies
+metaDescription: Awesome roadmaps to follow for learning software industry and
+  common technologies
 tags:
-  - serverless
-  - typescript
-  - cloudflare
-  - react js
+  - roadmap
+  - back-end
+  - front-end
+  - web-dev
+  - machine-learning
 ---
-Typeahead search progressively searches and filters as the user types his/her query. It’s also called **predictive search**, **incremental search** or **search-as-you-type** and is an important feature of most search engines. In this tutorial, we’ll learn to make a very basic version of a *Pokémon* Typeahead Search using **Cloudflare Workers** and **React**. Cloudflare provides generous **100,000** requests per day in its free plan, making it perfect for an API like this.
 
-# Setup Cloudflare
-
-We begin by signing up for a Cloudflare Workers account at [workers.cloudflare.com](https://workers.cloudflare.com). 
-
-![cloudflare-workers-homepage](/img/cloudflare-workers-homepage.png "cloudflare-workers-homepage")
-
-In the onboarding screen, select a unique subdomain for our workers.
-
-![setting-up-custom-subdomain](/img/setting-up-custom-subdomain.jpg "setting-up-custom-subdomain")
-
-# Installing Wrangler
-
-To get the most out of Cloudflare Workers we need to install Wrangler CLI using `yarn` or `npm`.
-
-```shell
-yarn global add @cloudflare/wrangler
-```
-
-Next we login to our Cloudflare Account with Wrangler CLI
-
-```shell
-wrangler login
-```
-
-![wrangler-login-terminal](/img/wrangler-login-terminal.png "wrangler-login-terminal")
-
-This will open up a page on your browser where you can authorise the wrangler.
-
-![wrangler-login-browser](/img/wrangler-login-browser.jpg "wrangler-login-browser")
-
-If it doesn’t work, you can manually log in using the config command and following the prompted instructions.
-
-```shell
-wrangler config
-```
-
-# Setup A Worker Project
-
-Wrangler CLI lets you set up a Cloudflare Worker project easily, as well as allows you to use Templates.
-
-We’ll be using the TypeScript template for our project. To set it up just use the following command.
-
-```shell
-wrangler generate search-api https://github.com/cloudflare/worker-typescript-template
-```
-
-Next, navigate to the project and open it using your favourite IDE and we can start writing the serverless code. 
-
-![wrangler-generate-template](/img/wrangler-generate-template.jpg "wrangler-generate-template")
-
-But, before we begin to write our API, we need to add our `accound_id` in the project’s `wrangler.toml` file, as prompted while generating the project.
-
-# Writing the API
-
-For our search to work there needs to be an index where our data is stored, here we’ll be using a [JSON File](https://raw.githubusercontent.com/v4iv/pokedex/master/search/search-index.json) of all the *Pokémons* and their ID, that I generated using [PokeAPI](https://pokeapi.co).
-
-```json
-[
-  {
-    "name": "bulbasaur",
-    "id": 1
-  },
-  {
-    "name": "ivysaur",
-    "id": 2
-  },
-  {
-    "name": "venusaur",
-    "id": 3
-  },
-  {
-    "name": "charmander",
-    "id": 4
-  },
-  .
-  .
-  .
-  {
-    "name": "eternatus-eternamax",
-    "id": 10217
-  },
-  {
-    "name": "urshifu-single-strike-gmax",
-    "id": 10218
-  },
-  {
-    "name": "urshifu-rapid-strike-gmax",
-    "id": 10219
-  },
-  {
-    "name": "toxtricity-low-key-gmax",
-    "id": 10220
-  }
-]
-```
-
-You can download and add it to the project’s `src` folder as `pokedex.json`.
-
-But we can’t directly import a JSON module to our typescript file, for that we need to add the following to the project’s `tsconfig.json` file.
-
-```json
-"resolveJsonModule": true,
-```
-
-Now let’s open our `handler.ts` file and start writing our API. We begin by importing our Pokémon Index file.
-
-```typescript
-import pokedex from “./pokedex.json”
-```
-
-Next, we get the `pathname` and `query-string parameter` from the `Request` object.
-
-```typescript
-const {pathname, searchParams} = new URL(request.url)
-```
-
-Then we check if the `pathname` is correct, else we respond with a `404 error`.
-
-```typescript
-if (pathname === “/search”) {
-
-} else return new Response("", {
-   status: 404,
-   statusText: "Path Not Found!"
-   headers: {
-       'Access-Control-Allow-Origin': '*',
-       'Access-Control-Allow-Methods': 'GET',
-   },
-})
-```
-
-And if the path is correct, we extract the exact query params we need to process our search:
-
-```typescript
-const query = searchParams.get(“q”)
-```
-
-Now, we write the filter for the Pokémons according to our query.
-
-```typescript
-const d = pokedex.filter(
-   (pokemon) =>
-       pokemon.name.toString().toLowerCase().includes(query.toLowerCase()) ||
-       pokemon.id.toString().toLowerCase().includes(query.toLowerCase()),
-)
-```
-
-Finally, we return the `stringified` results in our `Response` object along with CORS headers.
-
-```typescript
-return new Response(JSON.stringify(d), {
-   headers: {
-       'Access-Control-Allow-Origin': '*',
-       'Access-Control-Allow-Methods': 'GET',
-   },
-})
-```
-
-Completed code should look like this:
-
-```typescript
-import pokedex from './pokedex.json'
-
-
-export async function handleRequest(request: Request): Promise<Response> {
- const { searchParams, pathname } = new URL(request.url)
- 
- if (pathname === '/search') {
-   const query = searchParams.get('q') || ''
-   
-   const d = pokedex.filter(
-     (pokemon) =>
-       pokemon.name.toString().toLowerCase().includes(query.toLowerCase()) ||
-       pokemon.id.toString().toLowerCase().includes(query.toLowerCase()),
-   )
-
-   return new Response(JSON.stringify(d), {
-     headers: {
-       'Access-Control-Allow-Origin': '*',
-       'Access-Control-Allow-Methods': 'GET',
-     },
-   })
- } else return new Response('', {
-     status: 404,
-     statusText: 'Path Not Found!',
-     headers: {
-       'Access-Control-Allow-Origin': '*',
-       'Access-Control-Allow-Methods': 'GET',
-     },
-   })
-}
-```
-
-# Debugging and Publishing
-
-Since this project is made with TypeScript we cannot directly run or publish it, for that we need a bundler like Webpack, which is preconfigured in the template we used. 
-
-To debug locally, we need to first run the dev script to compile the typescript.
-
-```shell
-yarn run dev
-```
-
-Then, we run the wrangler dev command.
-
-```shell
-wrangler dev
-```
-
-This should run the script on our localhost, where we can test it out by entering the following URL in our browser.
-
-<http://127.0.0.1:8787/search?q=pika>
-
-Which should return a list of all the entries for Pikachu in our index.
-
-```json
-[
-  {"name":"pikachu","id":25},
-  {"name":"pikachu-rock-star","id":10080},
-  {"name":"pikachu-belle","id":10081},
-  {"name":"pikachu-pop-star","id":10082},
-  {"name":"pikachu-phd","id":10083},
-  {"name":"pikachu-libre","id":10084},
-  {"name":"pikachu-cosplay","id":10085},
-  {"name":"pikachu-original-cap","id":10094},
-  {"name":"pikachu-hoenn-cap","id":10095},
-  {"name":"pikachu-sinnoh-cap","id":10096},
-  {"name":"pikachu-unova-cap","id":10097},
-  {"name":"pikachu-kalos-cap","id":10098},
-  {"name":"pikachu-alola-cap","id":10099},
-  {"name":"pikachu-partner-cap","id":10148},
-  {"name":"pikachu-gmax","id":10190}
-]
-```
-
-Once satisfied, we can build and publish it to our account using Wrangler CLI.
-
-To build in production mode, run the build script.
-
-```shell
-yarn run build
-```
-
-Then, run the publish command.
-
-```shell
-wrangler publish
-```
-
-Finally, the backend part of this project is complete and we can access the live API from the browser, it should be something like this.
-
-```
-https://search-api.<your-subdomain>.workers.dev/search?q=pika
-```
-
-# Frontend
-
-Although the API we made earlier is front-end agnostic, I’ll be bootstrapping the web app using Create React App.
-
-```shell
-yarn create react-app search-app --template typescript
-```
-
-We’ll begin by removing `App.css`, `App.test.ts`, `index.css` and `logo.svg` (don’t forget to remove the `index.css` import from `index.tsx` file).
-
-To demonstrate the API I'll be using [Gestalt](https://gestalt.netlify.app), a React Component Library by [Pinterest](https://pinterest.com) and Axios to fetch the data from the API, let's add it to our project.
-
-```shell
-yarn add axios @types/gestalt@19.2.0 gestalt@19.2.2
-```
-
-Next, we add the Gestalt CSS file to our `index.tsx`
-
-```typescript
-...
-import "gestalt/dist/gestalt.css"
-...
-```
-
-Then in the `App.tsx` file, we delete the pre-existing code, make it a fresh `React Function Component` and add the following code for our Search Field.
-
-```jsx
-import React from 'react';
-import {Box, Container, SearchField} from "gestalt";
-
-const App: React.FC = () => {
-   return (
-       <>
-           <Container>
-               <Box flex="grow">
-                   <SearchField
-                       accessibilityLabel="Search"
-                       placeholder="Search"
-                       id="search"
-                       onChange={({value}) => console.log(value)}
-                   />
-               </Box>
-           </Container>
-       </>
-   );
-};
-
-export default App;
-```
-
-Next, we begin to build our search function by importing `axios` and `useState`, `useCallback` Hooks and adding the search function to the `onChange` attribute of Search Field.
-
-```jsx
-import React, {useCallback, useState} from 'react';
-import {Box, Container, SearchField} from "gestalt";
-import axios from "axios";
-
-
-const App: React.FC = () => {
-   const [results, setResults] = useState([])
-
-   const search = useCallback((query) => {
-       axios
-           .get(`${process.env.REACT_APP_SEARCH_API}/search?q=${query}`)
-           .then(res => {
-               const pokemons = res.data
-               setResults(pokemons)
-           })
-           .catch(err => {
-               console.error(err)
-
-               setResults([])
-           })
-   }, [])
-
-   return (
-       <>
-           <Container>
-               <Box flex="grow">
-                   <SearchField
-                       accessibilityLabel="Search"
-                       placeholder="Search"
-                       id="search"
-                       onChange={({value}) => search(value)}
-                   />
-               </Box>
-           </Container>
-       </>
-   );
-};
-
-export default App;
-```
-
-Note that we are using an environment variable for our API, that’s just for ease but you can hard code the API if you like.
-
-Finally, we write the code to display our results.
-
-```jsx
-import React, {useCallback, useState} from 'react';
-import {Avatar, Box, Container, SearchField, Text} from "gestalt";
-import axios from "axios";
-
-
-interface IPokemon {
-   id: number,
-   name: string
-}
-
-const App: React.FC = () => {
-   const [results, setResults] = useState([])
-
-   const search = useCallback((query) => {
-       axios
-           .get(`${process.env.REACT_APP_SEARCH_API}/search?q=${query}`)
-           .then(res => {
-               setResults(res.data)
-           })
-           .catch(err => {
-               console.error(err)
-
-               setResults([])
-           })
-   }, [])
-
-   return (
-       <>
-           <Container>
-               <Box flex="grow">
-                   <SearchField
-                       accessibilityLabel="Search"
-                       placeholder="Search"
-                       id="search"
-                       onChange={({value}) => search(value)}
-                   />
-               </Box>
-
-               {results.length
-                   ? <Box paddingY={2}>
-                       {results.map((pokemon: IPokemon) => {
-                           const pokemonName = pokemon.name
-                           const pokemonImage = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png`
-
-                           return <Box key={pokemon.id} borderStyle="sm" marginBottom={2} rounding="pill" padding={2}
-                                       alignItems="center" display="flex">
-                               <Box paddingX={2}>
-                                   <Avatar
-                                       name={pokemonName}
-                                       src={pokemonImage}
-                                       size="xs"
-                                   />
-                               </Box>
-                         
-                               <Box paddingX={2} flex="grow">
-                                   <Text color="darkGray" weight="bold">
-                                       {pokemonName.toUpperCase()}
-                                   </Text>
-                               </Box>
-                           </Box>
-                       })}
-                   </Box>
-                   : null}
-           </Container>
-       </>
-   );
-};
-
-export default App;
-```
-
-The results should look something like this.
-
-![typeahead-search-final](/img/final-product.png "typeahead-search-final")
-
-We can deploy the react app with Cloudflare Pages or with Cloudflare Workers as well.
+In this article, we will show a collection of roadmaps for the software industry and other technologies from GitHub and other resources
+
+**Table of Contents**
+
+- [Ways of learning](#ways-of-learning)
+- [Ready](https://github.com/orsanawwad/awesome-roadmaps "Ready") [Roadmaps](https://github.com/liuchong/awesome-roadmaps "Roadmaps")
+    + [For no cs degree](#for-no-cs-degree)
+    + [Web Skills](#web-skills)
+    + [General Frontend](#general-frontend)
+    + [General Backend](#general-backend)
+    + [React Developer](#react-developer)
+    + [Angular Developer](#angular-developer)
+    + [Vue Developer](#vue-developer)
+    + [Machine Learning Roadmaps](#machine-learning-roadmaps)
+    + [.Net Core Roadmaps](#net-core-roadmaps)
+    + [Flutter Roadmap](#flutter-roadmap)
+    + [Android Roadmap](#android-roadmap)
+    + [IOS Roadmap](#ios-roadmap)
+    + [Go Developer](#go-developer)
+
+##  Ways of learning
+- Finding the right resources that won't make you hate this technology or feel boring
+- The official documentation and/or standards for the technology (Recommended to open it always besides learning/coding)
+- Questions & answers on Google, Stack Overflow, colleagues, qoura, reddit, or any other forums, blogs + online communities
+- books from O’Reilly, Apress, or similar publishers
+- Tutorials
+- All above + side project for practice
+
+## [Ready](https://github.com/orsanawwad/awesome-roadmaps "Ready") [Roadmaps](https://github.com/liuchong/awesome-roadmaps "Roadmaps")
+#### For no cs degree
+- [Someone plan](https://docs.google.com/spreadsheets/d/1k68FCaomytLylMsA9Ux0jASsfCVp1M8lNnXZk-BqaNs/edit) for studying cs materials from universities like stanford taken from OSSU and other recourses
+- [CS self study Plan](https://github.com/leniquenoralez/computer-science-self-study-plan)
+- [A complete computer science study plan to become a software engineer.](https://github.com/jwasham/coding-interview-university)
+- [Someone plan](https://github.com/IMSoley/cs-study-plan) to be a programmer to improve his coding skills and ML
+
+#### Web Skills
+- Full guide for [useful skills to learn as a web developer](https://andreasbm.github.io/web-skills/)
+- [This Article](https://levelup.gitconnected.com/the-2020-web-developer-roadmap-76503ddfb327) is good to get small definitions of technologies
+- [Web development guide 2020](https://github.com/andrews1022/web-development-2020-course-list)
+
+#### General Frontend 
+- [Frontend Developer](https://roadmap.sh/frontend)
+- [frontend developers needs](https://github.com/helloroman/frontend-roadmap)
+
+#### General Backend
+- [backend Developer](https://roadmap.sh/backend)
+
+#### React Developer
+- [react developer roadmap](https://github.com/adam-golab/react-developer-roadmap)
+
+#### Angular Developer
+- [Angular roadmap for 2018](https://github.com/sulco/angular-developer-roadmap)
+
+#### Vue Developer
+- [Vue Developer](https://github.com/flaviocopes/vue-developer-roadmap)
+
+#### Machine Learning Roadmaps
+- [learning path: Machine Learning for Software Engineers](https://github.com/ZuzooVn/machine-learning-for-software-engineers)
+- [Roadmap to becoming a Machine Learning developer in 2020](https://github.com/JsonChao/ML-Roadmap)
+- [Machine Learning Engineer and learn by doing](https://github.com/samehamin/StudyPlan/blob/master/Machine%20Learning%20Engineer.md)
+- [Deep Learning Papers Reading Roadmap](https://github.com/floodsung/Deep-Learning-Papers-Reading-Roadmap)
+- [Deep Learning roapmap](https://github.com/machinelearningmindset/deep-learning-roadmap)
+- [NLP roadmap](https://github.com/graykode/nlp-roadmap)
+- [list of resources of NLP](https://github.com/keon/awesome-nlp)
+- [list of awesome research papers, datasets and software projects devoted to machine learning](https://github.com/src-d/awesome-machine-learning-on-source-code)
+- [list of awesome Machine Learning frameworks, libraries](https://github.com/josephmisiti/awesome-machine-learning)
+- [machine learning and deep learning tutorials, articles and other resources](https://github.com/ujjwalkarn/Machine-Learning-Tutorials)
+- [TensorFlow list ](https://github.com/jtoy/awesome-tensorflow)
+- [Simple tutorials of TensorFlow with code](https://github.com/nlintz/TensorFlow-Tutorials)
+
+#### .Net Core Roadmaps
+- [ASP.NET Core developer in 2019](https://github.com/MoienTajik/AspNetCore-Developer-Roadmap) this roadmap discusses the tools and framework you might need in building your software and some general concepts to understand
+- [.NET and ASP.NET Core Roadmaps](https://github.com/phongnguyend/Practical.NET) this roadmap discuss the topics you need to know in every step or stage that you are learning now
+#### Flutter Roadmap
+- [flutter roadmap](https://github.com/olexale/flutter_roadmap) that showing all concepts and another thing you must know
+
+#### Android Roadmap
+- [Android Roadmap](https://github.com/mobile-roadmap/android-developer-roadmap) has guide to how to read
+- [another roadmap](https://github.com/MindorksOpenSource/android-developer-roadmap) and for [recourses](https://mindorks.com/android-app-development-online-course)
+
+#### IOS Roadmap
+- [IOS Roadmap](https://github.com/godrm/mobile-developer-roadmap)
+- [another roadmap](https://github.com/BohdanOrlov/iOS-Developer-Roadmap)
+
+#### Go Developer 
+- [Go Developer Roadmap](https://github.com/Alikhll/golang-developer-roadmap)
+
+<hr>
+
+[Edit this page on Github](https://github.com/aboelkassem/awesome_roadmaps/blob/master/README.md)
