@@ -88,9 +88,9 @@ $ git diff --staged
 
 ![git-diff](https://raw.githubusercontent.com/aboelkassem/Git/master/images/git%20diff.png "git-diff command")
 
-### Push committed changes to Origin Master branch
-
 ![push-committed](https://raw.githubusercontent.com/aboelkassem/Git/master/images/push%20committed.png "push committed changes to origin master")
+
+### Push committed changes to Origin Master branch
 
 After Commit push these files from local project to remote origin repository on Github
 
