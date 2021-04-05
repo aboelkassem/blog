@@ -132,13 +132,13 @@ $ git log --patch
 There are guidelines are followed to commit message to be useful and helpful to other
 contributors there are a blog that had a lot of information about these seven rules in [this blog](https://chris.beams.io/posts/git-commit/)
 
-> 1- Separate subject from body with a blank line
-> 2- Limit the subject line to 50 characters
-> 3- Capitalize the subject line
-> 4- Do not end the subject line with a period
-> 5- Use the imperative mood in the subject line
-> 6- Wrap the body at 72 characters
-> 7- Use the body to explain what and why vs. how
+- Separate subject from body with a blank line
+- Limit the subject line to 50 characters
+- Capitalize the subject line
+- Do not end the subject line with a period
+- Use the imperative mood in the subject line
+- Wrap the body at 72 characters
+- Use the body to explain what and why vs. how
 
 ### Remove and Move Files
 
@@ -170,7 +170,6 @@ $ git branch -D <branch-name> # Force delete a branch if this branch have commit
 
 merge command it to merge branches with all its commits and working files to the master branch. if you are a contributor you can make branches and working at them and merge them as a pull request to your master branch and send it to the origin master branch as also pull request to be merged
 
-
 ![merge-command](https://raw.githubusercontent.com/aboelkassem/Git/master/images/merge.png "merge command")
 
 ### Git stash
@@ -186,7 +185,6 @@ $ git stash pop # get the chages/files from stash to dropped back into his worki
 ### Git reset
 
 git reset allow us to move commits from history back into our working or staging area
-
 
 ![git-reset](https://raw.githubusercontent.com/aboelkassem/Git/master/images/git%20reset.png "git-reset command")
 
