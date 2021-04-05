@@ -6,32 +6,14 @@ author: aboelkassem
 authorLink: https://www.aboelkassem.com
 date: 2020-04-27T13:12:13.627Z
 cover: /img/git.jpg
-metaTitle: learn git
-metaDescription: learn basics of a version control system, git, and Github
+metaTitle: Learn Git | Aboelkassem Blog
+metaDescription: learn basics of a version control system, git, and Github in aboelkassem blog
 tags:
   - git
   - github
   - version-control
 ---
 In this article, we'll discuss the basics of version control with git!
-
-**The Content**
-
-* [Version Control System](#version-control-system)
-* [Three Stages of a File](#three-stages-of-a-file)
-* [Three States of git project](#three-states-of-git-project)
-* [Command Line](#command-line)
-
-  * [Tracked files by git has three stages](#tracked-files-by-git-has-three-stages)
-  * [Untracked Files](#untracked-files)
-  * [Push committed changes to Origin Master branch](#push-committed-changes-to-origin-master-branch)
-  * [Track commits and see the history of previous commits](#track-commits-and-see-the-history-of-previous-commits)
-  * [Commit Message](#commit-message)
-  * [Remove and Move Files](#remove-and-move-files)
-  * [Branches](#branches)
-  * [Merge](#merge)
-  * [Git stash](#git-stash)
-  * [Git reset](#git-reset)
 
 ## What is Git?
 
@@ -46,15 +28,19 @@ Git is the world’s most popular version control system.
 * Managing your project’s files. For example, when building a website, you will
   have a lot of files, like CSS, HTML, JS, images.
 
+## Why Git?
+
+Git maintains a complete history of the changes made to any project, it makes collaboration simpler and more productive, and it allows working on multiple features at once.
+
 ## Three Stages of a File
 
 there are three-stage of any file in the source control systems
 
-* Committed
+* **Committed**
   mean that files are stored safely in the repo of the project
-* Modified
+* **Modified**
   when making changes in the last commit, just introduced new changes but has committed them yet
-* Staged
+* **Staged**
   when changes finished and ready to commit.
 
 ## Three States of a git project
@@ -71,13 +57,13 @@ in the following two files, you will get all git and Github command lines to be 
 
 ### Tracked files by git have three stages
 
-* Committed
+* **Committed**
   Unmodified changes from the last commit snapshot, when making changes to these files
   content then moved to modified stage
-* Modified
+* **Modified**
   Changes made to files since last commit snapshot, when you satisfied with changes and
   stage them for commit will move to the staged area
-* Staged
+* **Staged**
   Changes marked to be added into the next commit snapshot, now can commit it to the origin
   repositories
 
@@ -106,9 +92,9 @@ $ git diff --staged
 
 ![git-diff](https://raw.githubusercontent.com/aboelkassem/Git/master/images/git%20diff.png "git-diff command")
 
-### Push committed changes to Origin Master branch
-
 ![push-committed](https://raw.githubusercontent.com/aboelkassem/Git/master/images/push%20committed.png "push committed changes to origin master")
+
+### Push committed changes to Origin Master branch
 
 After Commit push these files from local project to remote origin repository on Github
 
@@ -132,13 +118,13 @@ $ git log --patch
 There are guidelines are followed to commit message to be useful and helpful to other
 contributors there are a blog that had a lot of information about these seven rules in [this blog](https://chris.beams.io/posts/git-commit/)
 
-> 1- Separate subject from body with a blank line
-> 2- Limit the subject line to 50 characters
-> 3- Capitalize the subject line
-> 4- Do not end the subject line with a period
-> 5- Use the imperative mood in the subject line
-> 6- Wrap the body at 72 characters
-> 7- Use the body to explain what and why vs. how
+* Separate subject from body with a blank line
+* Limit the subject line to 50 characters
+* Capitalize the subject line
+* Do not end the subject line with a period
+* Use the imperative mood in the subject line
+* Wrap the body at 72 characters
+* Use the body to explain what and why vs. how
 
 ### Remove and Move Files
 
@@ -170,7 +156,6 @@ $ git branch -D <branch-name> # Force delete a branch if this branch have commit
 
 merge command it to merge branches with all its commits and working files to the master branch. if you are a contributor you can make branches and working at them and merge them as a pull request to your master branch and send it to the origin master branch as also pull request to be merged
 
-
 ![merge-command](https://raw.githubusercontent.com/aboelkassem/Git/master/images/merge.png "merge command")
 
 ### Git stash
@@ -187,7 +172,6 @@ $ git stash pop # get the chages/files from stash to dropped back into his worki
 
 git reset allow us to move commits from history back into our working or staging area
 
-
 ![git-reset](https://raw.githubusercontent.com/aboelkassem/Git/master/images/git%20reset.png "git-reset command")
 
 ```shell
@@ -195,3 +179,7 @@ $ git reset --soft <head-of-commit>
 $ git reset --mixed <head-of-commit>
 $ git reset --hard <head-of-commit>
 ```
+
+<hr>
+
+[Edit this page in Github](https://github.com/aboelkassem/Git/blob/master/README.md)
