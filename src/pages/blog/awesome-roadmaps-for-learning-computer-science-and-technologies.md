@@ -6,9 +6,9 @@ author: aboelkassem
 authorLink: https://www.aboelkassem.com
 date: 2020-04-10T12:57:52.462Z
 cover: /img/awesome-roadmaps.png
-metaTitle: awesome roadmaps for learning Computer Science and Technologies
+metaTitle: Awesome Roadmaps | Aboelkassem Blog
 metaDescription: Awesome roadmaps for learning different topics in the software
-  industry and technologies
+  industry and technologies in aboelkassem blog.
 tags:
   - roadmap
   - back-end
