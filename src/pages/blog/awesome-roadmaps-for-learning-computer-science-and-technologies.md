@@ -19,24 +19,6 @@ tags:
 
 In this article, we will show a collection of roadmaps for the software industry and other technologies from GitHub and other resources
 
-**Table of Contents**
-
-- [Ways of learning](#ways-of-learning)
-- [Ready](https://github.com/orsanawwad/awesome-roadmaps "Ready") [Roadmaps](https://github.com/liuchong/awesome-roadmaps "Roadmaps")
-    + [For no cs degree](#for-no-cs-degree)
-    + [Web Skills](#web-skills)
-    + [General Frontend](#general-frontend)
-    + [General Backend](#general-backend)
-    + [React Developer](#react-developer)
-    + [Angular Developer](#angular-developer)
-    + [Vue Developer](#vue-developer)
-    + [Machine Learning Roadmaps](#machine-learning-roadmaps)
-    + [.Net Core Roadmaps](#net-core-roadmaps)
-    + [Flutter Roadmap](#flutter-roadmap)
-    + [Android Roadmap](#android-roadmap)
-    + [IOS Roadmap](#ios-roadmap)
-    + [Go Developer](#go-developer)
-
 ##  Ways of learning
 - Finding the right resources that won't make you hate this technology or feel boring
 - The official documentation and/or standards for the technology (Recommended to open it always besides learning/coding)
