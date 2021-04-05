@@ -20,19 +20,21 @@ In this article, we will show a collection of roadmaps for the software industry
 
 ## Ways of learning
 
+There are many ways of learning suitable for everyone's experience and situation, so i will talk about my way and how I learn in summary:
+
 * Finding the right resources that won't make you hate this technology or feel boring
 * The official documentation and/or standards for the technology (Recommended to open it always besides learning/coding)
 * Questions & answers on Google, Stack Overflow, colleagues, quora, Reddit, or any other forums, blogs + online communities
 * books from O’Reilly, Apress, or similar publishers
-* Tutorials
-* All above + side project for practice
+* Tutorials and Mooc videos
+* Practicing a side project, contributing to open source projects or tools
 
 ## [Ready](https://github.com/orsanawwad/awesome-roadmaps "Ready") [Roadmaps](https://github.com/liuchong/awesome-roadmaps "Roadmaps")
 
 #### For no cs degree
 
 * [Someone plan](https://docs.google.com/spreadsheets/d/1k68FCaomytLylMsA9Ux0jASsfCVp1M8lNnXZk-BqaNs/edit) for studying cs materials from universities like Stanford taken from OSSU and other recourses
-* [CS self study Plan](https://github.com/leniquenoralez/computer-science-self-study-plan)
+* [CS self-study Plan](https://github.com/leniquenoralez/computer-science-self-study-plan)
 * [A complete computer science study plan to become a software engineer.](https://github.com/jwasham/coding-interview-university)
 * [Someone plan](https://github.com/IMSoley/cs-study-plan) to be a programmer to improve his coding skills and ML
 
