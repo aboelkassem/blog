@@ -337,3 +337,7 @@ cause following all these principles would need too many files that focus on mor
   * each folder should be specified in its task by naming them appropriately, it should be pretty easy to find what you're looking
   * the default way is by **kind of thing the file** is, so might put controllers in one folder, models in another, a folder for interfaces and another for services ... etc
   * another way especially when the app is growing is to use **feature folders** by organizing your app with feature not kind of thing like an online store might have top-level folders for catalog, search and cart instead of controllers, models, views, and services...... also follow [this repo](https://github.com/ardalis/CleanArchitecture)
+
+<hr>
+
+[Edit this page in Github](https://github.com/aboelkassem/Solid-Principles)
