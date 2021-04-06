@@ -1,7 +1,7 @@
 ---
 templateKey: article-page
-title: Learn Docker
-slug: learn-docker
+title: Introduction to Docker and Containerization
+slug: introduction-to-docker
 author: aboelkassem
 authorLink: https://www.aboelkassem.com
 date: 2021-01-01T09:14:05.830Z
