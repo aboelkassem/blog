@@ -5,7 +5,7 @@ slug: " solid-principles-for-desiging-software"
 author: aboelkassem
 authorLink: https://www.aboelkassem.com
 date: 2020-07-30T11:41:53.267Z
-cover: https://raw.githubusercontent.com/aboelkassem/Solid-Principles/master/Screenshots/solid.png
+cover: /img/solid.png
 metaTitle: Solid Principles | Aboelkassem blog
 metaDescription: SOLID principles are the design principles that enable us to
   manage most of the software design problems promoted by Robert C. Martin and
@@ -16,6 +16,7 @@ tags:
   - software-engineering
   - c#
   - web-dev
+  - clean-code
 ---
 # Table of Contents
 
