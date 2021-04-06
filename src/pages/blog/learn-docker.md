@@ -16,9 +16,7 @@ tags:
   - containerization
   - web-dev
 ---
-In this article, we will discuss the basics of Docker and containerization.\
-\
-Before jumping into Docker, let's look at why we need Docker and containerization?
+In this article, we will discuss the basics of Docker and containerization.
 
 ## Table Of Contents
 
@@ -54,7 +52,7 @@ Before jumping into Docker, let's look at why we need Docker and containerizatio
   * Converting Docker-compose to Kubernetes
   * Basic Commands
 
-
+Before jumping into Docker, let's look at why we need Docker and containerization?
 
 ## Why Should Use Docker and what is the power of containerization?
 
