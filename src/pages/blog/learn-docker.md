@@ -578,8 +578,6 @@ $ kubectl delete -f <fileName| folername>         # delete the deployments and c
 $ kubectl port-forward <nameOfPod> 8080:80        # expose pod port into local machine
 ```
 
-
-
 <hr>
 
-\[Edit this page in Github](https://github.com/aboelkassem/Learn-Docker/blob/main/README.md)
+[Edit this page in Github](https://github.com/aboelkassem/Learn-Docker/blob/main/README.md)
