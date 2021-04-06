@@ -5,7 +5,7 @@ slug: awesome-remote-working
 author: aboelkassem
 authorLink: https://www.aboelkassem.com
 date: 2020-11-01T09:01:39.935Z
-cover: /img/awesome-roadmaps.png
+cover: /img/remote-meeting-man-working-from-home-during-coronavirus-covid-19-quarantine-remote-office-concept-min.jpg
 metaTitle: Awesome Remote Working | Aboelkassem Blog
 metaDescription: A curated list of awesome websites and companies for remote
   working, internships, and hackathons in the world and the middle east.
