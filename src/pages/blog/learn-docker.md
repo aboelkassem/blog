@@ -22,37 +22,39 @@ Before jumping into Docker, let's look at why we need Docker and containerizatio
 
 ## Table Of Contents
 
-* [Why Should Use Docker and what is the power of containerization](#why-should-use-docker-and-what-is-the-power-of-containerization-)
-* [What is Docker?](#what-is-docker-)
+* Why Should Use Docker and what is the power of containerization
+* What is Docker?
 
-  * [Docker Benefits for web developers](#docker-benefits-for-web-developers)
-  * [Docker Tools](#docker-tools)
-  * [Docker Architecture](#docker-architecture)
-  * [Setting Up Your Docker Environment](#setting-up-your-docker-environment)
-  * [Basic Key Commands](#basic-key-commands)
-* [Hooking The Source Code into a Container](#hooking-the-source-code-into-a-container)
+  * Docker Benefits for web developers
+  * Docker Tools
+  * Docker Architecture
+  * Setting Up Your Docker Environment
+  * Basic Key Commands
+* Hooking The Source Code into a Container
 
-  * [The Layered File System](#the-layered-file-system)
-  * [Docker Volumes](#docker-volumes)
-* [Building Custom images with Dockerfile](#building-custom-images-with-dockerfile)
+  * The Layered File System
+  * Docker Volumes
+* Building Custom images with Dockerfile
 
-  * [What is Dockerfile?](#what-is-dockerfile)
-  * [Publish an image to docker Hub](#publish-an-image-to-docker-hub)
-* [Container Linking and Communicating](#container-linking-and-communicating)
+  * What is Dockerfile?
+  * Publish an image to Docker Hub
+* Container Linking and Communicating
 
-  * [Legacy Linking](#legacy-linking)
-  * [Container/Bridge Networks](#containerbridge-networks)
-* [Docker Compose](#docker-compose)
+  * Legacy Linking
+  * Container/Bridge Networks
+* Docker Compose
 
-  * [docker-compose.yml File](#docker-composeyml-file)
-  * [Docker Compose Commands](#docker-compose-commands)
-* [Overview of Kubernetes](#overview-of-kubernetes)
+  * docker-compose.yml File
+  * Docker Compose Commands
+* Overview of Kubernetes
 
-  * [What is Kubernetes](#what-is-kubernetes)
-  * [Run Kubernetes locally](#run-kubernetes-locally)
-  * [Basic Kubernetes Concepts](#basic-kubernetes-concepts)
-  * [Converting Docker-compose to Kubernetes](#converting-docker-compose-to-kubernetes)
-  * [Basic Commands](#basic-commands)
+  * What is Kubernetes
+  * Run Kubernetes locally
+  * Basic Kubernetes Concepts
+  * Converting Docker-compose to Kubernetes
+  * Basic Commands
+
+
 
 ## Why Should Use Docker and what is the power of containerization?
 
