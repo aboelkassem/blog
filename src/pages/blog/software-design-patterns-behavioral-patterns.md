@@ -703,7 +703,7 @@ public class Subscriber : Observer
 
 ## MVC Pattern
 
-**Model, View, Controller (MVC)** patterns are a pattern that should be consider for use with **user interfaces**. MVC patterns divides the responsibilities into three parts: Model, View, Controller.
+**Model, View, Controller (MVC)** patterns are a pattern that should be consider for use with **user interfaces**. MVC patterns divide the responsibilities into three parts: Model, View, Controller.
 
 This pattern uses the **Separation of Concerns** design principle which allows your program to be modular and loosely coupled. Separating these will allow you to focus on each set of responsibilities separately.
 
@@ -715,11 +715,11 @@ This pattern uses the **Separation of Concerns** design principle which allows y
 * **The View:** give a user a way to see the data of model or parts of it ⇒ like **Frontend**
 * **The Controller:** responsible for handling requests from **view** and changing the **model**
 
-In general, **Model** corresponds the entity objects, **View** corresponds interfaces to deal with users (Boundary object), Controller corresponds with receives events (Control object). **Model** can exist on its own with no views or controllers.
+In general, **Model** corresponds to the entity objects, **View** corresponds to interfaces to deal with users (Boundary object), Controller corresponds with receives events (Control object). **Model** can exist on its own with no views or controllers.
 
 ## Code Smells
 
-**Anti-patterns (Code Smells)** is the patterns which has bad code. the purpose of code smells is to get out what is bad into the code, these anti-patterns exist in book [Refactoring: Improving the design of existing code by Martin Fowler](https://www.amazon.com/Refactoring-Improving-Design-Existing-Code/dp/0201485672).
+**Anti-patterns (Code Smells)** is patterns which have bad code. the purpose of code smells is to get out what is bad into the code, these anti-patterns exist in the book [Refactoring: Improving the design of existing code by Martin Fowler](https://www.amazon.com/Refactoring-Improving-Design-Existing-Code/dp/0201485672).
 
 **Refactoring** is the process of making changes to your code so that the external behaviors of the code are not changed. but the internal structure is improved. This is done by making changes to code structure and testing these changes. You just making refactoring changes when you're adding features not once code complete.
 
@@ -728,12 +728,12 @@ In general, **Model** corresponds the entity objects, **View** corresponds inter
 * **Comments**
 
   * Comments can be an indicator of poor design. Write just effective comments
-  * **The code has no Comments or code has many comments**, which having **no comments** makes it difficult for someone to understand what the code is doing. Having a **lot of comments** might get out of sync as the code changes or a **lot of comments** to explain complicated design this mean you had done bad design.
+  * **The code has no Comments or code has many comments**, which have **no comments** makes it difficult for someone to understand what the code is doing. Having a **lot of comments** might get out of sync as the code changes or a **lot of comments** to explain complicated design this means you had done a bad design.
   * There are **reminder comments** in the code like "Don't forget to do this" or "if you make a change to this, make sure you update the code in this other method" are indicators of bad code.
   * **Comments are just `very useful` for documenting the APIs or documenting the reason why a particular choice of data structure or algorithm.**
 * **Duplicated Code**
 
-    is when you have code that are similar, but have slight differences. And appears in multiple places in your software.
+    is when you have code that is similar, but has slight differences. And appears in multiple places in your software.
 
   * This can be a **problem**, because if something needs to change, then the code needs to be updated in multiple places. This applies to adding functionalities, updating an algorithm, or fixing a bug.
   * Instead of if there are **no duplicated** and exist in one location, you having to update it in only one location and will make it easier to implement the changes and reduce the chance that you are missing a lock of code.
@@ -744,7 +744,7 @@ In general, **Model** corresponds the entity objects, **View** corresponds inter
 * **Large Class**
 
   * Classes should not be too large, Large classes occur when more responsibilities are needed Over time, however, these responsibilities might attract more responsibilities,  class continues to get larger and larger and take more and more responsibilities.
-  * Large class need a lot of comments, meaning a poor design, So to solve that **keep the class cohesive, so it does one thing well**.
+  * Large class needs a lot of comments, meaning a poor design, So to solve that **keep the class cohesive, so it does one thing well**.
 * **Data Class**
 
   * "Data classes" are classes that contains only data and no real functionality, these classes would have getter and setter methods no much else.
@@ -780,17 +780,17 @@ In general, **Model** corresponds the entity objects, **View** corresponds inter
   ```
 * **Long Parameter List**
 
-  * Having a method with long parameter list can be difficult to use, which is bad, also require extensive comments to explain each of parameters does.
+  * Having a method with a long parameter list can be difficult to use, which is bad, also require extensive comments to explain each of the parameters does.
   * Avoid global variables.
-  * To solve this, introduce all this long parameters as parameter object.
+  * To solve this, introduce all these long parameters as a parameter object.
 * **Divergent Change**
 
-  * "Divergent change" occurs when you have to change a class in many different ways, for many different reasons. Like Large Class code smell, The class has many responsibilities so the changes may be in variety of ways for different reasons.
+  * "Divergent change" occurs when you have to change a class in many different ways, for many different reasons. Like Large Class code smell, The class has many responsibilities so the changes may be in a variety of ways for different reasons.
   * To avoid divergent change, It will be nice if your class only had one specific purpose to reduce the number of reasons.
   * If you find yourself changing a class in multiple ways, you should be broke the class into separate classes. Notice, **Separation of Concerns** design principles solve to code smells Large class and divergent change.
 * **Shotgun Surgery**
 
-  * A change in one place requires you to fix many other areas in the code as a result. This happen when you are trying add a features, adjust code, fix bugs or change algorithms.
+  * A change in one place requires you to fix many other areas in the code as a result. This happens when you are trying to add features, adjust code, fix bugs or change algorithms.
   * To solve this issue, just moving methods around and organize them in a way to make sense but not in Large class code smell.
 * **Feature Envy**
 
@@ -806,10 +806,15 @@ In general, **Model** corresponds the entity objects, **View** corresponds inter
   * Just use your own types better abstraction.
 * **Speculative Generality**
 
-  * This occurs when you make a superclass, interface or code that is not needed at the time, but you think that you may use it someday. Like doing subclasses or different implementation for it. That may not actually help the code, you just **Over-Engineering** the code.
-  * With **agile development**, you want to practicing **Just in Time Design**, This means that there should be just **enough design** to take the requirements for a particular iteration to a working system. This means that all that needs to be designed for are the set of requirements chosen at the beginning of an iteration. **All other requirements in a backlog can be ignored.**
+  * This occurs when you make a superclass, interface or code that is not needed at the time, but you think that you may use it someday. Like doing subclasses or different implementations for it. That may not actually help the code, you just **Over-Engineering** the code.
+  * With **agile development**, you want to practicie **Just in Time Design**, This means that there should be just **enough design** to take the requirements for a particular iteration to a working system. This means that all that needs to be designed for are the set of requirements chosen at the beginning of an iteration. **All other requirements in a backlog can be ignored.**
   * You don't want to spend time writing code that may never actually get used, because the software changes frequently and Clients can change their mind at any time, and drop requirements from the backlog
 * **Refused Bequest**
 
-  * This occurs when a subclass inherit something and doesn't need it, Then is it appropriate that they be subclasses of this superclass?
+  * This occurs when a subclass inherits something and doesn't need it, Then is it appropriate that they be subclasses of this superclass?
   * it may make sense for a stand-alone class. if only some subclasses use them, then it may be better to define those behaviors in the subclasses only
+
+<hr>
+
+
+[Edit this page in Github](https://github.com/aboelkassem/Design-Patterns/blob/main/README.md)
