@@ -674,3 +674,7 @@ class Program
     }
 }
 ```
+
+<hr>
+
+[Edit this page in Githuib](https://github.com/aboelkassem/Design-Patterns/blob/main/README.md)
