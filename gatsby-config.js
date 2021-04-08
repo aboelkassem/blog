@@ -171,6 +171,12 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-plugin-google-adsense`,
+      options: {
+        publisherId: `ca-pub-1672384345508414`
+      },
+    },
+    {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: config.siteTitle,
@@ -193,6 +199,14 @@ module.exports = {
         ],
         cache_busting_mode: 'none',
       },
+    },
+    {
+      resolve: 'gatsby-plugin-robots-txt',
+      options: {
+        host: config.siteUrl,
+        sitemap: `${config.siteUrl}/sitemap.xml`,
+        policy: [{ userAgent: '*', allow: '/' }]
+      }
     },
     {
       resolve: `gatsby-plugin-offline`,

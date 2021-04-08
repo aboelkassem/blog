@@ -58,13 +58,27 @@ const HomePage = (props) => {
         </script>
 
         {/* Open Graph Tags */}
-        <meta property='og:url' content={`${config.siteUrl}/contact`} />
+        <meta property='og:url' content={`${config.siteUrl}`} />
 
         <meta property='og:title' content={config.siteTitle} />
 
+        <meta property='og:image' content={config.siteLogo} />
+        <meta property='og:type' content='blog' />
+        <meta property='og:site_name' content={config.siteTitle} />
         <meta property='og:description' content={config.siteDescription} />
+        <meta property='description' content={config.siteDescription} />
+        <meta property='twitter:description' content={config.siteDescription} />
+        <meta property='twitter:creator' content={config.userTwitter} />
+        <meta property='twitter:card' content='summary_large_image' />
+        <meta property='twitter:title' content={config.siteTitle} />
+        <meta property='twitter:image' content={config.siteLogo} />
+        <meta property='twitter:url' content={config.siteUrl} />
+        
+        <meta name="google-site-verification" content="xg4ctI6bmMqXQoOhJwwZjL8Tq8GYcJPS2Uh0Xgw2oiQ"/>
 
         <link rel='canonical' href={`${config.siteUrl}`} />
+
+        <meta property='keywords' content={config.keywords} />
       </Helmet>
 
       <div>
