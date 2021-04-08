@@ -24,7 +24,6 @@ In the [previous article](https://blog.aboelkassem.com/blog/design-patterns-crea
 ## Table of Contents
 
 * Structural Patterns
-
   * Facade Pattern
   * Adapter Pattern
   * Composite Pattern
