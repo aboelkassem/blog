@@ -24,18 +24,14 @@ Today, we will design some important concepts while designing the software and b
 ## Table of Contents
 
 * Design Principles
-
   * Evaluating Design Complexity
 * Coupling and Cohesion
-
   * **Coupling**
   * Cohesion
   * **Separation of Concerns**
 * Information Hiding
-
   * Conceptual Integrity
 * Modelling Behaviour
-
   * Inheritance Issues
   * UML Sequence Diagrams
   * UML State Diagram
