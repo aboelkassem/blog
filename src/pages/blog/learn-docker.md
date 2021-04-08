@@ -22,30 +22,24 @@ In this article, we will discuss the basics of Docker and containerization.
 
 * Why Should Use Docker and what is the power of containerization
 * What is Docker?
-
   * Docker Benefits for web developers
   * Docker Tools
   * Docker Architecture
   * Setting Up Your Docker Environment
   * Basic Key Commands
 * Hooking The Source Code into a Container
-
   * The Layered File System
   * Docker Volumes
 * Building Custom images with Dockerfile
-
   * What is Dockerfile?
   * Publish an image to Docker Hub
 * Container Linking and Communicating
-
   * Legacy Linking
   * Container/Bridge Networks
 * Docker Compose
-
   * docker-compose.yml File
   * Docker Compose Commands
 * Overview of Kubernetes
-
   * What is Kubernetes
   * Run Kubernetes locally
   * Basic Kubernetes Concepts
