@@ -23,18 +23,14 @@ In this article, we will discuss the important concept of object-oriented design
 * What is OOP?
 * Software Architect and Design Roles in Industry
 * Object-Oriented Modeling
-
   * **why should you use objects to represent things in your code?**
 * Design in the Software Process
-
   * Example
   * **Satisfying Qualities**
   * Class Responsibility Collaborator (CRC)
 * Object-Oriented Modeling
-
   * Evolution of Programming Languages
   * Four Design Principles
-
     * Abstraction
     * Encapsulation
     * Decomposition
