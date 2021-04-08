@@ -27,11 +27,8 @@ This lesson lays down the groundwork for understanding design patterns
 
 * Software Design Patterns
 * Types Of Design Patterns
-
   * Creational Patterns
-
     * Singleton Pattern
-
       * The Problem of using Multithreading in Singleton Pattern
     * Simple Factory objects
     * Factory Method Pattern
