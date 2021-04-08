@@ -21,9 +21,7 @@ tags:
 In the [previous article](https://blog.aboelkassem.com/blog/design-patterns-structural-patterns), we had discussed structural design patterns, Today, we will continue to explain the design patterns and we will discuss the Behavioral design patterns.
 
 ## Table of Contents
-
 * Behavioral Patterns
-
   * Template Method Pattern
   * Chain Of Responsibility Pattern
   * State Pattern
