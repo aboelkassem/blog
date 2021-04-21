@@ -3,7 +3,7 @@ templateKey: article-page
 title: "Software Design Patterns: Creational Patterns"
 slug: design-patterns-creational-patterns
 author: aboelkassem
-authorLink: https://www.aboelkassem.com
+authorLink: https://www.aboelkassem.me
 date: 2021-01-01T13:24:06.857Z
 cover: /img/creational-patterns.jpg
 metaTitle: Creational Patterns | Aboelkassem blog
@@ -33,9 +33,9 @@ This lesson lays down the groundwork for understanding design patterns
     * Simple Factory objects
     * Factory Method Pattern
 
-### Suggestions for [Object Oriented Design](https://blog.aboelkassem.com/blog/what-is-object-oriented-design-and-analysis-part-1)
+### Suggestions for [Object Oriented Design](https://blog.aboelkassem.me/blog/what-is-object-oriented-design-and-analysis-part-1)
 
-Whenever writing code in an object-orientated language, sticking to the following list of suggestions will make your code amenable to changes with the least effort. You can learn Object-Oriented Design and Analysis which we had discussed in other articles from [part1 ](https://blog.aboelkassem.com/blog/what-is-object-oriented-design-and-analysis-part-1)and [part2](https://blog.aboelkassem.com/blog/what-is-object-oriented-design-and-analysis-part-2), we summary them as the following:
+Whenever writing code in an object-orientated language, sticking to the following list of suggestions will make your code amenable to changes with the least effort. You can learn Object-Oriented Design and Analysis which we had discussed in other articles from [part1 ](https://blog.aboelkassem.me/blog/what-is-object-oriented-design-and-analysis-part-1)and [part2](https://blog.aboelkassem.me/blog/what-is-object-oriented-design-and-analysis-part-2), we summary them as the following:
 
 * <b>Separate</b> out parts of code that vary or change from those that remain the same.
 * Always code to <b>an interface</b> and not against a concrete implementation.

@@ -3,7 +3,7 @@ templateKey: article-page
 title: "Software Design Patterns: Structural Patterns"
 slug: design-patterns-structural-patterns
 author: aboelkassem
-authorLink: https://www.aboelkassem.com
+authorLink: https://www.aboelkassem.me
 date: 2021-01-05T14:36:47.351Z
 cover: /img/structural-patterns.jpg
 metaTitle: Structural Patterns | Aboelkassem blog
@@ -19,7 +19,7 @@ tags:
   - software-design
   - c#
 ---
-In the [previous article](https://blog.aboelkassem.com/blog/design-patterns-creational-patterns), we had discussed what is design patterns and creational design patterns, Today, we will continue to explain the design patterns and we will discuss the structural design patterns.
+In the [previous article](https://blog.aboelkassem.me/blog/design-patterns-creational-patterns), we had discussed what is design patterns and creational design patterns, Today, we will continue to explain the design patterns and we will discuss the structural design patterns.
 
 ## Table of Contents
 

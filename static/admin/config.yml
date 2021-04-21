@@ -8,9 +8,9 @@ backend:
     - author
     - guest
 
-site_url: https://blog.aboelkassem.com
-display_url: https://blog.aboelkassem.com
-logo_url: https://blog.aboelkassem.com/icons/icon-512x512.png
+site_url: https://blog.aboelkassem.me
+display_url: https://blog.aboelkassem.me
+logo_url: https://blog.aboelkassem.me/icons/icon-512x512.png
 publish_mode: editorial_workflow
 media_folder: static/img
 public_folder: /img
@@ -26,7 +26,7 @@ collections:
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Slug", name: "slug", widget: "string"}
       - {label: "Author", name: "author", widget: "string", default: "aboelkassem"}
-      - {label: "Author Link", name: "authorLink", widget: "string", default: "https://www.aboelkassem.com"}
+      - {label: "Author Link", name: "authorLink", widget: "string", default: "https://www.aboelkassem.me"}
       - {label: "Publish Date", name: "date", widget: "datetime"}
       - {label: "Cover", name: "cover", widget: "image"}
       - {label: "Body", name: "body", widget: "markdown"}

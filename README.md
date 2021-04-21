@@ -91,7 +91,7 @@ const config = {
   siteTitle: `aboelkassem Blog`, // Site title.
   siteTitleAlt: `qassem blog`, // Alternative site title for SEO.
   siteLogo: `/icons/icon-512x512.png`, // Logo used for SEO and manifest.
-  siteUrl: `https://blog.aboelkassem.com/`, // Domain of your website without pathPrefix.
+  siteUrl: `https://blog.aboelkassem.me/`, // Domain of your website without pathPrefix.
   pathPrefix: '', // Prefixes all links. For cases when deployed to example.github.io/gatsby-starter-business/.
   siteDescription: `aboelkassem Blog is the personal blog of Mohamed Abdelrahman. A Brew of Awesomeness with a Pinch of Magic...`, // Website description used for RSS feeds/meta description tag.
   siteRss: `/rss.xml`,

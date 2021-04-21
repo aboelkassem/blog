@@ -3,7 +3,7 @@ templateKey: article-page
 title: Learn Git
 slug: learn-git
 author: aboelkassem
-authorLink: https://www.aboelkassem.com
+authorLink: https://www.aboelkassem.me
 date: 2020-04-27T13:12:13.627Z
 cover: /img/git.jpg
 metaTitle: Learn Git | Aboelkassem Blog

@@ -3,7 +3,7 @@ templateKey: article-page
 title: " The Five Basic Object-Oriented (SOLID Principles) for Designing Software"
 slug: " solid-principles-for-desiging-software"
 author: aboelkassem
-authorLink: https://www.aboelkassem.com
+authorLink: https://www.aboelkassem.me
 date: 2020-07-30T11:41:53.267Z
 cover: /img/solid.png
 metaTitle: Solid Principles | Aboelkassem blog

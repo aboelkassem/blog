@@ -11,7 +11,7 @@ metaDescription: aboelkassem blog is the personal blog of Mohamed Abdelrahman.
   sun and beyond.
 ---
 Hi there <!--StartFragment-->👋🏻<!--EndFragment-->! \
-My name is **[Mohamed Abdelrahman](https://www.aboelkassem.com)** and this is **my personal blog** in which I write tech notes and articles mostly related to .Net Technology, web development and other related software topics. I am currently working with Angular and ASP.NET Core, so those are most likely the topics I will be covering here, because I do like working with it and I've been doing it for quite a while. Hope you find the content here valuable.
+My name is **[Mohamed Abdelrahman](https://www.aboelkassem.me)** and this is **my personal blog** in which I write tech notes and articles mostly related to .Net Technology, web development and other related software topics. I am currently working with Angular and ASP.NET Core, so those are most likely the topics I will be covering here, because I do like working with it and I've been doing it for quite a while. Hope you find the content here valuable.
 
 This aims to be a place where I can publish anything and everything that interests me. Mostly about science, technology, programming and graphics.
 
@@ -23,4 +23,4 @@ As they say, life's a journey and I want us to support each other through each p
 
 `~~~ Mischief Managed ~~~`
 
-If you want to reach me then feel free to hit me up on [Tiwtter ](https://twitter.com/aboel_kassem)or Discord **@aboelkassem#0270**. Or you can just [email me](mailto:aboelkassem.me@gmail.com). Enjoy :)
+If you want to reach me then feel free to hit me up on [Tiwtter ](https://twitter.com/aboel_kassem)or Discord **@aboelkassem#0270**. Or you can just [email me](mailto:contact@aboelkassem.me). Enjoy :)

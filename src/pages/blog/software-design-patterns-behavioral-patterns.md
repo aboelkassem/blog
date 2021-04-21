@@ -3,7 +3,7 @@ templateKey: article-page
 title: "Software Design Patterns: Behavioral Patterns"
 slug: design-patterns-behavioral-patterns
 author: aboelkassem
-authorLink: https://www.aboelkassem.com
+authorLink: https://www.aboelkassem.me
 date: 2021-01-28T14:58:08.848Z
 cover: /img/behavioral-patterns.jpg
 metaTitle: Behavioral Patterns | Aboelkassem blog
@@ -18,7 +18,7 @@ tags:
   - software-design
   - c#
 ---
-In the [previous article](https://blog.aboelkassem.com/blog/design-patterns-structural-patterns), we had discussed structural design patterns, Today, we will continue to explain the design patterns and we will discuss the Behavioral design patterns.
+In the [previous article](https://blog.aboelkassem.me/blog/design-patterns-structural-patterns), we had discussed structural design patterns, Today, we will continue to explain the design patterns and we will discuss the Behavioral design patterns.
 
 ## Table of Contents
 * Behavioral Patterns

@@ -3,7 +3,7 @@ templateKey: article-page
 title: Introduction to Service-Oriented Architecture and Web Services - Part 2
 slug: introduction-to-service-oriented-architecture-and-web-services-part-2
 author: aboelkassem
-authorLink: https://www.aboelkassem.com
+authorLink: https://www.aboelkassem.me
 date: 2021-03-24T10:27:46.928Z
 cover: /img/web-services.jpg
 metaTitle: SOA and Web Services | Aboelkassem Blog
@@ -20,7 +20,7 @@ tags:
   - software-design
   - REST
 ---
-In [the previous article](https://blog.aboelkassem.com/blog/introduction-to-service-oriented-architecture-and-web-services-part-1), we discussed what is web services and service-oriented architecture, Also, we learn about web architecture and standards. Today, we will dive deep into web services and learn how it work, in addition to RESTful service.
+In [the previous article](https://blog.aboelkassem.me/blog/introduction-to-service-oriented-architecture-and-web-services-part-1), we discussed what is web services and service-oriented architecture, Also, we learn about web architecture and standards. Today, we will dive deep into web services and learn how it work, in addition to RESTful service.
 
 ## Table of Content
 
