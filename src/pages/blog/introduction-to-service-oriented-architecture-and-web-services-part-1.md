@@ -29,6 +29,7 @@ In this article, we will discuss the architectures for web applications, then ex
 ## Table of Content
 
 * Introduction to Service-Oriented Architecture and Web Services
+
   * Service Principles
   * History of Web Systems
   * Layers of Web Architecture
@@ -479,7 +480,6 @@ RPCs became successful because they did not require developers to learn a new la
 RPCs are currently used in many different configurations – they can be stored procedure calls in a database system, or in XML messages for web services.
 
 **Basics of RPC and How does it work?**
- 
 
 ![rpc.png](https://raw.githubusercontent.com/aboelkassem/Software-and-Service-Oriented-Architecture/main/Images/rpc.png "Remote Procedure Call (RPC)")
 
@@ -530,4 +530,6 @@ Systems are also able to perform different tasks in parallel with each other bec
 Asynchronous behavior adds more complexity to a system, because how the system allocates resources for various pending tasks needs to be managed. Note that overloading a system with asynchronous tasks can also reduce the system’s overall performance.
 
 <hr>
+
+
 [Edit this page in Github](https://github.com/aboelkassem/Software-and-Service-Oriented-Architecture/blob/main/README.md)
