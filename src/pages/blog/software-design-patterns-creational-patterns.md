@@ -321,3 +321,7 @@ public BudgetKnifeStore: KnifeStore {
 	}
 }
 ```
+
+<hr>
+
+[Edit this page on Github](https://github.com/aboelkassem/Design-Patterns#creational-patterns)
