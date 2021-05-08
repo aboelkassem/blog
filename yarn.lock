@@ -6760,17 +6760,17 @@ gatsby-plugin-manifest@^3.1.0:
     semver "^7.3.2"
     sharp "^0.28.0"
 
-gatsby-plugin-netlify-cms@5.3.0:
-  version "5.3.0"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-netlify-cms/-/gatsby-plugin-netlify-cms-5.3.0.tgz#43ab555b9d3e70a30386aa1d7a658b2a6bb5db2f"
-  integrity sha512-k2KNobviOG4sPauEd/RniQEWzpE3TtLDbbDwrtWfIMZLsVLf3lywTQ1llkqBAfTo97g5FkyAPg9Ef9iQ0gGW4Q==
+gatsby-plugin-netlify-cms@^5.3.0:
+  version "5.4.1"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-netlify-cms/-/gatsby-plugin-netlify-cms-5.4.1.tgz#47cfac845c9199478b28d6124b7cdc3082d617d8"
+  integrity sha512-9nRRbWzcPZeHgj4JDKxOz8Wxgt58J9vI6IpOrQVsHE7rPQGGONJtVrlbR5O9z2zaIiovHPNYfIbQGRl+wsaUsA==
   dependencies:
     "@pieh/friendly-errors-webpack-plugin" "1.7.0-chalk-2"
     copy-webpack-plugin "^7.0.0"
-    html-webpack-plugin "^5.2.0"
-    html-webpack-tags-plugin "^3.0.0"
+    html-webpack-plugin "^5.3.1"
+    html-webpack-tags-plugin "^3.0.1"
     lodash "^4.17.21"
-    mini-css-extract-plugin "1.3.9"
+    mini-css-extract-plugin "1.5.1"
     netlify-identity-widget "^1.9.1"
     webpack "^5.23.00"
 
@@ -8161,7 +8161,7 @@ html-void-elements@^1.0.0, html-void-elements@^1.0.1:
   resolved "https://registry.yarnpkg.com/html-void-elements/-/html-void-elements-1.0.5.tgz#ce9159494e86d95e45795b166c2021c2cfca4483"
   integrity sha512-uE/TxKuyNIcx44cIWnjr/rfIATDH7ZaOMmstu0CwhFG1Dunhlp4OC6/NMbhiwoq5BpW0ubi303qnEk/PZj614w==
 
-html-webpack-plugin@^5.2.0:
+html-webpack-plugin@^5.3.1:
   version "5.3.1"
   resolved "https://registry.yarnpkg.com/html-webpack-plugin/-/html-webpack-plugin-5.3.1.tgz#8797327548e3de438e3494e0c6d06f181a7f20d1"
   integrity sha512-rZsVvPXUYFyME0cuGkyOHfx9hmkFa4pWfxY/mdY38PsBEaVNsRoA+Id+8z6DBDgyv3zaw6XQszdF8HLwfQvcdQ==
@@ -8172,7 +8172,7 @@ html-webpack-plugin@^5.2.0:
     pretty-error "^2.1.1"
     tapable "^2.0.0"
 
-html-webpack-tags-plugin@^3.0.0:
+html-webpack-tags-plugin@^3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/html-webpack-tags-plugin/-/html-webpack-tags-plugin-3.0.1.tgz#52baf2feec879a4108e6955b4e81376581a334dc"
   integrity sha512-P/cfYDqXtgXoGFUv8zi/er8XFU5ztQmqp+VwmnhZEH8L35Q2YRKIb9P+dRiykLIDZF0NMt+l/uj+jmttKwmLvg==
@@ -10361,15 +10361,6 @@ mini-create-react-context@^0.4.0:
   dependencies:
     "@babel/runtime" "^7.12.1"
     tiny-warning "^1.0.3"
-
-mini-css-extract-plugin@1.3.9:
-  version "1.3.9"
-  resolved "https://registry.yarnpkg.com/mini-css-extract-plugin/-/mini-css-extract-plugin-1.3.9.tgz#47a32132b0fd97a119acd530e8421e8f6ab16d5e"
-  integrity sha512-Ac4s+xhVbqlyhXS5J/Vh/QXUz3ycXlCqoCPpg0vdfhsIBH9eg/It/9L1r1XhSCH737M1lqcWnMuWL13zcygn5A==
-  dependencies:
-    loader-utils "^2.0.0"
-    schema-utils "^3.0.0"
-    webpack-sources "^1.1.0"
 
 mini-css-extract-plugin@1.5.1:
   version "1.5.1"
