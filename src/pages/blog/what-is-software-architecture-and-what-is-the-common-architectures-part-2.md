@@ -21,15 +21,14 @@ tags:
 In[ the previous article,](https://blog.aboelkassem.me/blog/what-is-software-architecture-and-what-is-the-common-architectures-part-1) we had discussed what is architecture, common UML diagrams, and some architectures. Today, we will continue explaining the architectures and their qualities for building any software.
 
 ## Table of Content
-- [Interpreter-Based Systems](#interpreter-based-systems)
-- [Pipe and Filter Architecture](#pipe-and-filter-architecture)
-- [Event-Based Architecture](#event-based-architecture)
-- [Software Architecture in Practice.](#software-architecture-in-practice)
-  - [Quality attributes.](#quality-attributes)
-  - [Analyzing and Evaluating an Architecture](#analyzing-and-evaluating-an-architecture)
-- [Product Lines (Product Families)](#product-lines-product-families)
-  - [Reference Architecture](#reference-architecture)
-
+- Interpreter-Based Systems
+- Pipe and Filter Architecture
+- Event-Based Architecture
+- Software Architecture in Practice.
+  - Quality attributes.
+  - Analyzing and Evaluating an Architecture
+- Product Lines (Product Families)
+  - Reference Architecture
 ## Interpreter-Based Systems
 
 Systems based on interpreters (Interpreter-Based Architecture) can allow end user to write **scripts** or **rules** that access or run the **basic features** of those systems in new ways like formulas in Microsoft Excel. Which interpreters can run **scripts, macros,** and drive programmable actions specified by the user.
