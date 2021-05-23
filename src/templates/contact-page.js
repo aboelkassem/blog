@@ -13,6 +13,7 @@ const ContactPage = props => {
     <Layout>
       <Helmet>
         <title>{metaTitle}</title>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
         <meta name='description' content={metaDescription} />
         {/* Open Graph Tags */}
         <meta property='og:url' content={`${config.siteUrl}/contact`} />

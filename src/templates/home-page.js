@@ -52,6 +52,8 @@ const HomePage = (props) => {
       <Helmet>
         <title>Home | {config.siteTitle}</title>
 
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        
         {/* Schema.org tags */}
         <script type='application/ld+json'>
           {JSON.stringify(websiteSchemaOrgJSONLD)}

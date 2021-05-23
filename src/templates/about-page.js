@@ -66,7 +66,8 @@ const AboutPage = (props) => {
     <Layout>
       <Helmet>
         <title>{metaTitle}</title>
-
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        
         <meta name='description' content={metaDescription} />
 
         {/* Open Graph Tags */}
