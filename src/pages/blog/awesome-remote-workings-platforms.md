@@ -21,6 +21,7 @@ A curated list of awesome websites and companies for remote working, internships
 * Official company website career like [careers.microsoft](https://careers.microsoft.com/us/en), [careers.google](https://careers.google.com), [apple jobs](https://www.apple.com/jobs/us/).... etc
 * [Linkedin](https://www.linkedin.com)
 * [glassdoor](https://www.glassdoor.com)
+* [Indeed](https://www.indeed.com)
 * [wuzzuf](https://wuzzuf.net/jobs/egypt?v=1) special for Egypt and middle east jobs
 * Jobs For communities like [github jobs](https://jobs.github.com), [stackoverflow jobs](https://stackoverflow.com/jobs), [quora jobs](https://www.quora.com/careers) ... etc
 
