@@ -14,7 +14,7 @@ const ContactPage = props => {
       <Helmet>
         <title>{metaTitle}</title>
         <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-        <meta http-equiv="Content-Security-Policy" content="default-src *;" />
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval'  https://code.jquery.com https://ajax.aspnetcdn.com *.facebook.com *.youtube.com *.googlesyndication.com *.googleapis.com  *.google-analytics.com *.googletagservices.com *.google.com.gh *.google.com  *.googletagmanager.com *.cloudflare.com *.cloudinary.com *.bootstrapcdn.com *.doubleclick.net *.vimeo.com *.disqus.com; img-src * data:; frame-src *;  "></meta>
 
         <meta name='description' content={metaDescription} />
         {/* Open Graph Tags */}
