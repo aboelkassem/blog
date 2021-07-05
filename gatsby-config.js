@@ -50,6 +50,7 @@ module.exports = {
     `gatsby-plugin-image`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    `gatsby-plugin-csp`,
     {
       resolve: 'gatsby-transformer-remark',
       options: {
@@ -375,24 +376,6 @@ module.exports = {
         },
       },
     },
-    {
-      resolve: `gatsby-plugin-csp`,
-      options: {
-        disableOnDev: true,
-        reportOnly: false, // Changes header to Content-Security-Policy-Report-Only for csp testing purposes
-        mergeScriptHashes: true, // you can disable scripts sha256 hashes
-        mergeStyleHashes: true, // you can disable styles sha256 hashes
-        mergeDefaultDirectives: true,
-        directives: {
-          'script-src': `'self' 'unsafe-inline' data: *`,
-          'style-src': `'self' 'unsafe-inline' *`,
-          'img-src': `'self' data: *`,
-          'font-src': `'self' data: *`,
-          'connect-src': `'self' *`,
-          'form-action': `'self' *`,
-          // you can add your directives or override defaults
-        }
-      }
-    },
+    
   ],
 }
