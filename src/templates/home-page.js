@@ -53,7 +53,7 @@ const HomePage = (props) => {
         <title>Home | {config.siteTitle}</title>
 
         <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-        <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval'  https://code.jquery.com https://ajax.aspnetcdn.com *.facebook.com *.youtube.com *.googlesyndication.com *.googleapis.com  *.google-analytics.com *.googletagservices.com *.google.com.gh *.google.com *.cloudflare.com *.cloudinary.com *.bootstrapcdn.com; img-src * data:; frame-src *;  "></meta>
+        <meta http-equiv="Content-Security-Policy" content="default-src *;" />
         
         {/* Schema.org tags */}
         <script type='application/ld+json'>
