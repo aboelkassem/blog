@@ -3,7 +3,7 @@ templateKey: article-page
 title: What is Object Oriented Design and Analysis? - Part 1
 slug: what-is-object-oriented-design-and-analysis-part-1
 author: aboelkassem
-authorLink: https://www.aboelkassem.me
+authorLink: https://www.aboelkassem.tech
 date: 2020-12-16T10:11:05.490Z
 cover: /img/19362653.jpg
 metaTitle: Object Oriented Design and Analysis | Aboelkassem Blog

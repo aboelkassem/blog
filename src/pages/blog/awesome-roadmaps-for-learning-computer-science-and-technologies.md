@@ -3,7 +3,7 @@ templateKey: article-page
 title: Awesome roadmaps for learning Computer Science and Technologies
 slug: awesome-roadmaps-for-learning-computer-science-and-technologies
 author: aboelkassem
-authorLink: https://www.aboelkassem.me
+authorLink: https://www.aboelkassem.tech
 date: 2020-04-10T12:57:52.462Z
 cover: /img/awesome-roadmaps.png
 metaTitle: Awesome Roadmaps | Aboelkassem Blog
