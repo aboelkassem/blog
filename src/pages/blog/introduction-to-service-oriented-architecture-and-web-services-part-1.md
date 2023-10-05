@@ -20,7 +20,8 @@ tags:
   - software-design
   - REST
 ---
-In this article, we will discuss the architectures for web applications, then explore the basics of Service-Oriented Architecture (SOA) in two approaches: Web Services (WS*) and Representational State Transfer (REST) architecture.
+
+In this article, we will discuss the architectures for web applications, then explore the basics of Service-Oriented Architecture (SOA) in two approaches: Web Services (WS\*) and Representational State Transfer (REST) architecture.
 
 ## Important Note
 
@@ -28,16 +29,16 @@ In this article, we will discuss the architectures for web applications, then ex
 
 ## Table of Content
 
-* Introduction to Service-Oriented Architecture and Web Services
+- Introduction to Service-Oriented Architecture and Web Services
 
-  * Service Principles
-  * History of Web Systems
-  * Layers of Web Architecture
-  * HTML/XML/JSON
-  * HTTP
-  * JavaScript
-  * Distributed Systems Basics
-  * Remote Procedure Call (RPC)
+  - Service Principles
+  - History of Web Systems
+  - Layers of Web Architecture
+  - HTML/XML/JSON
+  - HTTP
+  - JavaScript
+  - Distributed Systems Basics
+  - Remote Procedure Call (RPC)
 
 ## Introduction to Service-Oriented Architecture and Web Services
 
@@ -47,15 +48,15 @@ A service, as opposed to a component, **is external to the software requesting i
 
 Services are often associated with two roles like Client/Server roles:
 
-* **Service Requester** which is the software requesting the service.
-* **Service Provider** who fulfills/receives the request.
+- **Service Requester** which is the software requesting the service.
+- **Service Provider** who fulfills/receives the request.
 
 **Service-oriented Architecture is all about how to build, use, and combine services**. Instead of building large software suites that do everything, service-oriented architecture is all about achieving your software goals by building and using services, and designing an architecture that supports their use.
 
 Software-Oriented Architecture has two contexts:
 
-* **on the Internet** (also known as “**external**” to an organization)
-* **in large organizations** (also known as “**internal**” to the organization)
+- **on the Internet** (also known as “**external**” to an organization)
+- **in large organizations** (also known as “**internal**” to the organization)
 
 **Web Services**
 
@@ -63,13 +64,13 @@ Web services refer to services offered on the Internet. It is possible to **buil
 
 The ease of using existing services must be balanced against the **qualities of the services**, which are not under the control of developers. In these cases, **non-functional** requirements become very important. These might include:
 
-* **Response time**: if you are relying on a service, you may want to know how quickly it can be provided.
-* **Supportability**: do you trust the service provider and the service? will it always be available in the future?
-* **Availability**: is the service always running and available for use?
+- **Response time**: if you are relying on a service, you may want to know how quickly it can be provided.
+- **Supportability**: do you trust the service provider and the service? will it always be available in the future?
+- **Availability**: is the service always running and available for use?
 
 **Services in Large organizations.**
 
-In large enterprises or organizations, in-house code can be turned into services that can be used by different parts of the businesses or combining two more services, these services can be built by adding interfaces to use. For example, IT department in organization tracks "**support cost"** in their software, if any other department like management or accounting needs this information, instead of sending over email, it offered as a service and provides an interface to let other departments query this service as needed. So **internal** service-oriented architecture encourages organizations to build general, reusable software services that can be used and combined as needed. 
+In large enterprises or organizations, in-house code can be turned into services that can be used by different parts of the businesses or combining two more services, these services can be built by adding interfaces to use. For example, IT department in organization tracks "**support cost"** in their software, if any other department like management or accounting needs this information, instead of sending over email, it offered as a service and provides an interface to let other departments query this service as needed. So **internal** service-oriented architecture encourages organizations to build general, reusable software services that can be used and combined as needed.
 
 One of the disadvantages of full switching to service-oriented architecture (SOA) is **costly**, and it can be **difficult to support** despite its benefits, services are often introduced bit by bit, separating out the most useful, cross-departmental functions first.
 
@@ -79,11 +80,11 @@ The SOA is not easy, the idea sounds simple, but in fact, the modularity and pla
 
 In order to provide services that are useful and reusable, there are best practices for services and SOA. These best practices, guidelines, and principles have been developed that outline the desired properties that services should have. The principles like the following:
 
-* **Modular**: services should be modular and loosely coupled, which services are meant to be mixed and matched. Loose coupling in SOA means that requests are made by passing communication to the service is a way that aligns with its interface. The service performs the necessary operations then passes back a communication containing the results of the service (response).
-* **Composable**: services should be used in combination to create usable applications or other services. In order to be composable, the services must be modular, services should able to provide the desired end-goal.
-* **Platform and Language Independent**: a good service is a platform and language independent, for example, a service that is coded in `Java` can be used by a requester coded in `Ruby`. This achieved by following communication standards and protocols. For example on the internet, services are often requested with an `XML` file or an `HTTP` request.
-* **Self-Describing**: a service should describe how to interact with it (describes its own interfaces). This includes what input it takes and what output it gives. There are formal standards for describing services using `WSDL` which stands for **web services description language**.
-* **Self-Advertising**: services must make known to potential clients that it is available. Distributed applications using web services have a standard like `UDDI` which stands for **Universal Description, Discovery, and Integration** to connect service providers with potential requesters.
+- **Modular**: services should be modular and loosely coupled, which services are meant to be mixed and matched. Loose coupling in SOA means that requests are made by passing communication to the service is a way that aligns with its interface. The service performs the necessary operations then passes back a communication containing the results of the service (response).
+- **Composable**: services should be used in combination to create usable applications or other services. In order to be composable, the services must be modular, services should able to provide the desired end-goal.
+- **Platform and Language Independent**: a good service is a platform and language independent, for example, a service that is coded in `Java` can be used by a requester coded in `Ruby`. This achieved by following communication standards and protocols. For example on the internet, services are often requested with an `XML` file or an `HTTP` request.
+- **Self-Describing**: a service should describe how to interact with it (describes its own interfaces). This includes what input it takes and what output it gives. There are formal standards for describing services using `WSDL` which stands for **web services description language**.
+- **Self-Advertising**: services must make known to potential clients that it is available. Distributed applications using web services have a standard like `UDDI` which stands for **Universal Description, Discovery, and Integration** to connect service providers with potential requesters.
 
 ### History of Web Systems
 
@@ -119,12 +120,12 @@ For a dynamic web page, the web server passes on the request to an application t
 
 As a developer, it is easier to make changes to dynamic websites compared to static websites, because you only need to change on database element or variable in your application to make a change anywhere on the dynamic website.
 
-Dynamic web pages provide many advantages. 
+Dynamic web pages provide many advantages.
 
-* They can be customized for the view,
-* they can respond to external events,
-* they generally provide increased functionality compared to their static counterparts, and
-* they are easier for a developer to modify.
+- They can be customized for the view,
+- they can respond to external events,
+- they generally provide increased functionality compared to their static counterparts, and
+- they are easier for a developer to modify.
 
 Currently, dynamic web pages dominate the web, including many types of web pages such as **personal blogs and news feeds**.
 
@@ -160,10 +161,10 @@ Layered systems are organized into **Presentation**, **Application**, and **Data
 
 ![layers-web-app-1.png](https://raw.githubusercontent.com/aboelkassem/Software-and-Service-Oriented-Architecture/main/Images/layers-web-app-1.png "layers of web application")
 
-* **The Web Browser Layer** is the top layer, it displays the information to the user.
-* **The Web Server Layer** is below the web browser layer, it receives a request from the web browser, **obtains the request content** and **returns it to the browser**.
-* **The Application Layer** is responsible for ensuring the function or service provided by the system is performed.
-* **The Data Layer** is responsible for storing, maintaining, and managing data. Access to data read-only or both reading and writing. It can be a file system or database.
+- **The Web Browser Layer** is the top layer, it displays the information to the user.
+- **The Web Server Layer** is below the web browser layer, it receives a request from the web browser, **obtains the request content** and **returns it to the browser**.
+- **The Application Layer** is responsible for ensuring the function or service provided by the system is performed.
+- **The Data Layer** is responsible for storing, maintaining, and managing data. Access to data read-only or both reading and writing. It can be a file system or database.
 
 Not all systems require this four layers, and not all systems use these layers the same way.
 
@@ -171,7 +172,7 @@ Not all systems require this four layers, and not all systems use these layers t
 
 ![layers-web-app-2.png](https://raw.githubusercontent.com/aboelkassem/Software-and-Service-Oriented-Architecture/main/Images/layers-web-app-2.png "layers web app")
 
-The web server layer receives the request from the web browser and grabs the appropriate HTML documents stored in data layer. After it has accessed, it returns the request content to the browser.  There is no application layer in a static web content system, as the HTML documents served by the web server are the exact as stored in the file system. No processing has been applied
+The web server layer receives the request from the web browser and grabs the appropriate HTML documents stored in data layer. After it has accessed, it returns the request content to the browser. There is no application layer in a static web content system, as the HTML documents served by the web server are the exact as stored in the file system. No processing has been applied
 
 **Layers for Dynamic Web Content and Web Applications**
 
@@ -189,13 +190,12 @@ Layered architecture and use of outside web services reinforce the basic design 
 
 ### HTML/XML/JSON
 
-Web systems have many different types of formats that can be used to store and express content. Types like HTML,XML,JSON.**HTML** and **XML** are markup languages used to express and structure content. **JSON** is a popular lightweight data interchange format. 
+Web systems have many different types of formats that can be used to store and express content. Types like HTML,XML,JSON.**HTML** and **XML** are markup languages used to express and structure content. **JSON** is a popular lightweight data interchange format.
 
 Markup languages are designed to adorn texts in a machine and human readable way, to add meaning or structure. Markup languages rely on **tags** to mark how pieces of text are interpreted. Like:
 
 ```html
-<adjective>service-oriented</adjective>
-<noun>architecture</noun>
+<adjective>service-oriented</adjective> <noun>architecture</noun>
 ```
 
 There is no programming syntax in markup languages. Tags turn a simple text file into something a computer can manipulate or a human can understand.
@@ -207,28 +207,28 @@ HTML Standard focuses on structuring, not styling the text. It marks what parts 
 HTML has a predefined set of tags that serve different purposes, like the following basic code of HTML document.
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html>
-	<head>
-		<title>Page Title</title>
-	</head>
+  <head>
+    <title>Page Title</title>
+  </head>
 
-	<body>
-		<h1>This is a Heading</h1>
-		<p>This is a paragraph.</p>
-	</body>
+  <body>
+    <h1>This is a Heading</h1>
+    <p>This is a paragraph.</p>
+  </body>
 </html>
 ```
 
-* **DOCTYPE** is necessary as first line in any HTML file, which tells the browser that the content is HTML.
-* **Head tag** contains metadata being used by the page.
-* **Body tag** contains the main content and information of your web page. Like the text, links, images, lists, and other data you want to present.
+- **DOCTYPE** is necessary as first line in any HTML file, which tells the browser that the content is HTML.
+- **Head tag** contains metadata being used by the page.
+- **Body tag** contains the main content and information of your web page. Like the text, links, images, lists, and other data you want to present.
 
 There is no styling in HTML documents, but if you want to add styling like fonts or colors, you can add CSS (Cascading Style Sheet). This styling can be applied via a separate CSS file, or directly within the HTML document into `<style>` tag in header section. For example color paragraph in blue.
 
 ```css
 p {
-	color:blue;
+  color: blue;
 }
 ```
 
@@ -248,14 +248,14 @@ This markup language meant to store and transport data. XML is used to send stru
 
 **JSON (JavaScript Object Notation)**
 
-Another format that can be used to store and transport data between web browsers and servers. The benefit of using JSON format is the ability to easily convert JSON to **JavaScript** objects, or any languages and vice versa. For an example of JSON object 
+Another format that can be used to store and transport data between web browsers and servers. The benefit of using JSON format is the ability to easily convert JSON to **JavaScript** objects, or any languages and vice versa. For an example of JSON object
 
 ```json
 {
-	"firstName":"John",
-	"lastName":"Doe",
-	"Age":"15",
-	"favouriteColour":"Red"
+  "firstName": "John",
+  "lastName": "Doe",
+  "Age": "15",
+  "favouriteColour": "Red"
 }
 ```
 
@@ -263,26 +263,26 @@ JSON data is written as **name-value** pairs. JSON data can also have **arrays**
 
 ```json
 {
-	"Students":[
-		{
-			"firstName":"John",
-			"lastName":"Doe",
-			"Age":"15",
-			"favouriteColour":"Red"
-		},
-		{
-			"firstName":"Mohamed",
-			"lastName":"Abderahman",
-			"Age":"21",
-			"favouriteColour":"Black"
-		},
-		{
-			"firstName":"Ahmed",
-			"lastName":"Mostafa",
-			"Age":"19",
-			"favouriteColour":"Blue"
-		}
-	]
+  "Students": [
+    {
+      "firstName": "John",
+      "lastName": "Doe",
+      "Age": "15",
+      "favouriteColour": "Red"
+    },
+    {
+      "firstName": "Mohamed",
+      "lastName": "Abderahman",
+      "Age": "21",
+      "favouriteColour": "Black"
+    },
+    {
+      "firstName": "Ahmed",
+      "lastName": "Mostafa",
+      "Age": "19",
+      "favouriteColour": "Blue"
+    }
+  ]
 }
 ```
 
@@ -298,18 +298,18 @@ We will focus on **HTTP 1.1**, although several protocol versions exist.
 
 **URIs and URLs**
 
-**Universal Resource Identifiers (URIs)** are addresses used to **identify resources**, **Universal Resource Locators (URLs)** are a subset of URIs that used to **locate resources**. Both are used to identify the resource, but 
+**Universal Resource Identifiers (URIs)** are addresses used to **identify resources**, **Universal Resource Locators (URLs)** are a subset of URIs that used to **locate resources**. Both are used to identify the resource, but
 
-* **URLs** tell the protocol how to locate and access the resource, which provide the protocol, the domain name, or IP address, of the machine that resource stored on and the location of the resource on the machine. So All URLs are URIs, but not all URIs are URLs.
+- **URLs** tell the protocol how to locate and access the resource, which provide the protocol, the domain name, or IP address, of the machine that resource stored on and the location of the resource on the machine. So All URLs are URIs, but not all URIs are URLs.
 
 ![uri-url.png](https://raw.githubusercontent.com/aboelkassem/Software-and-Service-Oriented-Architecture/main/Images/uri-url.png "URI and URL")
 
 So as example of URI ⇒ <http://example.com/user/favoriteitems/widebrimsunhat/sunhat.png>
 
-* **Protocol** ⇒ Http
-* **Hostname** ⇒ example.com
-* **Location of the resource on the host machine** ⇒ [user/favoriteitems/widebrimsunhat](http://example.com/user/favoriteitems/widebrimsunhat/sunhat.png)
-* **Resource** ⇒ sunhat.png
+- **Protocol** ⇒ Http
+- **Hostname** ⇒ example.com
+- **Location of the resource on the host machine** ⇒ [user/favoriteitems/widebrimsunhat](http://example.com/user/favoriteitems/widebrimsunhat/sunhat.png)
+- **Resource** ⇒ sunhat.png
 
 > The URI does not need to explicitly provide the **IP address**. The browser is able to resolve the IP address corresponding to the hostname provided in the URI. or if it doesn’t know, it will query a Domain Name System (DNS) server to find out.
 
@@ -325,34 +325,35 @@ When a client makes a request to a server, this opens a TCP connection between t
 
 HTTP is built upon a client/server design. A relationship exists between a web browser and web server. So the general format of HTTP request and responses are the following:
 
-* **Request** Consists of :
+- **Request** Consists of :
 
-  * **Request-Line:** This includes the request method (GET, POST, PUT), request URI, and protocol. This URI may end in a query string to specify parameter data for the request. This string is separated from the path by a question mark (?).
-  * **Headers**: Client requests may have a various number of headers, of different kinds. It can be used to provide more information and give context to the request. Two Headers that must be included in any request are the **Host Header** and **Accept Header**. Host Header contains the domain name or IP address of the host. Accept Header to tell the server what kinds of content the client will accept as a response. **If a message body is present**, **Content Length Header** indicates the size of the body in bytes. **Content Type Header** indicates the type of body that must be included.
-  * **A Blank Line**: after headers. If no message body is required for the request, then the request ends here.
-  * **Message Body**: contains the message body,  if it is required for the request. Message bodies might be HTML documents, JSON, encoded parameters, or other similar content.
-* **Response** Consists of:
+  - **Request-Line:** This includes the request method (GET, POST, PUT), request URI, and protocol. This URI may end in a query string to specify parameter data for the request. This string is separated from the path by a question mark (?).
+  - **Headers**: Client requests may have a various number of headers, of different kinds. It can be used to provide more information and give context to the request. Two Headers that must be included in any request are the **Host Header** and **Accept Header**. Host Header contains the domain name or IP address of the host. Accept Header to tell the server what kinds of content the client will accept as a response. **If a message body is present**, **Content Length Header** indicates the size of the body in bytes. **Content Type Header** indicates the type of body that must be included.
+  - **A Blank Line**: after headers. If no message body is required for the request, then the request ends here.
+  - **Message Body**: contains the message body, if it is required for the request. Message bodies might be HTML documents, JSON, encoded parameters, or other similar content.
 
-  * **Status-Line**: This includes protocol version and status code, which tell the client the status of the request. There are many possible HTTP status codes. If the request has been successfully processed, the status code of “**200 OK**” will likely show.
-  * **Headers**: Like request headers.
-  * **A Blank Line**: after headers. If no message body is required for the response, then the response ends here.
-  * **Message Body**: Like HTTP request.
+- **Response** Consists of:
+
+  - **Status-Line**: This includes protocol version and status code, which tell the client the status of the request. There are many possible HTTP status codes. If the request has been successfully processed, the status code of “**200 OK**” will likely show.
+  - **Headers**: Like request headers.
+  - **A Blank Line**: after headers. If no message body is required for the response, then the response ends here.
+  - **Message Body**: Like HTTP request.
 
 **URL-Encoding**
 
 HTTP limits the characters used in URIs, request queries, and request bodies to be **ASCII**. Special or unsafe characters, like **space** or **Unicode**, require the encoding of these characters. An example of an unsafe character is a “space” which can be replaced with `%` sign, followed by their two digit hexadecimal digit encoding. For example, space can be encoded with “**%20**”, or with a “**+**” sign. For example the sentence "software design and architecture" will be encoded like:
 
-* software%20design%20and%20architecture
-* software+design+and+architecture
+- software%20design%20and%20architecture
+- software+design+and+architecture
 
-And to encoded query string we use `=` symbol to assign each query parameter it's value, 
+And to encoded query string we use `=` symbol to assign each query parameter it's value,
 
-* color=red
-* height=very+tall
+- color=red
+- height=very+tall
 
 and use `&` symbol to join all the parameter value pairs
 
-* color=red&height=very+tall
+- color=red&height=very+tall
 
 Now as we said, an HTTP request must indicate a request method in it request line. These methods tell the web servers what if should do with the request. Most request methods usually used are GET, POST, and PUT.
 
@@ -400,7 +401,7 @@ HTTP is fundamental for the web, as it dictates how data is communicated and exc
 
 ### JavaScript
 
-Like many other programming languages, **JavaScript** can be used for a variety of purposes, but here, we will focus on how it can be embedded into HTML documents to making **web pages interactive**.   JavaScript is able to modify **elements**, **attributes**, **styles**, and **content** within the HTML document. JavaScript can be embedded between `script` tags in HTML (`<script></script>`).
+Like many other programming languages, **JavaScript** can be used for a variety of purposes, but here, we will focus on how it can be embedded into HTML documents to making **web pages interactive**. JavaScript is able to modify **elements**, **attributes**, **styles**, and **content** within the HTML document. JavaScript can be embedded between `script` tags in HTML (`<script></script>`).
 
 JavaScript is an interpreted language where the web browser interprets the JavaScript code at runtime.
 
@@ -426,7 +427,7 @@ It is not necessary to know JavaScript well in order to use it. **Pre-made scrip
 
 The rapid growth of the internet and the falling costs of cloud services has led to a rise in innovative web services such as Google Docs, PayPal, and [Amazon.com](http://amazon.com). For internal companies, private networks now facilitates client/server communications.
 
-Modern client machines are not as powerful as their server counterparts. This is because a client machine is designed to address a different set of concerns. For example, **clients** are designed to facilitate a single user, whereas a **server** will have to provide computing power for multiple users. The operating system (OS) of clients is designed to use and learn. Servers are used by system administrators, or other IT professionals, Their user interface may require more expertise to use. 
+Modern client machines are not as powerful as their server counterparts. This is because a client machine is designed to address a different set of concerns. For example, **clients** are designed to facilitate a single user, whereas a **server** will have to provide computing power for multiple users. The operating system (OS) of clients is designed to use and learn. Servers are used by system administrators, or other IT professionals, Their user interface may require more expertise to use.
 
 Since machine and operating environments are different between clients and servers, they communicate with the help of **middleware.**
 
@@ -454,12 +455,13 @@ RPC is the basis for middleware systems used for web services. It designed as a 
 
 In RPC, the **client and server** are either:
 
-* **on separate machines.**
+- **on separate machines.**
 
-    Which means the physical address space between client and server is different, so the client does not know the physical memory address of the procedure that it wants to call in the server since they do not share the same physical memory.
-* **are a different virtual instance on the same machine.**
+  Which means the physical address space between client and server is different, so the client does not know the physical memory address of the procedure that it wants to call in the server since they do not share the same physical memory.
 
-    The “virtual” address is shared between client and server. It is up to the operating system to manage each individual virtual instance, and find the correct virtual address for the procedure being invoked.
+- **are a different virtual instance on the same machine.**
+
+  The “virtual” address is shared between client and server. It is up to the operating system to manage each individual virtual instance, and find the correct virtual address for the procedure being invoked.
 
 In either case, the client cannot directly access the procedure being called. RPC facilitates the call between client and server.
 
@@ -469,9 +471,9 @@ RPC was developed and introduced in the 1980s, it was created to provide a trans
 
 RPCs consist of three primary components:
 
-* **A client** which is the caller. It is the component that is making the remote call.
-* **A server** which is the callee. It is the component that implements the procedure that is being invoked.
-* **An interface** definition language, or IDL, which is the language through which the client and server communicate.
+- **A client** which is the caller. It is the component that is making the remote call.
+- **A server** which is the callee. It is the component that implements the procedure that is being invoked.
+- **An interface** definition language, or IDL, which is the language through which the client and server communicate.
 
 RPC could also include name and directory services, and binding methods to allow clients to connect to various servers. At this starting point, RPCs were a simple **collection of libraries** that developers could include in their applications. These libraries contained all the functionalities that were required in order for systems to **make remote procedure calls**. Eventually, RPCs evolved to become cornerstones for middleware-based architecture.
 
@@ -487,29 +489,31 @@ RPCs are currently used in many different configurations – they can be stored 
 
 Once the IDL is compiled, the **client and server stubs** are produced. They perform the “heavy lifting” with **interface headers**.
 
-* **Client Stub**
+- **Client Stub**
 
-  * which responsible for: Establishing the connection between server through process called binding.
-  * Formatting the data to standardized message structure such as XML.
-  * Sending remote procedure call RPC.
-  * Receiving the server stub's response.
-* **Server Stub**
+  - which responsible for: Establishing the connection between server through process called binding.
+  - Formatting the data to standardized message structure such as XML.
+  - Sending remote procedure call RPC.
+  - Receiving the server stub's response.
 
-  * Receive the call and invoked desired procedure, It also contains the code for receiving the remote call, translates message into data format the server, and sends the server's response back to the client stub.
-* **Interface Headers**
+- **Server Stub**
 
-  * They are a collection of code templates and references that are used to define what procedures are available.
-  * There are three types of interfaces, procedure registration, procedure call, procedure call by broadcast.
+  - Receive the call and invoked desired procedure, It also contains the code for receiving the remote call, translates message into data format the server, and sends the server's response back to the client stub.
+
+- **Interface Headers**
+
+  - They are a collection of code templates and references that are used to define what procedures are available.
+  - There are three types of interfaces, procedure registration, procedure call, procedure call by broadcast.
 
 **Steps How RPCs are Performed**
 
-* Client invokes the procedure.
-* The client stub converts the parameters to a standardized message format.
-* The message is sent to the server.
-* The server stub receives the messages.
-* The server component executes the procedure and returns the result to the server stub.
-* The results are returned back to the client stub.
-* The Client component receives the processes the results.
+- Client invokes the procedure.
+- The client stub converts the parameters to a standardized message format.
+- The message is sent to the server.
+- The server stub receives the messages.
+- The server component executes the procedure and returns the result to the server stub.
+- The results are returned back to the client stub.
+- The Client component receives the processes the results.
 
 **Synchronous RPCs**
 
@@ -517,9 +521,9 @@ During a remote procedure call, the client component pauses its execution while 
 
 This cause many issues like:
 
-* If the server never returns a response, the client can end up waiting indefinitely.
-* It may not be clear how long to wait for a server to response. Some procedures may take longer than others, or the server may take longer to create a response under a heavy load.
-* The RPC may need to be re-transmitted, and this can be difficult to determine.
+- If the server never returns a response, the client can end up waiting indefinitely.
+- It may not be clear how long to wait for a server to response. Some procedures may take longer than others, or the server may take longer to create a response under a heavy load.
+- The RPC may need to be re-transmitted, and this can be difficult to determine.
 
 **Asynchronous RPCs**
 
@@ -530,6 +534,5 @@ Systems are also able to perform different tasks in parallel with each other bec
 Asynchronous behavior adds more complexity to a system, because how the system allocates resources for various pending tasks needs to be managed. Note that overloading a system with asynchronous tasks can also reduce the system’s overall performance.
 
 <hr>
-
 
 [Edit this page in Github](https://github.com/aboelkassem/Software-and-Service-Oriented-Architecture/blob/main/README.md)

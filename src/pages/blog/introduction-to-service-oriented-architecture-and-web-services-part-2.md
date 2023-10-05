@@ -20,20 +20,21 @@ tags:
   - software-design
   - REST
 ---
+
 In [the previous article](https://blog.aboelkassem.tech/blog/introduction-to-service-oriented-architecture-and-web-services-part-1), we discussed what is web services and service-oriented architecture, Also, we learn about web architecture and standards. Today, we will dive deep into web services and learn how it work, in addition to RESTful service.
 
 ## Table of Content
 
-* Web Services
-  * Introduction to Web Services
-  * Service Invocation (SOAP)
-  * Service Description (WSDL)
-  * Service Publication and Discovery (UDDI)
-  * Service Composition (BPEL)
-* REST Architecture
-  * Introduction to REST Services
-  * Designing a REST Service
-  * Introduction to Microservices
+- Web Services
+  - Introduction to Web Services
+  - Service Invocation (SOAP)
+  - Service Description (WSDL)
+  - Service Publication and Discovery (UDDI)
+  - Service Composition (BPEL)
+- REST Architecture
+  - Introduction to REST Services
+  - Designing a REST Service
+  - Introduction to Microservices
 
 ## Web Services
 
@@ -57,11 +58,11 @@ To solve these issues, **web services** are implemented for interactions between
 
 **Standards and Technologies that make up web services.**
 
-* **Web Infrastructure**: Web services start with **TCP**, the networking protocol responsible for reliable connection-oriented communication. On top of that is **HTTP**, to sends information and interacts with clients.
-* **Invoking (SOAP):** like the calling method in object-oriented programming, In order to use a particular service, you must invoke it in **XML** or **JSON**. Invoking in web services is done by Simple Object Access Protocol (**SOAP**), a protocol specification that is based on XML and allows services to send information to another. So systems coded in a different language and on different platforms can easily communicate.
-* **Describing (WSDL)**: Services must know how to interact with each other (**documentation**), so Web Service Description Language (**WSDL**), is the standard protocol for describing the interface of a service in a machine-readable, which enable the requester to bind to this interface, Like SOAP, WSDL descriptions are written in **XML**. Binding is the act of generating the necessary code to interact with a service to be open for invoking.
-* **Publishing and Discovery (UDDI):** Service providers can **publish** descriptions of their services using UDDI (Universal Description, Discovery, and Integration), So requesters can search by WSDL descriptions or other aspects of the service. Together SOAP, WSDL, UDDI are standards of web services and rely on web infrastructure.
-* **Composition (WS-BPEL)**: Various standards can be built on the foundational standards, These standards usually have the **prefix WS,** such as **WS-Security** for adding security functions, or **WS-Coordination** for coordinating the activities of many services. WS-BPEL (Business Process Execution Language) which allows developers to combine existing services into new composite services.
+- **Web Infrastructure**: Web services start with **TCP**, the networking protocol responsible for reliable connection-oriented communication. On top of that is **HTTP**, to sends information and interacts with clients.
+- **Invoking (SOAP):** like the calling method in object-oriented programming, In order to use a particular service, you must invoke it in **XML** or **JSON**. Invoking in web services is done by Simple Object Access Protocol (**SOAP**), a protocol specification that is based on XML and allows services to send information to another. So systems coded in a different language and on different platforms can easily communicate.
+- **Describing (WSDL)**: Services must know how to interact with each other (**documentation**), so Web Service Description Language (**WSDL**), is the standard protocol for describing the interface of a service in a machine-readable, which enable the requester to bind to this interface, Like SOAP, WSDL descriptions are written in **XML**. Binding is the act of generating the necessary code to interact with a service to be open for invoking.
+- **Publishing and Discovery (UDDI):** Service providers can **publish** descriptions of their services using UDDI (Universal Description, Discovery, and Integration), So requesters can search by WSDL descriptions or other aspects of the service. Together SOAP, WSDL, UDDI are standards of web services and rely on web infrastructure.
+- **Composition (WS-BPEL)**: Various standards can be built on the foundational standards, These standards usually have the **prefix WS,** such as **WS-Security** for adding security functions, or **WS-Coordination** for coordinating the activities of many services. WS-BPEL (Business Process Execution Language) which allows developers to combine existing services into new composite services.
 
 These standardizations of how web services invoke, describe, and publish means that their internal implementation does not matter. Service requesters and services can effectively interact despite being on different platforms and in different languages. However, the commands and parameters of the standards must be supported by the service provider.
 
@@ -73,13 +74,13 @@ Like method call in OOP, the purpose of SOAP message is to solicit an operation 
 
 ![soap.png](https://raw.githubusercontent.com/aboelkassem/Software-and-Service-Oriented-Architecture/main/Images/soap.png "SOAP")
 
-* A **header** is used to also provide contextual information like information about the client or routing information.
-* The **body** contains the information that the service provider needs to determine which service to provide and the service’s input.
+- A **header** is used to also provide contextual information like information about the client or routing information.
+- The **body** contains the information that the service provider needs to determine which service to provide and the service’s input.
 
 **Styles of SOAP messaging**
 
-* Document Style
-* RPC Style
+- Document Style
+- RPC Style
   ![soap-1.png](https://raw.githubusercontent.com/aboelkassem/Software-and-Service-Oriented-Architecture/main/Images/soap-1.png "SOAP")
 
 SOAP messages must be sent over transport protocol, like **HTTP** or other protocols like **SMTP** which is used for email. A SOAP message can be send using HTTP Post.
@@ -94,13 +95,13 @@ Messaging is **asynchronous** if interactions allow the code to **keep executing
 
 Four basic messaging patterns exist for SOAP. Since SOAP messages are stateless, these interactions are implemented by relating messages another way, like storing the interaction state on the client and/or the server, or by using extensions to web services like WS-Coordination.
 
-* Request-Response: this pattern is when the requester first sends a message then receives a replay from the service provider, this is a Synchronous, which can be implemented over HTTP
+- Request-Response: this pattern is when the requester first sends a message then receives a replay from the service provider, this is a Synchronous, which can be implemented over HTTP
   ![soap-3.png](https://raw.githubusercontent.com/aboelkassem/Software-and-Service-Oriented-Architecture/main/Images/soap-3.png "Request-Response")
-* Solicit-Response: the service provider makes a request to the requester, this is often a confirmation
+- Solicit-Response: the service provider makes a request to the requester, this is often a confirmation
   ![soap](https://raw.githubusercontent.com/aboelkassem/Software-and-Service-Oriented-Architecture/main/Images/soap-4.png "Solicit-Response")
-* One-Way: The requester sends a request to the service provider but not expect a response. Like a notification that the requester is up and running (online).
+- One-Way: The requester sends a request to the service provider but not expect a response. Like a notification that the requester is up and running (online).
   ![soap](https://raw.githubusercontent.com/aboelkassem/Software-and-Service-Oriented-Architecture/main/Images/soap-5.png "One-Way")
-* Notification: The service provider sends a notification to the requester without expecting a response. Event-based systems.
+- Notification: The service provider sends a notification to the requester without expecting a response. Event-based systems.
   ![soap](https://raw.githubusercontent.com/aboelkassem/Software-and-Service-Oriented-Architecture/main/Images/soap-6.png "Notification")
 
 Some of the disadvantages include the fact that XML encoding and decoding adds overhead and does not easily accommodate some data types. These disadvantages have resulted in SOAP being superseded in many applications by methods that use HTTP more directly, such as RESTful web services.
@@ -121,13 +122,13 @@ WSDL will include, for example, **How to structure a request**, **Input paramete
 
 Because web services are more complex than methods, a WSDL description needs more information. Some of the most important parts of a WSDL 2.0 descriptions are
 
-* **Types**:  which describe the data types that are used. Developers can define abstract data types in XML. If only basic data types already available in XML are used by interactions, then this part is not needed.
-* **Interfaces**: describe interfaces to the services provided in terms of what operations can be performed and in what order. The order of operations can be described by the message exchange patterns of  request-response, solicit-response, one-way, and notification. Interfaces were formally called portTypes in WSDL 1.2.
+- **Types**: which describe the data types that are used. Developers can define abstract data types in XML. If only basic data types already available in XML are used by interactions, then this part is not needed.
+- **Interfaces**: describe interfaces to the services provided in terms of what operations can be performed and in what order. The order of operations can be described by the message exchange patterns of request-response, solicit-response, one-way, and notification. Interfaces were formally called portTypes in WSDL 1.2.
 
 The categories used to bind **interfaces** to concrete implementations are:
 
-* **Bindings**: which determine how the SOAP message is translated into XML, and dictate the form of the messages, as well as specifying the transport protocol on top of which the SOAP messages are sent.
-* **Services**: which bring together interfaces and bindings, and assign them to **endpoints** or **ports**. These are located with URIs.
+- **Bindings**: which determine how the SOAP message is translated into XML, and dictate the form of the messages, as well as specifying the transport protocol on top of which the SOAP messages are sent.
+- **Services**: which bring together interfaces and bindings, and assign them to **endpoints** or **ports**. These are located with URIs.
 
 **For example:**
 
@@ -139,7 +140,7 @@ WSDL provides a **robust**, **modular**, and **extensible** service description 
 
 Internet is a huge place, How do you find the services you need to build your app? How do you ensure their quality? If you create a service, how can you get people to use it? So web services need to be **published** and **discovered**.
 
-The advent of the Internet helped customers find services through **search engines**. However, it is important to advertise web services. This is known as **publishing**. The first framework for publishing was Universal Description, Discovery, and Integration (**UDDI**). 
+The advent of the Internet helped customers find services through **search engines**. However, it is important to advertise web services. This is known as **publishing**. The first framework for publishing was Universal Description, Discovery, and Integration (**UDDI**).
 
 UDDI was created in 2000 by Ariba, Microsoft, and IBM, but it is now managed by the Organization for the Advancement of Structured Information Standards (**OASIS**), which is a non-profit organization that also manages a number of other open standards. UDDI was intended to be used to specify a universal registry and broker of web services, using **XML** and **WSDL** to structure data about the web services and how they were provided.
 
@@ -149,30 +150,30 @@ UDDI is not tied to a specific registry, it is a standard for discovery and publ
 
 ![uddi-1.png](https://raw.githubusercontent.com/aboelkassem/Software-and-Service-Oriented-Architecture/main/Images/uddi-1.png "UDDI")
 
-* First service providers **publish** themselves to UDD registry, Then service requester can **search** the registry by searching elements in WSDL description or other descriptions.
-* After search, requester can **bind** to it using WSDL descriptions to determine messaging pattern, then **invoke** these services
+- First service providers **publish** themselves to UDD registry, Then service requester can **search** the registry by searching elements in WSDL description or other descriptions.
+- After search, requester can **bind** to it using WSDL descriptions to determine messaging pattern, then **invoke** these services
 
 **Publishing**
 
 Publishing registers information about the service with a **UDDI registry**, which includes information about the service provider, the service itself, and various technical descriptions of the service. A uniform resource identifier (**URI**) is assigned to the service by the UDDI registry. The URI is a unique reference used to **invoke** the service.
 
-The information that UDDI standard is contained three categories, White pages, Yellow pages, Green Pages 
+The information that UDDI standard is contained three categories, White pages, Yellow pages, Green Pages
 
 ![uddi-2.png](https://raw.githubusercontent.com/aboelkassem/Software-and-Service-Oriented-Architecture/main/Images/uddi-2.png "UDDI")
 
-* White pages, where information such as the business name, a short description, contact information, and unique business identification numbers is stored.
-* Yellow pages, which contain information about the service or industry that the business is in, including hierarchical information about the business. For example, exchange rates are a subset of currency services.
-* Green pages, which contain the technical details of how to use the service.
+- White pages, where information such as the business name, a short description, contact information, and unique business identification numbers is stored.
+- Yellow pages, which contain information about the service or industry that the business is in, including hierarchical information about the business. For example, exchange rates are a subset of currency services.
+- Green pages, which contain the technical details of how to use the service.
 
 **Information encapsulated in UDDI also falls into four data structures.**
 
-* businessEntity ⇒ white pages
-* businessService ⇒ yellow pages
-* bindingTemplate and tModel ⇒ green pages
+- businessEntity ⇒ white pages
+- businessService ⇒ yellow pages
+- bindingTemplate and tModel ⇒ green pages
 
 ![uddi-3.png](https://raw.githubusercontent.com/aboelkassem/Software-and-Service-Oriented-Architecture/main/Images/uddi-3.png "UDDI")
 
-Service providers **publish**, including adding, deleting, and modifying entries to a registry through **SOAP** messages. Operations could be `save_business`, `save_service`, `save_binding`, `save_tModel`, or delete commands for these same elements.  UDDI also specifies web services for **discovery**. These are accessed by **SOAP** messages. Commands to search for services include `find_business`, `find_service`, `find_binding`, and `find_tModel`. Information can be requested with commands such as `get_businessDetail`, `get_serviceDetail`, etc.
+Service providers **publish**, including adding, deleting, and modifying entries to a registry through **SOAP** messages. Operations could be `save_business`, `save_service`, `save_binding`, `save_tModel`, or delete commands for these same elements. UDDI also specifies web services for **discovery**. These are accessed by **SOAP** messages. Commands to search for services include `find_business`, `find_service`, `find_binding`, and `find_tModel`. Information can be requested with commands such as `get_businessDetail`, `get_serviceDetail`, etc.
 
 Once the service requester has information about the service interface, it can generate the necessary code to access the interface for the service. In other words, it can **dynamically bind** to it.
 
@@ -212,23 +213,27 @@ The client sends a request and the server responds, but in REST, the communicati
 
 **REST constraints**
 
-* **REST is a Client-Server Architecture**
+- **REST is a Client-Server Architecture**
 
-    Server provides **services** to the client like creating or manipulating data, and Client provides users with a **user interface** to access these services. This applies separation of concerns which allows highly scalable, each they occur independently. The client can be improved to provide users with a simple and fast user interface without affecting the server, while the server can manipulate larger sets of data because it is freed from having to implement any client responsibilities.
-* **REST is a Layered System**
+  Server provides **services** to the client like creating or manipulating data, and Client provides users with a **user interface** to access these services. This applies separation of concerns which allows highly scalable, each they occur independently. The client can be improved to provide users with a simple and fast user interface without affecting the server, while the server can manipulate larger sets of data because it is freed from having to implement any client responsibilities.
 
-    These layers can be used to improve performance, translate messages, and manage traffic, which helps to improve the reusability of REST web services.
-* **Interactions must be Stateless**
+- **REST is a Layered System**
 
-    This means that the server **does not save information about the current client state or previous request** made by the client. Servers are only aware that the client exists when a request is made. All necessary information for the server to understand and respond to the request comes through with the request.
+  These layers can be used to improve performance, translate messages, and manage traffic, which helps to improve the reusability of REST web services.
 
-    This improves the performance of web services, as servers do not have to remember the current states of clients in the system. however, is that this imposes significant restrictions on the way a client and server communicate. **Every time a client sends a request to a server, it must provide and store information about its current state**. For example if authentication is needed by a server for the client to have access to data, then client side must send that authentication information in every request.
-* **Clients can Cache responses**
+- **Interactions must be Stateless**
 
-    This means that clients can keep a local copy of a server response to use for later requests, Basically, every time a server responds to a client request, the server adds information to respond to label it as cacheable or non-cacheable. This can help improve performance by reducing the number of requests for the same resources. The server decides for the client side what information should be temporarily saved and what can be deleted after use.
-* **Uniform Interface between the client and server**
+  This means that the server **does not save information about the current client state or previous request** made by the client. Servers are only aware that the client exists when a request is made. All necessary information for the server to understand and respond to the request comes through with the request.
 
-    The first is that there are specific methods that can be understood. REST uses the common **HTTP methods, GET, PUT, POST, and DELETE**, to communicate different actions the client wants to perform on the resources. The second is that the resource must be identified in the request with a specific **URI**. Finally, the representations of the resources are uniform. Responses have specific headers, and the resource is written in three specific ways: **XML**, **JSON**, or **simple text.**
+  This improves the performance of web services, as servers do not have to remember the current states of clients in the system. however, is that this imposes significant restrictions on the way a client and server communicate. **Every time a client sends a request to a server, it must provide and store information about its current state**. For example if authentication is needed by a server for the client to have access to data, then client side must send that authentication information in every request.
+
+- **Clients can Cache responses**
+
+  This means that clients can keep a local copy of a server response to use for later requests, Basically, every time a server responds to a client request, the server adds information to respond to label it as cacheable or non-cacheable. This can help improve performance by reducing the number of requests for the same resources. The server decides for the client side what information should be temporarily saved and what can be deleted after use.
+
+- **Uniform Interface between the client and server**
+
+  The first is that there are specific methods that can be understood. REST uses the common **HTTP methods, GET, PUT, POST, and DELETE**, to communicate different actions the client wants to perform on the resources. The second is that the resource must be identified in the request with a specific **URI**. Finally, the representations of the resources are uniform. Responses have specific headers, and the resource is written in three specific ways: **XML**, **JSON**, or **simple text.**
 
 **REST Example of a request and response**
 
@@ -242,14 +247,14 @@ This is an example of a request to add coffee to an online shopping cart in the 
 
 So we will explore **best practices to follow to create a well-designed RESTful API.** These include:
 
-* **Use only nouns for a URI;**
-* **GET methods should not alter the state of resource;**
-* **Use plural nouns for a URI;**
-* **Use sub-resources for relationships between resources;**
-* **Use HTTP headers to specify input/output format;**
-* **Provide users with filtering and paging for collections;**
-* **Version the API;**
-* **Provide proper HTTP status codes.**
+- **Use only nouns for a URI;**
+- **GET methods should not alter the state of resource;**
+- **Use plural nouns for a URI;**
+- **Use sub-resources for relationships between resources;**
+- **Use HTTP headers to specify input/output format;**
+- **Provide users with filtering and paging for collections;**
+- **Version the API;**
+- **Provide proper HTTP status codes.**
 
 **Use only nouns for a URI**
 
@@ -271,24 +276,24 @@ Simplicity is key to a good API, when you're creating a service to deal with res
 
 This means that when a resource is related to another resource you can show the connection in the URI, For example
 
-* `GET` /students/3/courses     ⇒ get all the courses of student 3
-* `GET` /students/3/courses/2  ⇒ et the information on course 2 connected of student 3
+- `GET` /students/3/courses ⇒ get all the courses of student 3
+- `GET` /students/3/courses/2 ⇒ et the information on course 2 connected of student 3
 
 **Use HTTP headers to specify input/output format**
 
 Headers are used to specify a lot of different properties. Two headers that are very important to making APIs easier to use. Content Type and Accept Headers
 
-* **Content-Type**: define the format of the message. (Input)
-* **Accept**: defines a list of acceptable formats that can come as response. (Output)
+- **Content-Type**: define the format of the message. (Input)
+- **Accept**: defines a list of acceptable formats that can come as response. (Output)
 
 ![rest-5.png](https://raw.githubusercontent.com/aboelkassem/Software-and-Service-Oriented-Architecture/main/Images/rest-5.png "REST Reuqest and Resonse")
 
 **Provide users with filtering and paging for collections**
 
-When there are large data sets to parse through, good APIs provide filters to help search through the data. This is done by allowing parameters to be passed after question mark(?). For example 
+When there are large data sets to parse through, good APIs provide filters to help search through the data. This is done by allowing parameters to be passed after question mark(?). For example
 
-* `GET` /courses?department=computing+science ⇒ return those that are in the department of computing science.
-* `GET` /courses?offset=10&limit=5 ⇒ These can provide filtering and paging for APIs, making the responses quicker.
+- `GET` /courses?department=computing+science ⇒ return those that are in the department of computing science.
+- `GET` /courses?offset=10&limit=5 ⇒ These can provide filtering and paging for APIs, making the responses quicker.
 
 **Version the API**
 
@@ -298,9 +303,9 @@ Web services can be used by millions of users. **Any changes** to APIs can break
 
 There are many different HTTP status codes that can be returned as a response to a request, but the common is
 
-* `200` ⇒ which means that everything is working and functioning on the server side.
-* `201` ⇒ which means that a new resource has successfully been created.
-* `204` ⇒ which means that a resource has successfully been deleted.
+- `200` ⇒ which means that everything is working and functioning on the server side.
+- `201` ⇒ which means that a new resource has successfully been created.
+- `204` ⇒ which means that a resource has successfully been deleted.
 
 Using the correct status code during RESTful API responses can help developers understand and use APIs better.
 
@@ -357,7 +362,7 @@ Once all the API methods have been written and finished, all you need to do is d
 
 Now, you can test your REST service by creating your own client application that calls these URIs, or simply sending an HTTP request through the command line.
 
-You can use **CURL tool**, which is a tool to transfer data from or to a server. Like the following curl command 
+You can use **CURL tool**, which is a tool to transfer data from or to a server. Like the following curl command
 
 ![rest-11.png](https://raw.githubusercontent.com/aboelkassem/Software-and-Service-Oriented-Architecture/main/Images/rest-11.png "API Testing using CURL Tool")
 
@@ -387,37 +392,44 @@ Each microservice has a well-defined interface or API that informs other microse
 
 **Advantages of Microservices**
 
-* **Microservices can use languages, frameworks, and architectures that are best suited to the service. This means that different microservices can use different languages, frameworks and architectures.**
+- **Microservices can use languages, frameworks, and architectures that are best suited to the service. This means that different microservices can use different languages, frameworks and architectures.**
 
-  * It allows developers to create a service using the most appropriate tools for the job.
-  * It provides the opportunity for developers to try out new technologies without making an application-wide commitment.
-* **Microservices make applications easier to scale and maintain.**
+  - It allows developers to create a service using the most appropriate tools for the job.
+  - It provides the opportunity for developers to try out new technologies without making an application-wide commitment.
 
-  * A particular microservice can easily be scaled by replication. If there are multiple copies of the same microservice, then multiple requests to the original microservice can be handled in parallel. For example, a microservice responsible for processing orders could be replicated to increase the throughout of processing large volumes of orders to balance the work.
-* **Microservices make applications more resilient to failure**
+- **Microservices make applications easier to scale and maintain.**
 
-  * Multiple copies of the same microservice mean that if one instance of the microservice fails, the other instances can continue functioning. For the above example of processing orders, if one of the instances is no longer functional, the remaining instances continue handling the orders. the Throughput of the system might decrease if there is one less microservice instance processing, but users of the system would be unaware of the failure.
-* **Microservices can be scaled and maintained independently.**
+  - A particular microservice can easily be scaled by replication. If there are multiple copies of the same microservice, then multiple requests to the original microservice can be handled in parallel. For example, a microservice responsible for processing orders could be replicated to increase the throughout of processing large volumes of orders to balance the work.
 
-  * Microservices have loose coupling. This allows them to be scaled independently, which is important because not all microservices within an application need to scale at the same rate. For example when the application needs to be updated, repaired, or replaced, this can be done with one microservice at a time without affecting the rest of the application.
-* **Microservices can be developed quickly, and deployed and maintained by a small, independent team.**
+- **Microservices make applications more resilient to failure**
 
-  * Because a small team is responsible for a small piece of functionality of the entire application, the team does not need to be familiar with the whole application to be able to do their jobs. Microservices can thus be developed quickly and in parallel.
+  - Multiple copies of the same microservice mean that if one instance of the microservice fails, the other instances can continue functioning. For the above example of processing orders, if one of the instances is no longer functional, the remaining instances continue handling the orders. the Throughput of the system might decrease if there is one less microservice instance processing, but users of the system would be unaware of the failure.
+
+- **Microservices can be scaled and maintained independently.**
+
+  - Microservices have loose coupling. This allows them to be scaled independently, which is important because not all microservices within an application need to scale at the same rate. For example when the application needs to be updated, repaired, or replaced, this can be done with one microservice at a time without affecting the rest of the application.
+
+- **Microservices can be developed quickly, and deployed and maintained by a small, independent team.**
+
+  - Because a small team is responsible for a small piece of functionality of the entire application, the team does not need to be familiar with the whole application to be able to do their jobs. Microservices can thus be developed quickly and in parallel.
 
 **Disadvantages of Microservices**
 
-* **Some centralized management of all microservices will be required to coordinate all the microservices.**
+- **Some centralized management of all microservices will be required to coordinate all the microservices.**
 
-  * An application made up of microservices is a distributed system, that is enabled through asynchronous communication. So microservices will need to be coordinated through some central method of management, or they may become inconsistent and result in errors.
-* **Transactions may span multiple microservices.**
+  - An application made up of microservices is a distributed system, that is enabled through asynchronous communication. So microservices will need to be coordinated through some central method of management, or they may become inconsistent and result in errors.
 
-  * Databases will likely be distributed over multiple microservices, so transactions may span multiple microservices. Again, centralized management is needed to prevent inconsistencies and errors.
-* **Testing is complex.**
+- **Transactions may span multiple microservices.**
 
-  * Test conditions change, which results in making it harder to test a distributed system. It can be difficult to reproduce bugs that come about from complex interactions between microservices.
-* **All microservices in the application must be robust to handle failure of any other microservice.**
+  - Databases will likely be distributed over multiple microservices, so transactions may span multiple microservices. Again, centralized management is needed to prevent inconsistencies and errors.
 
-  * It is important to consider how an application will cope when a microservice fails, and there is no other instance of the microservice to take its place. Any other microservices in an application must be robust enough to handle any failure in a microservice.
+- **Testing is complex.**
+
+  - Test conditions change, which results in making it harder to test a distributed system. It can be difficult to reproduce bugs that come about from complex interactions between microservices.
+
+- **All microservices in the application must be robust to handle failure of any other microservice.**
+
+  - It is important to consider how an application will cope when a microservice fails, and there is no other instance of the microservice to take its place. Any other microservices in an application must be robust enough to handle any failure in a microservice.
 
 **Using Microservices**
 
@@ -433,19 +445,19 @@ Imagine a web application that allows users to find nearby restaurants, place a 
 
 We can breakup this application into the following microservices:
 
-* **A user interface microservice** that allows the user to interact with the application.
-* **A restaurant catalogue microservice** that provides all restaurants in the system.
-* **A restaurant reservation microservice** that places a reservation with the selected restaurant.
-* **A restaurant review microservice** to access and make restaurant reviews.
+- **A user interface microservice** that allows the user to interact with the application.
+- **A restaurant catalogue microservice** that provides all restaurants in the system.
+- **A restaurant reservation microservice** that places a reservation with the selected restaurant.
+- **A restaurant review microservice** to access and make restaurant reviews.
 
 Assume all communication between microservices is HTTP and REST based.
 
 ![microservices-2.png](https://raw.githubusercontent.com/aboelkassem/Software-and-Service-Oriented-Architecture/main/Images/microservices-2.png "Microservices")
 
-* When a user visits the website for this application, the user interface microservice prompts the user to enter their location. Once the address is entered, the user interface microservice communicates with the restaurant catalog microservice to determine nearby restaurants. This information is communicated back to the user interface microservice, and displayed to the user.
-* When a user chooses to view more details about a particular restaurant, the user interface microservice communicates with the restaurant review microservice to access the review of the restaurant. This is then displayed to the user, and it provides an option to write a review, or to place a reservation for a particular time.
-* If a user decides to review the restaurant, the user interface microservice communicates the review to the restaurant review microservice so it can be saved.
-* If a user decides to place a reservation, the user interface microservice communicates with the restaurant reservation microservice to inform the restaurant. This returns a confirmation message provided by the reservation microservice.
+- When a user visits the website for this application, the user interface microservice prompts the user to enter their location. Once the address is entered, the user interface microservice communicates with the restaurant catalog microservice to determine nearby restaurants. This information is communicated back to the user interface microservice, and displayed to the user.
+- When a user chooses to view more details about a particular restaurant, the user interface microservice communicates with the restaurant review microservice to access the review of the restaurant. This is then displayed to the user, and it provides an option to write a review, or to place a reservation for a particular time.
+- If a user decides to review the restaurant, the user interface microservice communicates the review to the restaurant review microservice so it can be saved.
+- If a user decides to place a reservation, the user interface microservice communicates with the restaurant reservation microservice to inform the restaurant. This returns a confirmation message provided by the reservation microservice.
 
 <hr>
 

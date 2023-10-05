@@ -16,35 +16,36 @@ tags:
   - containerization
   - web-dev
 ---
+
 In this article, we will discuss the basics of Docker and containerization.
 
 ## Table Of Contents
 
-* Why Should Use Docker and what is the power of containerization
-* What is Docker?
-  * Docker Benefits for web developers
-  * Docker Tools
-  * Docker Architecture
-  * Setting Up Your Docker Environment
-  * Basic Key Commands
-* Hooking The Source Code into a Container
-  * The Layered File System
-  * Docker Volumes
-* Building Custom images with Dockerfile
-  * What is Dockerfile?
-  * Publish an image to Docker Hub
-* Container Linking and Communicating
-  * Legacy Linking
-  * Container/Bridge Networks
-* Docker Compose
-  * docker-compose.yml File
-  * Docker Compose Commands
-* Overview of Kubernetes
-  * What is Kubernetes
-  * Run Kubernetes locally
-  * Basic Kubernetes Concepts
-  * Converting Docker-compose to Kubernetes
-  * Basic Commands
+- Why Should Use Docker and what is the power of containerization
+- What is Docker?
+  - Docker Benefits for web developers
+  - Docker Tools
+  - Docker Architecture
+  - Setting Up Your Docker Environment
+  - Basic Key Commands
+- Hooking The Source Code into a Container
+  - The Layered File System
+  - Docker Volumes
+- Building Custom images with Dockerfile
+  - What is Dockerfile?
+  - Publish an image to Docker Hub
+- Container Linking and Communicating
+  - Legacy Linking
+  - Container/Bridge Networks
+- Docker Compose
+  - docker-compose.yml File
+  - Docker Compose Commands
+- Overview of Kubernetes
+  - What is Kubernetes
+  - Run Kubernetes locally
+  - Basic Kubernetes Concepts
+  - Converting Docker-compose to Kubernetes
+  - Basic Commands
 
 Before jumping into Docker, let's look at why we need Docker and containerization?
 
@@ -62,43 +63,43 @@ Docker is a way to simplify the process of **building application, shipping them
 
 Docker relies on "**images**" and "**containers**"
 
-**Image** A **read-only template** composed of layered filesystems used to share common files and create Docker container instances. is something that's used to **build a container**, image have necessary **files** to run something on an OS and you have a framework or your database, for example Windows with [ASP.NET](http://asp.NET) Core and application Code, Image like a **blueprint of the container** but it creates a running instance of a container 
+**Image** A **read-only template** composed of layered filesystems used to share common files and create Docker container instances. is something that's used to **build a container**, image have necessary **files** to run something on an OS and you have a framework or your database, for example Windows with [ASP.NET](http://asp.NET) Core and application Code, Image like a **blueprint of the container** but it creates a running instance of a container
 
 **Container** An **isolated and secured shipping container** created from an image that can be run, started, stopped, moved and deleted. Runs your application, they are actually where the live application runs or the database or caching server or whatever it may be to runs in Windows, Linux server machine.
 
 ### Docker Benefits for web developers
 
-* **Accelerate developer onboarding** means Docker helps to set up a development environment very quickly when working with team on the same containers with different machines
+- **Accelerate developer onboarding** means Docker helps to set up a development environment very quickly when working with team on the same containers with different machines
 
 ![docker-benifit-1](https://raw.githubusercontent.com/aboelkassem/Learn-Docker/main/images/docker-benefit-1.png "docker benifit accelerate developer")
 
-* **Eliminate App Conflicts** like having versions of frameworks which docker offer **isolated** containers and each container that contains its version
+- **Eliminate App Conflicts** like having versions of frameworks which docker offer **isolated** containers and each container that contains its version
 
 ![docker-benefit-2.png](https://raw.githubusercontent.com/aboelkassem/Learn-Docker/main/images/docker-benefit-2.png "docker eliminate app conflicts")
 
-* **Environment Consistency** like moving your code and development environment by just moving images between different environments like from development to staging or production
+- **Environment Consistency** like moving your code and development environment by just moving images between different environments like from development to staging or production
 
 ![docker-benefit-3.png](https://raw.githubusercontent.com/aboelkassem/Learn-Docker/main/images/docker-benefit-3.png "docker benefit of environment consistency")
 
-* **Ship Software Faster** which makes it high productivity, quality, consistency and predictability
+- **Ship Software Faster** which makes it high productivity, quality, consistency and predictability
 
 ![docker-benefit-4.png](https://raw.githubusercontent.com/aboelkassem/Learn-Docker/main/images/docker-benefit-4.png "ship software faster")
 
-* **Docker Hub**: Ever imagined sharing your machine like you share the code using **GitHub**? Docker’s Docker Hub provides access to **thousands of images** that are configured with the environment so that when your code works in your machine, you can build images and share it all over the internet.
-* **Continuous integration support:** Docker supports CI tools like **[Travis](https://travis-ci.com/plans)** and **[Jenkins](https://www.jenkins.io)**. Docker images can be built and tagged with specific versions and deployed anywhere
+- **Docker Hub**: Ever imagined sharing your machine like you share the code using **GitHub**? Docker’s Docker Hub provides access to **thousands of images** that are configured with the environment so that when your code works in your machine, you can build images and share it all over the internet.
+- **Continuous integration support:** Docker supports CI tools like **[Travis](https://travis-ci.com/plans)** and **[Jenkins](https://www.jenkins.io)**. Docker images can be built and tagged with specific versions and deployed anywhere
 
   > **Travis** is a hosted continuous integration service used to build and test
-  >   software projects hosted at GitHub and Bitbucket. **Jenkins** is a free and opensource automation server. It helps automate the parts of software
-  >   development related to building, testing, deploying, facilitating continuous
-  >   integration, and continuous delivery
+  > software projects hosted at GitHub and Bitbucket. **Jenkins** is a free and opensource automation server. It helps automate the parts of software
+  > development related to building, testing, deploying, facilitating continuous
+  > integration, and continuous delivery
 
 ### Docker Tools
 
-* Docker Toolbox **(Deprecated)** for Windows 7 or 8/ Mac
-* [Docker CE](https://hub.docker.com/editions/community/docker-ce-desktop-windows) (Community Edition) for windows 10 or Mac
+- Docker Toolbox **(Deprecated)** for Windows 7 or 8/ Mac
+- [Docker CE](https://hub.docker.com/editions/community/docker-ce-desktop-windows) (Community Edition) for windows 10 or Mac
 
-  * Provides Image and Container
-  * Enable **Hyper-V** for Windows **or Hyperkit** for Mac to run VMs
+  - Provides Image and Container
+  - Enable **Hyper-V** for Windows **or Hyperkit** for Mac to run VMs
 
 ### Docker Architecture
 
@@ -106,10 +107,10 @@ Docker relies on "**images**" and "**containers**"
 
 **Docker ecosystems**
 
-* **Docker Registry**: Docker maintains all the images in the registry and they can be pulled from the registry too
-* **Docker Hub**: This is the repository for all your custom-built images. Images can be pushed and accessed from the Hub
-* **Docker Client:** The CLI tool used to interact with the Docker server
-* **Docker Daemon:** The Docker server process/engine responsible for pulling, pushing, and building the images. It is also used for running the container
+- **Docker Registry**: Docker maintains all the images in the registry and they can be pulled from the registry too
+- **Docker Hub**: This is the repository for all your custom-built images. Images can be pushed and accessed from the Hub
+- **Docker Client:** The CLI tool used to interact with the Docker server
+- **Docker Daemon:** The Docker server process/engine responsible for pulling, pushing, and building the images. It is also used for running the container
 
 ![docker-arch-2.png](https://raw.githubusercontent.com/aboelkassem/Learn-Docker/main/images/docker-arch-2.png "docker architetcure")
 
@@ -117,11 +118,11 @@ Docker relies on "**images**" and "**containers**"
 
 **Installing Docker on Mac**
 
-* Navigate to [This link](https://hub.docker.com/editions/community/docker-ce-desktop-mac/) and download and install it.
+- Navigate to [This link](https://hub.docker.com/editions/community/docker-ce-desktop-mac/) and download and install it.
 
 **Installing Docker on Windows**
 
-* Navigate to [This link](https://hub.docker.com/editions/community/docker-ce-desktop-windows) and download and install it
+- Navigate to [This link](https://hub.docker.com/editions/community/docker-ce-desktop-windows) and download and install it
 
 **Docker Kitematic Tool (usually not used much)**
 
@@ -146,8 +147,8 @@ $ docker logs [containerId]  # show the logs of the container
 
 So how do we get source code into a container?
 
-* Create a **container volume** that points to the source code.
-* Add your source code into a **custom image** that is used to create a container.
+- Create a **container volume** that points to the source code.
+- Add your source code into a **custom image** that is used to create a container.
 
 ### The Layered File System
 
@@ -171,10 +172,10 @@ As every image is built on top of Linux kernel, it has some common **dependencie
 
 ### Docker Volumes
 
-* **Volume** is a special type of **directory** in a **container** typically referred to as a "data volume" in which you store any types of data that could be code, log files or database files and more.
-* **Volumes** can be **shared** and reused among containers which make multiple containers write the same volume and Container can have single or more volumes
-* When **updating** an Image this **won't affect** to the data volume which stayed separate
-* Data volumes are **persisted** even after the container is **deleted**
+- **Volume** is a special type of **directory** in a **container** typically referred to as a "data volume" in which you store any types of data that could be code, log files or database files and more.
+- **Volumes** can be **shared** and reused among containers which make multiple containers write the same volume and Container can have single or more volumes
+- When **updating** an Image this **won't affect** to the data volume which stayed separate
+- Data volumes are **persisted** even after the container is **deleted**
 
 ![docker-volumes-1.png](https://raw.githubusercontent.com/aboelkassem/Learn-Docker/main/images/docker-volumes-1.png "docker volumes")
 
@@ -243,15 +244,15 @@ Because the image can be cached to speed up future builds, If you make any chang
 
 **Basic Dockerfile instructions/Commands:**
 
-* **FROM**: like dependencies which mean where the image you build on in for example [asp.net](http://asp.net) core image, Node.js as a base filesystem, and then build your filesystem layered on the image.
-* **MAINTAINER**: Just type your **name** who created and maintain this image
-* **RUN**: the commands to run in these images like npm install, dotnet restore, dotnet run
-* **COPY**: copy source code into the container to be ready for production
-* **ENTRYPOINT**: determine the entry point for this container for example nodejs command
-* **WORKDIR**: define what is the working directory is to know where this container going to run
-* **EXPOSE**: determine the port that the container would then run internally
-* **ENV**: define environment variables in that container like development or production
-* **VOLUME**: define volumes for that container
+- **FROM**: like dependencies which mean where the image you build on in for example [asp.net](http://asp.net) core image, Node.js as a base filesystem, and then build your filesystem layered on the image.
+- **MAINTAINER**: Just type your **name** who created and maintain this image
+- **RUN**: the commands to run in these images like npm install, dotnet restore, dotnet run
+- **COPY**: copy source code into the container to be ready for production
+- **ENTRYPOINT**: determine the entry point for this container for example nodejs command
+- **WORKDIR**: define what is the working directory is to know where this container going to run
+- **EXPOSE**: determine the port that the container would then run internally
+- **ENV**: define environment variables in that container like development or production
+- **VOLUME**: define volumes for that container
 
 For example of custom dockerfile for **node.js**
 
@@ -279,7 +280,7 @@ FROM mcr.microsoft.com/dotnet/sdk:3.1
 LABEL author="aboelkassem"
 
 ENV DOTNET_USE_POLLING_FILE_WATCHER=1 # setup dotnet watch (mean if change in the code it restart the kestrel server)
-ENV ASPNETCORE_URLS=http://*:5000 
+ENV ASPNETCORE_URLS=http://*:5000
 
 WORKDIR /app
 
@@ -302,7 +303,7 @@ FROM mcr.microsoft.com/dotnet/aspnet:3.1
 LABEL author="aboelkassem"
 WORKDIR /app
 COPY --from=publish /publish/out .
-ENV ASPNETCORE_URLS=http://*:5000 
+ENV ASPNETCORE_URLS=http://*:5000
 ENTRYPOINT ["dotnet", "[projectName].dll"]
 ```
 
@@ -317,10 +318,10 @@ $ docker build -t aboelkassem/foods:1.0-prod -f prod.Dockerfile . # this create 
 $ docker run -d -p 80:5000 -v "$(pwd):/app" aboelkassem/foods:1.0-dev # this will run the image
 ```
 
-* **\-t** : the tag of image
-* **\-d:** the detached mode that don't show logs in CMD or any information just name or simple info
-* **your username:** Your docker hub account ID or username and then give it a name
-* **.** : the build context or the current directory contains the DockerFile to build from
+- **\-t** : the tag of image
+- **\-d:** the detached mode that don't show logs in CMD or any information just name or simple info
+- **your username:** Your docker hub account ID or username and then give it a name
+- **.** : the build context or the current directory contains the DockerFile to build from
 
 ### Publish an image to docker Hub
 
@@ -339,8 +340,8 @@ When trying to use images and containers, you also need to communicate between c
 
 **To talk to other containers there are two ways:**
 
-* **Use Legacy Linking** by just container **names** by creating **bridge network,** its a good option for development environment
-* **Add Containers to a Custom Bridge Network** by creating an isolated network and only containers in that network communicate with each other, it a good option for multiple containers in a production environment
+- **Use Legacy Linking** by just container **names** by creating **bridge network,** its a good option for development environment
+- **Add Containers to a Custom Bridge Network** by creating an isolated network and only containers in that network communicate with each other, it a good option for multiple containers in a production environment
 
 ### Legacy Linking
 
@@ -348,23 +349,23 @@ this is a very simple technique where you give a container **name** and another 
 
 **Steps to link containers**
 
-  1- **Run Container with a Name**
+1- **Run Container with a Name**
 
 ```shell
 $ docker run -d --name <containerName> <image>
 $ docker run -d --name my-postgres postgres
 ```
 
-  2- **Link to Running Container by Name**
+2- **Link to Running Container by Name**
 
 ```shell
 $ docker run -d -p <ex-port>:<in-port> --link <containerNameToLinkWith>:<containerAlais> <yourUsername>/<ImageName> # containerAlais is the alais to used internal for example database connection string
 $ docker run -d -p 5000:5000 --link my-postgres:postgres aboelkassem/listify
 ```
 
-  3- **Repeat For Additional Containers**
+3- **Repeat For Additional Containers**
 
-- - -
+---
 
 For example for linking ASP.NET Core project container with SQL Server database container
 
@@ -405,8 +406,8 @@ it's a great way to automatically manage the lifecycle of your application in th
 
 It very helpful in the development environment To manage different containers in the application like
 
-* Start, stop and rebuild services(running containers)
-* View status of running services and see the log output of running services
+- Start, stop and rebuild services(running containers)
+- View status of running services and see the log output of running services
 
 ![docker-compose-1.png](https://raw.githubusercontent.com/aboelkassem/Learn-Docker/main/images/docker-compose-1.png "docker compose")
 
@@ -420,7 +421,7 @@ Also you can run **Microservices** like the following diagrams **running 6 servi
 
 2- **Start** Up Services
 
-3- **Tear Down** Services when you are finished, stop containers or remove them 
+3- **Tear Down** Services when you are finished, stop containers or remove them
 
 ### docker-compose.yml File
 
@@ -440,8 +441,8 @@ It very good and easy in development environment to just give a **.yml** file ju
 
 **In Services you can define:**
 
-* **Build** Context like the folder can build from and what dockerfile to build that service.
-* **Environment** that running these service, you can easily swap between from development to production
+- **Build** Context like the folder can build from and what dockerfile to build that service.
+- **Environment** that running these service, you can easily swap between from development to production
 
 ### Docker Compose Commands
 
@@ -471,29 +472,28 @@ $ docker-compose up --no-deps <ServiceName>  # destory and recreate only this se
 Example of docker-compose.yml file in [asp.net](http://asp.net) core and sql server
 
 ```yaml
-version: '3.9'
+version: "3.9"
 services:
-  
-    web:
-        build:
-            context: .
-            dockerfile: Dockerfile
-        ports:
-            - "8000:80"
-        networks:
-            - foods-network
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:80"
+    networks:
+      - foods-network
 
-    sqlserver:
-        image: "mcr.microsoft.com/mssql/server:2017-latest"
-        environment:
-            SA_PASSWORD: "123456789"
-            ACCEPT_EULA: "Y"
-        networks:
-            - foods-network
+  sqlserver:
+    image: "mcr.microsoft.com/mssql/server:2017-latest"
+    environment:
+      SA_PASSWORD: "123456789"
+      ACCEPT_EULA: "Y"
+    networks:
+      - foods-network
 
 networks:
-    foods-network:
-        driver: bridge
+  foods-network:
+    driver: bridge
 ```
 
 ## Overview of Kubernetes
@@ -502,12 +502,12 @@ Docker Compose provides a great way to get multiple containers up and running on
 
 So we use **Kubernetes** to provide all these features in **production environment** like
 
-* Package up the app, provide a manifest and let it manage and handle everything for us
-* Not worry about the management of containers
-* Eliminate single point of failure and self-heal containers
-* Have a way to scale and load balance containers
-* Update containers without bringing down the application
-* Have networking and persistence storage options
+- Package up the app, provide a manifest and let it manage and handle everything for us
+- Not worry about the management of containers
+- Eliminate single point of failure and self-heal containers
+- Have a way to scale and load balance containers
+- Update containers without bringing down the application
+- Have networking and persistence storage options
 
 ### What is Kubernetes
 
@@ -519,36 +519,37 @@ It provides a way to define a cluster's state using manifest files (yaml)
 
 **Some basic features of Kubernetes**
 
-* Service Discovery and load balancing
-* Secret and Configuration management
-* Automate Rollouts/Rollbacks
-* Horizontal Scaling
-* Storage Orchestration
-* Manage workloads
-* Self-healing
+- Service Discovery and load balancing
+- Secret and Configuration management
+- Automate Rollouts/Rollbacks
+- Horizontal Scaling
+- Storage Orchestration
+- Manage workloads
+- Self-healing
 
 ![cluster](https://raw.githubusercontent.com/aboelkassem/Learn-Docker/main/images/cluster.png "kubernetes cluster")
 
 The above diagram shows what **Cluster** means, it the process of nodes management to run containerized applications.
 
-* **Master** who manage all these nodes/children/workers nodes
-* **Node** is like VM has pods inside them
-* **Pod** is a container for containers, put multiple things inside this pod
+- **Master** who manage all these nodes/children/workers nodes
+- **Node** is like VM has pods inside them
+- **Pod** is a container for containers, put multiple things inside this pod
 
 ### Run Kubernetes locally
 
-* From [Docker desktop](https://www.docker.com/products/docker-desktop) from settings>Kubernetes>Enable Kubernetes
-* From [Minikube](https://github.com/kubernetes/minikube) tool
+- From [Docker desktop](https://www.docker.com/products/docker-desktop) from settings>Kubernetes>Enable Kubernetes
+- From [Minikube](https://github.com/kubernetes/minikube) tool
 
 ### Basic Kubernetes Concepts
 
-* **Deployment**: the main role of Kubernetes to **describe the desired state** where convert services from .yml or .json file in Docker compose file into **Kubernetes deployment** file
+- **Deployment**: the main role of Kubernetes to **describe the desired state** where convert services from .yml or .json file in Docker compose file into **Kubernetes deployment** file
 
-  * Can be used to **replicate** pods or **add** more pods to the node
-  * Support **rolling** update and **rollbacks** which are very important for **versioning** your app
-* **Service**: allow you to abstract pod IP addresses from consumers, you know pods that contain containers may die if the container goes down, So Service handles this.
+  - Can be used to **replicate** pods or **add** more pods to the node
+  - Support **rolling** update and **rollbacks** which are very important for **versioning** your app
 
-  * Load balances between pods
+- **Service**: allow you to abstract pod IP addresses from consumers, you know pods that contain containers may die if the container goes down, So Service handles this.
+
+  - Load balances between pods
 
 ![service.png](https://raw.githubusercontent.com/aboelkassem/Learn-Docker/main/images/service.png "service")
 
@@ -556,8 +557,8 @@ The above diagram shows what **Cluster** means, it the process of nodes manageme
 
 you can one of these tools
 
-* [Compose on Kubernetes](https://github.com/docker/compose-on-kubernetes) in docker desktop
-* [Kompose](https://kompose.io/)
+- [Compose on Kubernetes](https://github.com/docker/compose-on-kubernetes) in docker desktop
+- [Kompose](https://kompose.io/)
 
 Check this [GitHub repo](https://github.com/danwahlin/codewithdandockerservices) for example
 
