@@ -1,7 +1,8 @@
-import React from 'react'
+import {Link} from 'gatsby'
+import {get} from 'lodash'
 import PropTypes from 'prop-types'
-import { Link } from 'gatsby'
-import { get } from 'lodash'
+import React from 'react'
+
 import ProgressiveImageContainer from '../ProgressiveImageContainer'
 
 const ArticleList = (props) => {
