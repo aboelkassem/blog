@@ -3,7 +3,7 @@ templateKey: article-page
 title: What is Object Oriented Design and Analysis? - Part 2
 slug: what-is-object-oriented-design-and-analysis-part-2
 author: aboelkassem
-authorLink: https://www.aboelkassem.me
+authorLink: https://www.aboelkassem.tech
 date: 2020-12-17T11:20:46.056Z
 cover: /img/6661.jpg
 metaTitle: Object Oriented Design and Analysis | Aboelkassem Blog
@@ -15,7 +15,7 @@ tags:
   - clean-code
   - object-oriented-modeling
 ---
-In this article, we will continue explaining what we had discussed in [part 1 of Object-oriented design](https://blog.aboelkassem.me/blog/what-is-object-oriented-design-and-analysis-part-1) , so if you don't read it, I recommend reading it because it's a fully completed toutorial.
+In this article, we will continue explaining what we had discussed in [part 1 of Object-oriented design](https://blog.aboelkassem.tech/blog/what-is-object-oriented-design-and-analysis-part-1) , so if you don't read it, I recommend reading it because it's a fully completed toutorial.
 
 In the previous part, we discuss what is object-oriented design and why we need it, in addition to the history of the evolution of programming languages, land the four main design principles (abstraction, encapsulation, decomposition, and generalization).
 

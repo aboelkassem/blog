@@ -159,7 +159,7 @@ module.exports = {
         // Any additional optional fields
         sampleRate: 5,
         siteSpeedSampleRate: 10,
-        cookieDomain: 'https://blog.aboelkassem.me',
+        cookieDomain: 'https://blog.aboelkassem.tech',
       },
     },
     {

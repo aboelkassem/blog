@@ -36,7 +36,7 @@ const ArticleList = (props) => {
             </div>
 
             <small className='f6 lh-copy gray mv0'>By <span
-              className='ttu'><a href="https://www.aboelkassem.me" target="_blank">{get(post, ['frontmatter', 'author'], '')}</a></span></small>
+              className='ttu'><a href="https://www.aboelkassem.tech" target="_blank">{get(post, ['frontmatter', 'author'], '')}</a></span></small>
 
             <time className='db black'>
               <small>{get(post, ['frontmatter', 'date'], '')}</small>

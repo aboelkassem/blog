@@ -1,7 +1,7 @@
 {
   "name": "aboelkassem-blog",
   "description": "Mohamed Abdelrahman Blog",
-  "author": "Mohamed Abdelrahman<contact@aboelkassem.me>",
+  "author": "Mohamed Abdelrahman<contact@aboelkassem.tech>",
   "license": "MIT",
   "scripts": {
     "develop": "gatsby develop",

@@ -3,7 +3,7 @@ templateKey: article-page
 title: Introduction to Service-Oriented Architecture and Web Services - Part 1
 slug: introduction-to-service-oriented-architecture-and-web-services-part-1
 author: aboelkassem
-authorLink: https://www.aboelkassem.me
+authorLink: https://www.aboelkassem.tech
 date: 2021-03-01T09:53:43.142Z
 cover: /img/make-a-web-service.jpg
 metaTitle: SOA and Web Services | Aboelkassem Blog
@@ -24,7 +24,7 @@ In this article, we will discuss the architectures for web applications, then ex
 
 ## Important Note
 
-> Before starting reading this, you can see [Software Architecture](https://blog.aboelkassem.me/blog/what-is-software-architecture-and-what-is-the-common-architectures-part-1) article, in which we will introduce the most common architectures, their qualities, and tradeoffs. We talked about how architectures are evaluated, what makes a good architecture, and an architecture can be improved. We'll also talk about how the architecture touches on the process of software development.
+> Before starting reading this, you can see [Software Architecture](https://blog.aboelkassem.tech/blog/what-is-software-architecture-and-what-is-the-common-architectures-part-1) article, in which we will introduce the most common architectures, their qualities, and tradeoffs. We talked about how architectures are evaluated, what makes a good architecture, and an architecture can be improved. We'll also talk about how the architecture touches on the process of software development.
 
 ## Table of Content
 
