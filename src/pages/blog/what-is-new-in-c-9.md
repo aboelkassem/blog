@@ -13,6 +13,7 @@ tags:
   - c#
   - clean-code
 ---
+
 # C# 9 New Features
 
 ## Init-only Setters and Type Omission with the New Keyword
@@ -45,7 +46,7 @@ public class PriceDTO {
 but **if you want to initialize an instance** from it by giving it a value and want still be immutable? like this
 
 ```csharp
-var priceDto = new PriceDTO 
+var priceDto = new PriceDTO
 {
 	Id = id,
 	Name= name,
@@ -80,7 +81,7 @@ public abstract record DtoBase(int Id, DateTimeOffset Date, string Name, string 
 // the above record syntax it is the same as the following class
 // so with one line of code can save all of that
 
-public abstract class DtoBase 
+public abstract class DtoBase
 {
 		public DtoBase (int id, DateTimeOffset date, string name, string venue)
     {
@@ -132,7 +133,7 @@ var person2 = new Person(1, "mohamed");
 var e = person1 == person2; // will return true.
 ```
 
-**So, A record is equal to another record when the property values match AND they are of the same type.** 
+**So, A record is equal to another record when the property values match AND they are of the same type.**
 
 Records are **immutable** and cannot change the properties inside, so what is the solution?
 
@@ -146,7 +147,7 @@ var person2 = person1 with { Name = "Ahmed" };
 
 ## Pattern Matching
 
- The normal switch case statement like 
+The normal switch case statement like
 
 ```csharp
 EventViewModel newViewModel;
@@ -155,19 +156,19 @@ switch (eventType)
 {
 	case EventType.Unkown:
 		newViewModel = new EventViewModel();
-		break;		
+		break;
 	case EventType.Conference:
 		newViewModel = new ConferenceViewModel();
-		break;		
+		break;
 	case EventType.MultiDayConference:
 		newViewModel = new MultiDayConferenceViewModel();
-		break;		
+		break;
 	case EventType.Concert:
 		newViewModel = new ConcertViewModel();
-		break;		
+		break;
 	default:
 		throw new ArgumentException($"Unkown event type {eventType}");
-		break;		
+		break;
 }
 ```
 
@@ -176,7 +177,7 @@ this case uses a pattern called the constant pattern, and it doesn't return a va
 **Let's try to apply a new feature which is a switch expression that does return value.** like the following.
 
 ```csharp
-EventViewModel newViewModel = eventType switch 
+EventViewModel newViewModel = eventType switch
 {
 	 EventType.Unkown => new EventViewModel(),
 	 EventType.Conference => new ConferenceViewModel(),
@@ -201,19 +202,19 @@ price += e.NumberOfDays switch
 
 `_` mark called **discard** and will fire when none of the above checks match.
 
-**Another feature** which applies pattern matching is if statement by using `**is`** a boolean expression like the following
+**Another feature** which applies pattern matching is if statement by using `**is`\*\* a boolean expression like the following
 
 ```csharp
 if (eventViewModel is ConferenceViewModel conf)
 {
-	// doing something 
+	// doing something
 	// can use `conf`
 	Console.WriteLine(conf.TicketPrice);
 
 }
 else if (eventViewModel is ConcertViewModel concert)
 {
-	// doing something 
+	// doing something
 	// can use `concert`
 	Console.WriteLine(concert.Badget);
 }

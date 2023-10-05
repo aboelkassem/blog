@@ -15,6 +15,7 @@ tags:
   - clean-code
   - object-oriented-modeling
 ---
+
 In this article, we will continue explaining what we had discussed in [part 1 of Object-oriented design](https://blog.aboelkassem.tech/blog/what-is-object-oriented-design-and-analysis-part-1) , so if you don't read it, I recommend reading it because it's a fully completed toutorial.
 
 In the previous part, we discuss what is object-oriented design and why we need it, in addition to the history of the evolution of programming languages, land the four main design principles (abstraction, encapsulation, decomposition, and generalization).
@@ -23,31 +24,31 @@ Today, we will design some important concepts while designing the software and b
 
 ## Table of Contents
 
-* Design Principles
-  * Evaluating Design Complexity
-* Coupling and Cohesion
-  * **Coupling**
-  * Cohesion
-  * **Separation of Concerns**
-* Information Hiding
-  * Conceptual Integrity
-* Modelling Behaviour
-  * Inheritance Issues
-  * UML Sequence Diagrams
-  * UML State Diagram
-  * Model Checking
+- Design Principles
+  - Evaluating Design Complexity
+- Coupling and Cohesion
+  - **Coupling**
+  - Cohesion
+  - **Separation of Concerns**
+- Information Hiding
+  - Conceptual Integrity
+- Modelling Behaviour
+  - Inheritance Issues
+  - UML Sequence Diagrams
+  - UML State Diagram
+  - Model Checking
 
 ## Design Principles
 
 ### Evaluating Design Complexity
 
-It is important to keep modules simple when you are programming,  If your design complexity exceeds what developers can mentally handle, then bugs will occur more often.
+It is important to keep modules simple when you are programming, If your design complexity exceeds what developers can mentally handle, then bugs will occur more often.
 
 To help control this we use **Module**
 
-* Design complexity applies to both classes and methods so we use the term called **Module** to refer to program units containing classes and methods within them.
-* **Coupling** focuses on the complexity between a module and other modules.
-* **Cohesion** focuses on the complexity within a module.
+- Design complexity applies to both classes and methods so we use the term called **Module** to refer to program units containing classes and methods within them.
+- **Coupling** focuses on the complexity between a module and other modules.
+- **Cohesion** focuses on the complexity within a module.
 
 ## Coupling and Cohesion
 
@@ -57,21 +58,21 @@ These two concepts help to better apply OOD principles and achieve a more manage
 
 **Coupling** for a module captures the complexity of connecting the module to other modules
 
-* If your module **is highly reliant** on other modules, say this module is **tightly coupled** to others
-* If your module finds it **easy to connect** to other modules, say this module is **loosely coupled** to others, So it's important for your module to be **loose** or low not tight.
+- If your module **is highly reliant** on other modules, say this module is **tightly coupled** to others
+- If your module finds it **easy to connect** to other modules, say this module is **loosely coupled** to others, So it's important for your module to be **loose** or low not tight.
 
 When evaluating the Coupling of the module you need to consider metrics **degree**, **ease**, and **flexibility**
 
-* **Degree** is the number of **connections** between the module and others. With coupling, you want to keep the degree **small**, For instance, if the module needed to connect to other modules through a **few parameters or narrow interfaces,** then the degree would be small and coupling would be loose.
-* **Ease** is **how obvious** are the connections between the module and others. With coupling, you want the connections to **be easy to make** without needing to understand the implementations of the other modules.
-* **Flexibility** is how interchangeable the other modules are for this module. With coupling, you want the other modules **easily replaceable** **for something better** in the future.
+- **Degree** is the number of **connections** between the module and others. With coupling, you want to keep the degree **small**, For instance, if the module needed to connect to other modules through a **few parameters or narrow interfaces,** then the degree would be small and coupling would be loose.
+- **Ease** is **how obvious** are the connections between the module and others. With coupling, you want the connections to **be easy to make** without needing to understand the implementations of the other modules.
+- **Flexibility** is how interchangeable the other modules are for this module. With coupling, you want the other modules **easily replaceable** **for something better** in the future.
 
 ### Cohesion
 
 Cohesion represents the clarity of the responsibilities of a module.
 
-* If your module performs **one task and nothing else** or has a clear purpose, your module has **high cohesion**
-* If your module tries to encapsulate **more than one purpose** or has an unclear purpose, your module has **low cohesion**.
+- If your module performs **one task and nothing else** or has a clear purpose, your module has **high cohesion**
+- If your module tries to encapsulate **more than one purpose** or has an unclear purpose, your module has **low cohesion**.
 
 A bad design has low cohesion, if a module has more than one responsibility, it is a good idea to **split** the module.
 
@@ -112,8 +113,8 @@ It is important to balance between **low coupling and high cohesion** in system 
 
 For a complex system can be distributed between the modules or within the modules
 
-* As modules are simplified to achieve **high cohesion**, they may need to depend more on other modules thus **increase coupling.**
-* As connections between modules are simplified to achieve **low coupling**, they may to need to take more responsibilities thus **lowering cohesion**
+- As modules are simplified to achieve **high cohesion**, they may need to depend more on other modules thus **increase coupling.**
+- As connections between modules are simplified to achieve **low coupling**, they may to need to take more responsibilities thus **lowering cohesion**
 
 ### **Separation of Concerns**
 
@@ -125,15 +126,15 @@ Consider a software system that solves a problem. That problem could either be s
 
 How these abstractions are implemented in the software can lead to more concerns? Some of these concerns may involve:
 
-* What information the implementation represents
-* What it manipulates
-* What gets presented at the end
+- What information the implementation represents
+- What it manipulates
+- What gets presented at the end
 
 Importance of separation of concerns:
 
-* They allow you to develop and update sections of the software independently.
-* Using separation of concerns also means that you do not need to know how all sections of code work in order to update a section.
-* It allows changes to be made to one component without requiring a change in another.
+- They allow you to develop and update sections of the software independently.
+- Using separation of concerns also means that you do not need to know how all sections of code work in order to update a section.
+- It allows changes to be made to one component without requiring a change in another.
 
 The concerns that matter is addressed separately when applying the design principles of **abstraction, encapsulation, decomposition, and generalization**
 
@@ -165,15 +166,15 @@ So to make this class more cohesive and give each component distinctive function
 
 Just check what our class is concerned about and separate them out, for example, SmartPhone has two concerns
 
-* Act as a traditional phone
-* Be able to use the built-in camera to take pictures
+- Act as a traditional phone
+- Be able to use the built-in camera to take pictures
 
 So after applied separation of concerns
 
 ![seperation-of-concerns.png](https://raw.githubusercontent.com/aboelkassem/Design-Patterns/main/OOD/images/seperation-of-concerns.png "seperation of concerns")
 
 ```csharp
-public interface ICamera 
+public interface ICamera
 {
 	public void takePhoto();
 	public void savePhoto();
@@ -231,15 +232,15 @@ In general, things that might change like **implementation details** should be *
 
 **Information Hiding Through Encapsulation:** we use encapsulation to bundle attributes and behaviors into their appropriate class and expose an interface to provide access. which allows:
 
-* Hide implementation of behaviors and only accessible through an interface of specific methods, So other classes rely on the information in these method signatures, not the implementation
-* Change the implementation without changing the expected outcome
+- Hide implementation of behaviors and only accessible through an interface of specific methods, So other classes rely on the information in these method signatures, not the implementation
+- Change the implementation without changing the expected outcome
 
 So you can hide information through the use of **Access Modifiers** which C# have 4 different levels of access **Public**, **Protected**, **Private**, and **Internal**
 
-* **Attributes** with a **public** access modifier are accessible by **any class** in your system which means other classes can retrieve and modify the attribute. **Public Methods** are also accessible by any class in your system, but do not allow other classes to **change the implementation** of the behavior for the method, just other classes call the method and receive any output.
-* **Protected** Methods and Attributes are not accessible to every class in the system, they are only available to the encapsulating **class itself, all subclasses, and within the same package/namespace**
-* **Internal** Modifier The code is only accessible within its own assembly, but not from another assembly
-* **Private** Attributes and methods are **not accessible** by any class other than by the **encapsulating class itself,** This means these attributes cannot be accessed directly and these methods cannot be invoked by other classes.
+- **Attributes** with a **public** access modifier are accessible by **any class** in your system which means other classes can retrieve and modify the attribute. **Public Methods** are also accessible by any class in your system, but do not allow other classes to **change the implementation** of the behavior for the method, just other classes call the method and receive any output.
+- **Protected** Methods and Attributes are not accessible to every class in the system, they are only available to the encapsulating **class itself, all subclasses, and within the same package/namespace**
+- **Internal** Modifier The code is only accessible within its own assembly, but not from another assembly
+- **Private** Attributes and methods are **not accessible** by any class other than by the **encapsulating class itself,** This means these attributes cannot be accessed directly and these methods cannot be invoked by other classes.
 
 ### Conceptual Integrity
 
@@ -249,23 +250,23 @@ It about creating consistent software, making decisions about how your system wi
 
 You can achieve Conceptual integrity through:
 
-* **Communication** through adopting agile development practices like **Daily Stand-Up Meetings** and **sprint retrospectives** where team members agree to use certain libraries or methods when addressing certain issues, For example, team members can all follow a particular **naming convention**
-* **Code Reviews** are systematic examinations of written code like peer review in writing, which used to **find mistakes** in the software and keep different developers consistent with each other, Developers go through the code line by line and uncover issues in each other’s code.
-* Using **Design Principles** and **Design Patterns**
-* Having a **well-defined design or architecture** underlying the software, While software design is associated with guiding the internal design of process running as a single process, Software Architectures describe how software running as multiple processes work together which creates organized software consistency.
-* **Unifying concepts** are taking different concepts and finding commonality, For example, in the Unix OS every resource can be seen and manipulated a file, the same set of operations can be used on different types of resources.
-* Having a **small group** that accepts commits to the code base, which similar to code reviews but restricts the reviews to only members of your software team to ensure the software changes follow the overall architecture and design of the software to solve any design issues and lead to consistency.
+- **Communication** through adopting agile development practices like **Daily Stand-Up Meetings** and **sprint retrospectives** where team members agree to use certain libraries or methods when addressing certain issues, For example, team members can all follow a particular **naming convention**
+- **Code Reviews** are systematic examinations of written code like peer review in writing, which used to **find mistakes** in the software and keep different developers consistent with each other, Developers go through the code line by line and uncover issues in each other’s code.
+- Using **Design Principles** and **Design Patterns**
+- Having a **well-defined design or architecture** underlying the software, While software design is associated with guiding the internal design of process running as a single process, Software Architectures describe how software running as multiple processes work together which creates organized software consistency.
+- **Unifying concepts** are taking different concepts and finding commonality, For example, in the Unix OS every resource can be seen and manipulated a file, the same set of operations can be used on different types of resources.
+- Having a **small group** that accepts commits to the code base, which similar to code reviews but restricts the reviews to only members of your software team to ensure the software changes follow the overall architecture and design of the software to solve any design issues and lead to consistency.
 
 ## Modeling Behaviour
 
 ### Inheritance Issues
 
-Inheritance is a powerful design tool that can help you create clean, reusable, and maintainable software systems. But **misusing** inheritance can lead to **poor code** and that happens when creating **more problems** than they are meant to solve. 
+Inheritance is a powerful design tool that can help you create clean, reusable, and maintainable software systems. But **misusing** inheritance can lead to **poor code** and that happens when creating **more problems** than they are meant to solve.
 
 To know that you:
 
-* Ask yourself: "Am I using inheritance to simply share attributes or behaviors without further adding anything **special in my subclasses**?"
-* If the **Liskov Substitution Principle** is broken, this principle states that a subclass can replace a superclass, if and only if the subclass does not change the functionality of the superclass.
+- Ask yourself: "Am I using inheritance to simply share attributes or behaviors without further adding anything **special in my subclasses**?"
+- If the **Liskov Substitution Principle** is broken, this principle states that a subclass can replace a superclass, if and only if the subclass does not change the functionality of the superclass.
 
 Example for bad inheritance in java, In Stack data structure, the Java Stack class inherits from a Vector superclass. This means that the Stack class is able to return an element at a specified index, retrieve the index of an element, and even insert an element into a specific index. These are not behaviors normally expected from a stack.
 
@@ -291,11 +292,11 @@ Sequence diagrams are used to show your team how **objects** in your program **i
 
 **Components of Sequence Diagram**
 
-* **Boxes** are used to represent a role played by an object. The **role** is typically named after the class for the object
-* **Vertical dotted lines** are known as **lifelines** to represent an object as time passes by.
-* **Solid line Arrows** to show **messages** that are sent from one object to another. A short description of the message is usually included above the arrow
-* **Dotted line arrows** are used to show a return of data and control back to initiating objects.
-* **Small rectangles** along an object’s lifeline denote a **method activation**. You activate an object whenever an object sends, receives, or is waiting for a message.
+- **Boxes** are used to represent a role played by an object. The **role** is typically named after the class for the object
+- **Vertical dotted lines** are known as **lifelines** to represent an object as time passes by.
+- **Solid line Arrows** to show **messages** that are sent from one object to another. A short description of the message is usually included above the arrow
+- **Dotted line arrows** are used to show a return of data and control back to initiating objects.
+- **Small rectangles** along an object’s lifeline denote a **method activation**. You activate an object whenever an object sends, receives, or is waiting for a message.
 
 Sequence diagrams are typically framed within a large box which show that this is **one** sequence of activities, Also Sequence diagram can contain **other sequence diagrams** within it
 
@@ -303,7 +304,7 @@ Sequence diagrams are typically framed within a large box which show that this i
 
 ![UMLSequence-ex2.png](https://raw.githubusercontent.com/aboelkassem/Design-Patterns/main/OOD/images/UMLSequence-ex2.png "UML Sequence diagram example 2")
 
-When sequence diagrams get more complicated, you can also show **Loops** and **Alternative** processes in a sequence diagram, for the above example when the Viewer is unsure what channel to go to. and would like to surf the channels until finding a channel they like 
+When sequence diagrams get more complicated, you can also show **Loops** and **Alternative** processes in a sequence diagram, for the above example when the Viewer is unsure what channel to go to. and would like to surf the channels until finding a channel they like
 
 ![UMLSequence-ex3.png](https://raw.githubusercontent.com/aboelkassem/Design-Patterns/main/OOD/images/UMLSequence-ex3.png "UML Sequence diagram example 3")
 
@@ -319,20 +320,21 @@ When sequence diagrams get more complicated, you can also show **Loops** and **A
 
 UML State Diagram components
 
-* **Filled circle** to indicate the **start state** of the diagram.
-* **Arrows** are used to represent **events** to **transition** from one state to another
-* **Rounded rectangles** indicate other states which have three sections a **state name**, **state variables**, and **activities**
+- **Filled circle** to indicate the **start state** of the diagram.
+- **Arrows** are used to represent **events** to **transition** from one state to another
+- **Rounded rectangles** indicate other states which have three sections a **state name**, **state variables**, and **activities**
 
-  * **State name** is the name of the state, it should be meaningful for the states of your object
-  * **State Variables** are data relevant to the state of the object
-  * **Activities** are actions that are performed in the state, there are three types for each state, **entry, exit, and do**
+  - **State name** is the name of the state, it should be meaningful for the states of your object
+  - **State Variables** are data relevant to the state of the object
+  - **Activities** are actions that are performed in the state, there are three types for each state, **entry, exit, and do**
 
-    * **Entry** activities are actions that occur when the state is **just entered** from another state
-    * **Exit** activities are actions that occur when the state **is exited** and moves on to another.
-    * **Do** activities are actions that occur **once, or multiple times**
-* **Termination** represents an object being **destroyed** or the process is **completed**
+    - **Entry** activities are actions that occur when the state is **just entered** from another state
+    - **Exit** activities are actions that occur when the state **is exited** and moves on to another.
+    - **Do** activities are actions that occur **once, or multiple times**
 
-**Example** of Vending machine 
+- **Termination** represents an object being **destroyed** or the process is **completed**
+
+**Example** of Vending machine
 
 ![UMLState-ex.png](https://raw.githubusercontent.com/aboelkassem/Design-Patterns/main/OOD/images/UMLState-ex.png "UML State Diagram")
 
@@ -352,9 +354,9 @@ Imagine software that has a rule not to produce a **deadlock, Deadlock** is a si
 
 The three different phases to performing model checking :
 
-* **The Modeling phase**: where you enter **a model description** in whatever programming language your system uses, describe the desired properties.
-* **The Running phase:** this is when you **run the model checker** to see how your model conforms to the desired properties that you've written in the modeling phase.
-* **The Analysis phase**: this is when you **check** if all the desired properties are satisfied and if any are violated (Counterexamples), proving information to you where to fix any problems.
+- **The Modeling phase**: where you enter **a model description** in whatever programming language your system uses, describe the desired properties.
+- **The Running phase:** this is when you **run the model checker** to see how your model conforms to the desired properties that you've written in the modeling phase.
+- **The Analysis phase**: this is when you **check** if all the desired properties are satisfied and if any are violated (Counterexamples), proving information to you where to fix any problems.
 
 Model checking helps ensure not only that software is well designed, but also that software meets desired properties and behavior, and it works as intended. There are also many ways to test your system's behaviors like **unit testing**, beta testing and simulations
 

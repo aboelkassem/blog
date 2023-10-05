@@ -10,6 +10,7 @@ metaDescription: aboelkassem blog is the personal blog of Mohamed Abdelrahman.
   Topics include coding, movies, graphics, books, science or anything under the
   sun and beyond.
 ---
+
 Hi there <!--StartFragment-->👋🏻<!--EndFragment-->! \
 My name is **[Mohamed Abdelrahman](https://www.aboelkassem.tech)** and this is **my personal blog** in which I write tech notes and articles mostly related to .Net Technology, web development and other related software topics. I am currently working with Angular and ASP.NET Core, so those are most likely the topics I will be covering here, because I do like working with it and I've been doing it for quite a while. Hope you find the content here valuable.
 

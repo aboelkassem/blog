@@ -16,25 +16,26 @@ tags:
   - clean-code
   - object-oriented-modeling
 ---
+
 In this article, we will discuss the important concept of object-oriented design and analysis, but first, we will take a look at why we need to do architecture for my software, and the most common ways to analyze and model your software.
 
 ## Table of Contents
 
-* What is OOP?
-* Software Architect and Design Roles in Industry
-* Object-Oriented Modeling
-  * **why should you use objects to represent things in your code?**
-* Design in the Software Process
-  * Example
-  * **Satisfying Qualities**
-  * Class Responsibility Collaborator (CRC)
-* Object-Oriented Modeling
-  * Evolution of Programming Languages
-  * Four Design Principles
-    * Abstraction
-    * Encapsulation
-    * Decomposition
-    * Generalization
+- What is OOP?
+- Software Architect and Design Roles in Industry
+- Object-Oriented Modeling
+  - **why should you use objects to represent things in your code?**
+- Design in the Software Process
+  - Example
+  - **Satisfying Qualities**
+  - Class Responsibility Collaborator (CRC)
+- Object-Oriented Modeling
+  - Evolution of Programming Languages
+  - Four Design Principles
+    - Abstraction
+    - Encapsulation
+    - Decomposition
+    - Generalization
 
 ### What is OOP?
 
@@ -58,9 +59,9 @@ when solving a problem, object-oriented modeling involves the practice of repres
 
 ### **why should you use objects to represent things in your code?**
 
-* to keep your code **organized, flexible and reusable**
-* keeps code organized by having **related details and specific functions** in distinct, easy to find places to creates **flexibility**
-* flexibility enables you **easily change details** in a modular way **without affecting the rest of the code,** and **reuse code to keep your program simple.**
+- to keep your code **organized, flexible and reusable**
+- keeps code organized by having **related details and specific functions** in distinct, easy to find places to creates **flexibility**
+- flexibility enables you **easily change details** in a modular way **without affecting the rest of the code,** and **reuse code to keep your program simple.**
 
 **With object-oriented thinking,** you often think of everything as objects event living things and all these objects are self-aware event inanimate things.
 
@@ -85,7 +86,7 @@ For the design phase, you will have to think like an **architect**, which means 
 
 starting with **eliciting requirements** which involve not only listening to what the client is telling you but asking questions to clarify what the client has not told you, once these revealing follow-up questions you now have an initial set of requirements allowing you to start thinking of possible designs.
 
-these requirements involve producing a Conceptual Design and Technical Design which representing two kinds of artifacts ⇒  **Conceptual mockups** and **Technical diagrams**
+these requirements involve producing a Conceptual Design and Technical Design which representing two kinds of artifacts ⇒ **Conceptual mockups** and **Technical diagrams**
 
 **Conceptual mockups** provide your initial thoughts for how the requirements will be satisfied, focusing on **components** and **connections**, each component has a **responsibility** of it does or what its purpose and avoid technical details to clarify design decisions with clients and users.
 
@@ -93,7 +94,7 @@ these requirements involve producing a Conceptual Design and Technical Design wh
 
 **Technical diagrams** are responsible for describing how these responsibilities are met, by start specifying the technical details of each component, this done by splitting components into smaller and smaller components to help coordinate development work.
 
-**Components** turn into collections of function, classes, or other components, these pieces then represent a much simpler problem that developers can implement. 
+**Components** turn into collections of function, classes, or other components, these pieces then represent a much simpler problem that developers can implement.
 
 ### Example
 
@@ -107,7 +108,7 @@ for university course search website task
 
 **Technical design ⇒** takes each component by technical details by answering the following question....how does the search page fulfill its responsibility of searching?
 
-* does the page need to talk to an external system ? or the university already has a course database component to connect the Search Page Component with Course Database Component
+- does the page need to talk to an external system ? or the university already has a course database component to connect the Search Page Component with Course Database Component
   ![example1-TD.png](https://raw.githubusercontent.com/aboelkassem/Design-Patterns/main/OOD/images/example1-TD.png "example 1")
 
 **if the design satisfying requirements?** some software design decisions will involve tradeoffs in different quality attributes such as **performance**, **convenience**, and **security.** so it's important to consider how quality attributes can compete in a proposed solution under different situations. Then, taking this into account and weighing it against the requirements of the product, a suitable compromise can be determined.
@@ -116,7 +117,7 @@ for university course search website task
 
 Qualities are achieved through satisfying functional and non-functional requirements, which in turn are the basis for the design process.
 
-For software, there are **Functional Requirements** that describe what the system or application is expected to do.  For example, if you are designing a media app, the app must be able to download and play a full-length movie. So the key quality is simply **correctness** to build software design solutions to meet such requirements correctly.
+For software, there are **Functional Requirements** that describe what the system or application is expected to do. For example, if you are designing a media app, the app must be able to download and play a full-length movie. So the key quality is simply **correctness** to build software design solutions to meet such requirements correctly.
 
 **Non-Functional Requirements** specify how well the system or application **does what it does**. Such requirements may describe how well the software runs in particular situations. Non-functional requirements to satisfy might include **performance, resource usage, and efficiency**; these requirements can be measured from the running software. For example, the media app can have non-functional requirements to download a full-length movie at a specific speed and to play such a movie within a memory limit. other qualities non-function satisfies are **reusability, flexibility, and maintainability.**
 
@@ -126,8 +127,8 @@ You must satisfy qualities that matter to users as well as for its developers, s
 
 Below are some common trade-offs in qualities for software design:
 
-* Performance and maintainability – High-performance code may be **less clear** and **less modular**, making it **harder to maintain.** Alternately, extra code for backward compatibility
-* Performance and security – Extra overhead for high security may **reduce performance**
+- Performance and maintainability – High-performance code may be **less clear** and **less modular**, making it **harder to maintain.** Alternately, extra code for backward compatibility
+- Performance and security – Extra overhead for high security may **reduce performance**
 
 so you have to strike a **balance** during design. You should ask how much performance, maintainability, security, or backward compatibility is needed.
 
@@ -135,10 +136,10 @@ so you have to strike a **balance** during design. You should ask how much perfo
 
 when identifying **components, connections, and responsibilities** from some requirements when forming the conceptual design. CRC cards help you to **organize your components into classes**, identifying the **responsibilities**, and determine how they will **collaborate with each other.** Its **records and organize and refine** the components into your software.
 
-* CRC Structure
+- CRC Structure
   ![crc_card.png](https://raw.githubusercontent.com/aboelkassem/Design-Patterns/main/OOD/images/crc_card.png "crc card")
 
-    **Collaborators** are other classes that the class **interacts** with to fulfill its responsibilities. So in the collaborator's section, you list other components that your current component connects with.
+  **Collaborators** are other classes that the class **interacts** with to fulfill its responsibilities. So in the collaborator's section, you list other components that your current component connects with.
 
 **Example on ATM bank machine.**
 
@@ -156,15 +157,15 @@ Also, you man notice that the bank machine consists of other objects like **Card
 
 # Object-Oriented Modeling
 
-One approach to help make the design process easier is the object-oriented approach. This allows for the description of concepts in the problem and solution spaces as **objects**. objects are a notion that can be understood by both users and developers because **object-oriented thinking** applies to many fields. This shared knowledge makes it possible for users and developers to discuss elements of complex problems. 
+One approach to help make the design process easier is the object-oriented approach. This allows for the description of concepts in the problem and solution spaces as **objects**. objects are a notion that can be understood by both users and developers because **object-oriented thinking** applies to many fields. This shared knowledge makes it possible for users and developers to discuss elements of complex problems.
 
 Even here, you don't go straight from the problem to writing the code, you have to do **Conceptual Design involving Object-Oriented Analysis** to identify the key objects in the problem. also, **Technical Design involving Object-Oriented Design** to further refine the details of the objects including their attributes and behaviors.
 
 The goal during Software Design is to construct and refine **models** of all the objects, these models are useful throughout the design process.
 
-* **Entity** where initial focus during the design is placed in the problem space.
-* **Control** objects that receive events and actions.
-* **Boundary** that connects services outside your system.
+- **Entity** where initial focus during the design is placed in the problem space.
+- **Control** objects that receive events and actions.
+- **Boundary** that connects services outside your system.
 
 The Models are expressed in a visual notation, called **Unified Modelling Language (UML).**
 
@@ -176,9 +177,9 @@ In the 1980s, Object-Oriented Design that is central to object-oriented programm
 
 **The goal of object-oriented design is to:**
 
-* Make an abstract data type easier write.
-* Structure a system around abstract data types called **classes**
-* Introduce the ability for an abstract data type to extend another by introducing a concept called **inheritance**
+- Make an abstract data type easier write.
+- Structure a system around abstract data types called **classes**
+- Introduce the ability for an abstract data type to extend another by introducing a concept called **inheritance**
 
 The advantage of using programming paradigms like OOP is that the system will mimic the structure of the problem meaning that any object-oriented program is capable of representing **real-world objects** or ideas with more fidelity that allows developers to compartmentalize the data and how it can be manipulated in their own separate classes.
 
@@ -193,7 +194,6 @@ as a developer you need to have a broad **understanding of what is out there in 
 Also Object-oriented programming is a powerful tool but is not only in your toolbox. Object-oriented design is not always the best approach for everything because the design may not fit the problem, Remember to be efficient with your time event if this means taking a non-object-oriented approach.
 
 Here is some **history of programming languages** and paradigms and the issues they met.
-
 
 ![COBOL-Fortran.png](https://raw.githubusercontent.com/aboelkassem/Design-Patterns/main/OOD/images/COBOL-Fortran.png "cobol and fortran languages")
 
@@ -217,20 +217,20 @@ It's up to you to choose the abstraction that is most appropriate for your purpo
 
 **For example**, the context is an academic setting, so abstraction for a student will be the essential characteristics/attributes of him:
 
-* The courses they are currently taking
-* Their grades in each course
-* The Student ID number
+- The courses they are currently taking
+- Their grades in each course
+- The Student ID number
 
 Another example for defining attributes of a cat from the context of a cat owner
 
-* A cat will have basic attributes like name, color, favorite Nap location, microchip number
+- A cat will have basic attributes like name, color, favorite Nap location, microchip number
 
-Also, abstraction should describe a base **behavior**, Like for **student** would be Studying, doing assignments, attending lectures which are responsibilities that student abstraction does for it's purpose. 
+Also, abstraction should describe a base **behavior**, Like for **student** would be Studying, doing assignments, attending lectures which are responsibilities that student abstraction does for it's purpose.
 
 **Example** of abstraction of lion
 
-* attributes like age, beard, size and it's color
-* behaviors like hunting, eating and sleeping
+- attributes like age, beard, size and it's color
+- behaviors like hunting, eating and sleeping
 
 In abstraction anything other than a concept's essential **attributes and behaviors** is irrelevant focusing the context and purpose of this object into our app to simplifying your class design so the are more focused and understandable to someone else viewing them.
 
@@ -242,9 +242,9 @@ Thinking of how we abstract **Food** object in CRC and Class diagram
 
 Class diagram contains
 
-* Class Name is **Food**
-* Properties which define C# Members ⇒ \[variable name]:\[variable type]
-* Operations which define C# Methods ⇒ name( \[parameter list] ): \[return type]
+- Class Name is **Food**
+- Properties which define C# Members ⇒ \[variable name]:\[variable type]
+- Operations which define C# Methods ⇒ name( \[parameter list] ): \[return type]
 
 Class diagram is very close to implementation which making the translation to code very easy
 
@@ -271,30 +271,30 @@ Encapsulation is a fundamental design principle in object-oriented modeling and 
 
 So after **Abstraction** that determine the attributes and behaviors that are relevant to concept in some context ⇒ **Encapsulation** ensures that these characteristics are bundled together in the same class
 
-* **For example** Student object should "**knows**" relevant data like degree program, the Course object would "**know**" a list of students taking it, Professor object would "**know**" a list of courses teaches.
+- **For example** Student object should "**knows**" relevant data like degree program, the Course object would "**know**" a list of students taking it, Professor object would "**know**" a list of courses teaches.
 
 Also, the methods manipulate the attribute values in the object to achieve the actual behaviors, by **Exposing** some methods to be accessible to objects, and **restricts** other.
 
-* **For example** Course can provide a method to allow a student to enroll in the course or a Course that allow professor to see the students in that course.
+- **For example** Course can provide a method to allow a student to enroll in the course or a Course that allow professor to see the students in that course.
 
-**Encapsulation helps with data integrity** so you can define methods and attributes of class to be **restricted** from outside to access except through specific methods. 
+**Encapsulation helps with data integrity** so you can define methods and attributes of class to be **restricted** from outside to access except through specific methods.
 
 **Encapsulation can secure sensitive information,** for example, allowing a Student class to store a degree program and GPA without reveals it's actual value so it has a method that tells whether the student is in good standing for the degree program or not.
 
 **Encapsulation helps with software changes** so the accessible interface of the class will remain the same, while implementation of attributes and methods can change.
 
-* **For example** Professor need to know student GPA, student have many ways to calculate his GPA like entering Student Information system or go to administrator to get. So Professor don't care how the student will get from.
+- **For example** Professor need to know student GPA, student have many ways to calculate his GPA like entering Student Information system or go to administrator to get. So Professor don't care how the student will get from.
 
 In programming, this thinking called **Black Box** Thinking, you think of a class like a black box that you cannot see details inside of how attributes are represented or how methods compute the result, you just provide inputs and obtain outputs by calling methods so it doesn't matter what happens in the box to achieve the expected behaviors.
 
-**Encapsulation** achieves **Abstraction Barrier** since the internal workings are not relevant to the outside world to **reduces complexity** for the users of a class and **increases reusability** because another class only needs to know the right method to call to get desired behavior. 
+**Encapsulation** achieves **Abstraction Barrier** since the internal workings are not relevant to the outside world to **reduces complexity** for the users of a class and **increases reusability** because another class only needs to know the right method to call to get desired behavior.
 
-**Encapsulation UML Class diagram and C# Code Example** 
+**Encapsulation UML Class diagram and C# Code Example**
 
 There are two different kinds of methods typically used to preserve data integrity. These are:
 
-* **Getter Methods** are methods that retrieve data, and their names typically begin with getting and end with the name of the attribute whose value you will be returning.
-* **Setter Methods** change data, and their name typically begin with set and end with the name of the variable you wish to set. Also Setters are used to **set private attribute** in a safe way.
+- **Getter Methods** are methods that retrieve data, and their names typically begin with getting and end with the name of the attribute whose value you will be returning.
+- **Setter Methods** change data, and their name typically begin with set and end with the name of the variable you wish to set. Also Setters are used to **set private attribute** in a safe way.
 
 ![encap-ex.png](https://raw.githubusercontent.com/aboelkassem/Design-Patterns/main/OOD/images/encap-ex.png "encapsulation")
 
@@ -323,33 +323,33 @@ public class Student
 
 ### Decomposition
 
-Decomposition is taking a **whole** thing and dividing it up into different **parts**, Or on the flip side, taking a bunch of separate parts with different functionalities and **combining** them together to form a whole, Decomposition allows you to further beak down problems into pieces that are easier to understand and solve. 
+Decomposition is taking a **whole** thing and dividing it up into different **parts**, Or on the flip side, taking a bunch of separate parts with different functionalities and **combining** them together to form a whole, Decomposition allows you to further beak down problems into pieces that are easier to understand and solve.
 
 **The general rule** for decomposition it to look at the different responsibilities of the some **whole** thing, and evaluate how you can **separate** them into different parts each with its own responsibility.
 
-* **For example** when identifying the different parts of a **car** like transmission, motor, wheels, tires, doors, windows, seats, and fuel. each of these parts had a specific purpose to achieve the responsibilities of the whole.
+- **For example** when identifying the different parts of a **car** like transmission, motor, wheels, tires, doors, windows, seats, and fuel. each of these parts had a specific purpose to achieve the responsibilities of the whole.
 
 **The Nature of Parts**
 
 A whole might have a **fixed** or **dynamic** number of a certain type of part.
 
-* If there is a **fixed number** then over the lifetime of the whole object it will have exactly that much of the part object, **for example** a refrigerator have fixed number of freezers and not change over time.
-* Sometimes parts with a **dynamic number** meaning the whole object may gain new instances of those part objects over its lifetime, **for example,** a refrigerator can have a dynamic number of food items over time, or passengers in a car.
+- If there is a **fixed number** then over the lifetime of the whole object it will have exactly that much of the part object, **for example** a refrigerator have fixed number of freezers and not change over time.
+- Sometimes parts with a **dynamic number** meaning the whole object may gain new instances of those part objects over its lifetime, **for example,** a refrigerator can have a dynamic number of food items over time, or passengers in a car.
 
 Note that a **part** can also serve as a **whole**, which is made up of further **parts**. For example, a kitchen is a part of a house. But the kitchen may be made up of further parts, such as an oven and a refrigerator.
 
 **Composition** involving the lifetimes of the whole object and the part objects that are be related.
 
-* **For example,** the engine typically has the same lifetime as the car - when the engine goes, so does the car! The wheels, on the other hand, are replaced many times over the course of a car's life.
-* Whole things may also contain parts that are **shared** with another whole at the same time. However, sometimes sharing a part is not possible or intended.
+- **For example,** the engine typically has the same lifetime as the car - when the engine goes, so does the car! The wheels, on the other hand, are replaced many times over the course of a car's life.
+- Whole things may also contain parts that are **shared** with another whole at the same time. However, sometimes sharing a part is not possible or intended.
 
 **Composition UML Class diagram and C# Code example**
 
 There are three types of **relationships** found in decomposition that define the interaction between the whole and the parts:
 
-* Association
-* Aggregation
-* Composition
+- Association
+- Aggregation
+- Composition
 
 **Association** is "some" relationship. This means that there is a loose relationship/no dependent between two objects. These objects may interact with each other for some time. for example, an object of a class may use services/methods provided by object of anther class like food and wine, student and sports, kitten and yarn. each of these relationships is between completely separate entities, if one object is **destroyed**, the other can **continue to exist.**
 
@@ -357,7 +357,7 @@ The following fig shows a class diagram with two objects that have association r
 
 ![association-ex.png](https://raw.githubusercontent.com/aboelkassem/Design-Patterns/main/OOD/images/association-ex.png "association")
 
-<b>0..*</b> ⇒ means a Person object is associated with **zero or more** airline objects and the same with Airline object is associated with **zero or more** person objects.
+<b>0..\*</b> ⇒ means a Person object is associated with **zero or more** airline objects and the same with Airline object is associated with **zero or more** person objects.
 
 ```csharp
 public class Student
@@ -449,7 +449,7 @@ When model behaviors using **methods** to eliminates the need to have identical 
 
 **Generalization UML Class diagram and C# Code example**
 
-The following figures show how diagram inheritance in UML diagram and example 
+The following figures show how diagram inheritance in UML diagram and example
 
 ![generalization-ex1.png](https://raw.githubusercontent.com/aboelkassem/Design-Patterns/main/OOD/images/generalization-ex1.png "generlization example 1")
 
@@ -514,11 +514,11 @@ public class Cat: Animal
 
 Interface is like a contract to be fulfilled by implementing classes, used to only describe behaviors.
 
-* Interface like abstract classes which cannot be instantiated, which mean you can implement **polymorphism** meaning \*\*\*\*when two classes have the same description of behavior but implementation may be different
-* Interface can inherit from other interfaces
-* Interface inheritance should be abused, this means you should not be extending interfaces if you trying to create a larger interface
-* C# and java does not support multi-inheritance classes because this cause **Data Ambiguity** meaning when a subclass inherits from two or more with have the attributes with the same name or methods signature, how do we distinguish between them?
-* So Class can implement as many interfaces as we want
+- Interface like abstract classes which cannot be instantiated, which mean you can implement **polymorphism** meaning \*\*\*\*when two classes have the same description of behavior but implementation may be different
+- Interface can inherit from other interfaces
+- Interface inheritance should be abused, this means you should not be extending interfaces if you trying to create a larger interface
+- C# and java does not support multi-inheritance classes because this cause **Data Ambiguity** meaning when a subclass inherits from two or more with have the attributes with the same name or methods signature, how do we distinguish between them?
+- So Class can implement as many interfaces as we want
 
 ![interface-ex1.png](https://raw.githubusercontent.com/aboelkassem/Design-Patterns/main/OOD/images/interface-ex1.png "interface-ex1")
 
@@ -527,9 +527,9 @@ Interface is like a contract to be fulfilled by implementing classes, used to on
 ```csharp
 interface IAnimal
 {
-    public void move(); 
-    public void speak(); 
-    public void eat(); 
+    public void move();
+    public void speak();
+    public void eat();
 }
 
 class Dog :IAnimal
@@ -551,8 +551,8 @@ class Cat : IAnimal
 }
 ```
 
-* Classes can implement one or more interfaces at the time, which allows them to have multiple types.
-* Interfaces enable you to describe behaviors without the need to implement them, which allows you to reuse these abstractions.
+- Classes can implement one or more interfaces at the time, which allows them to have multiple types.
+- Interfaces enable you to describe behaviors without the need to implement them, which allows you to reuse these abstractions.
 
 ![class-vs-interface.png](https://raw.githubusercontent.com/aboelkassem/Design-Patterns/main/OOD/images/class-vs-interface.png "class-vs-interface")
 

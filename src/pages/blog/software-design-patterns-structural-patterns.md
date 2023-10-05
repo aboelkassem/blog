@@ -19,28 +19,29 @@ tags:
   - software-design
   - c#
 ---
+
 In the [previous article](https://blog.aboelkassem.tech/blog/design-patterns-creational-patterns), we had discussed what is design patterns and creational design patterns, Today, we will continue to explain the design patterns and we will discuss the structural design patterns.
 
 ## Table of Contents
 
-* Structural Patterns
-  * Facade Pattern
-  * Adapter Pattern
-  * Composite Pattern
-  * Proxy Pattern
-  * Decorator Pattern
+- Structural Patterns
+  - Facade Pattern
+  - Adapter Pattern
+  - Composite Pattern
+  - Proxy Pattern
+  - Decorator Pattern
 
 ## Structural Patterns
 
 Structural patterns are concerned with the composition or relationships of classes i.e. how the classes are made up or constructed or they help in answering "How to build a software component?", in other words how the entities can use each other.
 
-* Proxy Pattern
-* Decorator Pattern
-* Adapter Pattern
-* Facade Pattern
-* Bridge Pattern
-* Composite Pattern
-* Flyweight Pattern
+- Proxy Pattern
+- Decorator Pattern
+- Adapter Pattern
+- Facade Pattern
+- Bridge Pattern
+- Composite Pattern
+- Flyweight Pattern
 
 ### Facade Pattern
 
@@ -64,7 +65,7 @@ To Solve this problem we introduce the **BankService** Class to act as a **facad
 
 **Steps to apply Facade Design Pattern**
 
-* **Step1:** Design the interface
+- **Step1:** Design the interface
 
 ```csharp
 public interface IAccount
@@ -76,7 +77,7 @@ public interface IAccount
 }
 ```
 
-* **Step2**: Implement the interface with one or more classes
+- **Step2**: Implement the interface with one or more classes
 
 ```csharp
 public class Chequing : IAccount {.....}
@@ -84,7 +85,7 @@ public class Saving : IAccount {.....}
 public class Investment : IAccount {.....}
 ```
 
-* **Step3**: Create the facade class and wrap the classes that implement the interface
+- **Step3**: Create the facade class and wrap the classes that implement the interface
 
 ```csharp
 public class BankService
@@ -135,7 +136,7 @@ public class BankService
 }
 ```
 
-* **Step4:** Use the facade class to access the subsystem/client class
+- **Step4:** Use the facade class to access the subsystem/client class
 
 ```csharp
 public class Customer
@@ -170,10 +171,10 @@ As the name suggests, an adapter is a device that is used to connect pieces of e
 
 **Class Diagram and The Parts of Adapter Pattern**
 
-* **Client**: the class who wants to use a third-party library or external system
-* **Adaptee**: the class in the third-party library or external system to be used
-* **Adapter**: the class sites between client and the adaptee, it implement a target interface to conforms what the client is expecting to see.
-* **Target Interface**: the interface which the client will use.
+- **Client**: the class who wants to use a third-party library or external system
+- **Adaptee**: the class in the third-party library or external system to be used
+- **Adapter**: the class sites between client and the adaptee, it implement a target interface to conforms what the client is expecting to see.
+- **Target Interface**: the interface which the client will use.
   ![adapter-diagram-1.png](https://raw.githubusercontent.com/aboelkassem/Design-Patterns/main/Images/adapter-diagram-1.png "adapter design pattern")
   ![adapter-diagram-2.png](https://raw.githubusercontent.com/aboelkassem/Design-Patterns/main/Images/adapter-diagram-2.png "adapter pattern diagram")
 
@@ -185,7 +186,7 @@ The above diagram shows that the **client** sends a request to the **adapter** u
 
 For example is the WebClient want to send **any object** but the WebService only accept a **JSON object**
 
-* **Step1:** Design the target interface
+- **Step1:** Design the target interface
 
 ```csharp
 public interface IWebRequester
@@ -194,7 +195,7 @@ public interface IWebRequester
 }
 ```
 
-* **Step2**: Implement the target interface with the adapter class
+- **Step2**: Implement the target interface with the adapter class
 
 ```csharp
 public class WebAdapter : IWebRequester
@@ -217,7 +218,7 @@ public class WebAdapter : IWebRequester
 }
 ```
 
-* **Step3**: Send the request from the client to the adapter using the target interface
+- **Step3**: Send the request from the client to the adapter using the target interface
 
 ```csharp
 public class WebClient
@@ -242,7 +243,7 @@ public class WebClient
 }
 ```
 
-* **In the main program**, the Web Adapter, the Web Service, and the Web Client need to be instantiated, The **WebClient** deals with the **adapter** through the **WebRequester** interface to send a request. The WebClient should not need to know anything about the **WebService**, such as its need for JSON objects.
+- **In the main program**, the Web Adapter, the Web Service, and the Web Client need to be instantiated, The **WebClient** deals with the **adapter** through the **WebRequester** interface to send a request. The WebClient should not need to know anything about the **WebService**, such as its need for JSON objects.
 
 ```csharp
 class Program
@@ -271,8 +272,8 @@ This is not always feasible, especially if the other interface is from **a third
 
 A **composite design pattern** is meant to achieve two goals:
 
-* To compose nested structures of objects
-* To deal with the classes for these objects uniformly
+- To compose nested structures of objects
+- To deal with the classes for these objects uniformly
 
 **Class Diagram**
 
@@ -294,8 +295,8 @@ It is easier to think of composite design patterns as **trees**:
 
 The Composite design pattern is used to address two issues:
 
-* How de we use individual types of objects to build a tree-like structure?
-* How can we treat the individual types without checking their types?
+- How de we use individual types of objects to build a tree-like structure?
+- How can we treat the individual types without checking their types?
 
 Solve this by enforcing **polymorphism** across each class through implementing **an interface** (or inheriting from a super class) and use technique recursive composition which allows objects to be composed of other objects that are of a common type.
 
@@ -316,7 +317,7 @@ Solve this by enforcing **polymorphism** across each class through implementing 
 
 **The Steps to implement the composite pattern**
 
-* **Step1:** Design the interface the defines the overall type
+- **Step1:** Design the interface the defines the overall type
 
 ```csharp
 public interface IStructure
@@ -328,7 +329,7 @@ public interface IStructure
 }
 ```
 
-* **Step 2:** Implement the composite class
+- **Step 2:** Implement the composite class
 
 ```csharp
 public class Housing : IStructure
@@ -341,7 +342,7 @@ public class Housing : IStructure
         this._structures = new List<IStructure>();
         this.Address = address;
     }
-    
+
     public string getName()
     {
         return this.Address;
@@ -378,7 +379,7 @@ public class Housing : IStructure
 }
 ```
 
-* **Step 3:** Implement the leaf class
+- **Step 3:** Implement the leaf class
 
 ```csharp
 public class Room : IStructure
@@ -407,7 +408,7 @@ public class Room : IStructure
 }
 ```
 
-* **In main program/client**
+- **In main program/client**
 
 ```csharp
 class Program
@@ -450,9 +451,9 @@ Proxy Pattern provides a surrogate or placeholder for another object to control 
 
 So the client will interact with the proxy class instead of real "subject" class, **So why we use a proxy class and its types**?
 
-* **To act as a virtual proxy** where the proxy class is used in place of a real class like using on Images and web pages or graphics editors, because single high image can be extremely large. or you have a heavyweight service that wastes system resources by being always up, even you don't need it at this time
-* **To act as a protection proxy** in order to control access to real subject class like using on learning management system that checks the credentials of a user or checking the count of Free SMS subscription
-* **To act as a remote proxy** where the proxy class is local and the real subject class exists remotely like using on Google API Document on your machine and in google server as third-party API
+- **To act as a virtual proxy** where the proxy class is used in place of a real class like using on Images and web pages or graphics editors, because single high image can be extremely large. or you have a heavyweight service that wastes system resources by being always up, even you don't need it at this time
+- **To act as a protection proxy** in order to control access to real subject class like using on learning management system that checks the credentials of a user or checking the count of Free SMS subscription
+- **To act as a remote proxy** where the proxy class is local and the real subject class exists remotely like using on Google API Document on your machine and in google server as third-party API
 
 **Class Diagram**
 
@@ -468,7 +469,7 @@ So the client will interact with the proxy class instead of real "subject" class
 
 **Steps to Implement Proxy Pattern**
 
-* Step 1: Design the subject interface
+- Step 1: Design the subject interface
 
 ```csharp
 public interface IOrder
@@ -477,7 +478,7 @@ public interface IOrder
 }
 ```
 
-* Step 2: Implement the real subject class
+- Step 2: Implement the real subject class
 
 ```csharp
 public class Warehouse : IOrder
@@ -506,7 +507,7 @@ public class Warehouse : IOrder
 }
 ```
 
-* Step 3: Implement the proxy class
+- Step 3: Implement the proxy class
 
 the `OrderFulfillment` class **checks** warehouse inventory and **ensures** that an order can be completed **before sending** requests to the warehouse. To do this, it asks each warehouse if it has enough stock of a particular item. If a warehouse does, then the item gets added to a new Order object that will be sent to the Warehouse. The OrderFulfillment class also lets you separate order validation from the order fulfillment by separate them into two pieces. This improves the overall rate of processing an order, as the warehouse does not have to worry about the validation process or about re-routing an order if it cannot be fulfilled.
 
@@ -531,7 +532,7 @@ public class OrderFulFillment : IOrder
         {
             foreach (var warehouse in Warehouses)
             {
-                // ..... 
+                // .....
 								// if item in stock
 								// warehouse.FulFillOrder(order);
             }
@@ -550,10 +551,10 @@ Decorator Pattern allows additional behaviors or responsibilities to be dynamica
 
 **Like** a Black Coffee, Milk Coffee, Whip Coffee, and Vanilla Coffee
 
-* Black Coffee = the base
-* Milk Coffee = Black Coffee + Milk
-* Whip Coffee = Black Coffee + Milk + Whip
-* Vanilla Coffee = Black Coffee + Milk + Whip + Vanilla
+- Black Coffee = the base
+- Milk Coffee = Black Coffee + Milk
+- Whip Coffee = Black Coffee + Milk + Whip
+- Vanilla Coffee = Black Coffee + Milk + Whip + Vanilla
 
 ![decorator-adding-functionality.png](https://raw.githubusercontent.com/aboelkassem/Design-Patterns/main/Images/decorator-adding-functionality.png "decorator adding functionality")
 
@@ -583,7 +584,7 @@ you can define any number of additional behaviors you want to `ConcereteSMSServi
 
 **Steps to implement Decorator Pattern**
 
-* **Step 1:** Design the component interface
+- **Step 1:** Design the component interface
 
 ```csharp
 public interface ISMSService
@@ -592,7 +593,7 @@ public interface ISMSService
 }
 ```
 
-* **Step 2:** Implement the interface with your base concrete component class
+- **Step 2:** Implement the interface with your base concrete component class
 
 ```csharp
 public class ConcereteSMSService : ISMSService
@@ -604,7 +605,7 @@ public class ConcereteSMSService : ISMSService
 }
 ```
 
-* **Step 3:** Implement the interface with your abstract decorator class
+- **Step 3:** Implement the interface with your abstract decorator class
 
 ```csharp
 public abstract class AbstractDecorator: ISMSService
@@ -630,7 +631,7 @@ public abstract class AbstractDecorator: ISMSService
 }
 ```
 
-* **Step 4:** inherit from the abstract decorator and implement the component interface with concrete decorator classes
+- **Step 4:** inherit from the abstract decorator and implement the component interface with concrete decorator classes
 
 ```csharp
 public class NotificationEmailDecorator : AbstractDecorator
@@ -654,7 +655,7 @@ public class NotificationEmailDecorator : AbstractDecorator
 }
 ```
 
-* **In Main Program/client**
+- **In Main Program/client**
 
 ```csharp
 class Program
