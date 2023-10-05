@@ -14,15 +14,16 @@ tags:
   - c#
   - clean-code
 ---
+
 ### **What is Asynchronous programming ?**
 
 Imagine we have an application where user interacts with our application to load a certain file from disk. Now if the file is being rather big. So we want to indicate to our user that something's going on. The scenario will be
 
 - **Show a loading indicator**
 - Start **asynchronous operation** which mean that we can process something simultaneously to this loading time.
-    - Like **read** a large CSV file from disk
-    - Once file is loaded into memory, it will **Count** the rows
-    - Asynchronous operation completed
+  - Like **read** a large CSV file from disk
+  - Once file is loaded into memory, it will **Count** the rows
+  - Asynchronous operation completed
 - **Render** the **result** on screen
 - **Remove loading indicator**
 
@@ -61,7 +62,7 @@ var task = Task.Run(() => {
 
 task.ConfigureAwait(true)
     .GetAwaiter()
-    .OnCompleted(() => 
+    .OnCompleted(() =>
     {
 	    // do something
 
@@ -87,7 +88,7 @@ private async Task<string> LoginAsync()
 {
 	await Task.Run(() => {
 		Thread.Sleep(2000);
-	
+
 		return "Login Successful!";
 	});
 }
@@ -108,7 +109,7 @@ private async Task<string> LoginAsync()
 {
 	var loginTask = Task.Run(() => {
 		Thread.Sleep(2000);
-	
+
 		return "Login Successful!";
 	});
 
@@ -123,7 +124,7 @@ private async Task<string> LoginAsync()
 }
 ```
 
-**For [ASP.NET](http://asp.NET) web applications it might be a best practice** to do `**ConfigureAwait` is `false`**, the reason for that is that it's going to become a lot **quicker**, because it **pick one of the threads in the thread pool and use whichever one is available** and not try to get back to the one is used first.
+**For [ASP.NET](http://asp.NET) web applications it might be a best practice** to do `**ConfigureAwait` is `false`**, the reason for that is that it's going to become a lot **quicker**, because it **pick one of the threads in the thread pool and use whichever one is available\*\* and not try to get back to the one is used first.
 
 ```csharp
 using (var client = new HttpClient())
@@ -131,7 +132,7 @@ using (var client = new HttpClient())
 	var httpMessage = await client.GetAsync("https://blog.aboelkassem.tech/rss/").ConfigureAwait(false);
 
 	var content = await httpMessage.Content.ReadAsStringAsync().ConfigureAwait(false);
-	
+
 	return content;
 }
 ```
@@ -139,10 +140,11 @@ using (var client = new HttpClient())
 **With [ASP.NET](http://asp.NET) Core setting `ConfigureAwait` is `false` doesn't have any effects on code running.** Because there is no longer a synchronization context in [ASP.Net](http://asp.net/) Core, you no longer need to include ConfigureAwait(false) in [ASP.Net](http://asp.net/) Core, but including it does no harm.
 
 ### To do work concurrently
+
 You start a task and hold on to the Task object that represents the work. You'll `await` each task before working with its result.
 
-* The first step is to store the tasks for operations when they start, rather than awaiting them
-* Move these tasks before awaiting invokes like the following
+- The first step is to store the tasks for operations when they start, rather than awaiting them
+- Move these tasks before awaiting invokes like the following
 
 ```csharp
     static async Task Main(string[] args)

@@ -13,6 +13,7 @@ tags:
   - github
   - version-control
 ---
+
 In this article, we'll discuss the basics of version control with git!
 
 ## What is Git?
@@ -21,11 +22,11 @@ Git is the world’s most popular version control system.
 
 ##### Version Control System is
 
-* Software designed to record changes to files over time
-* Ability to revert back to the previous file version or project version
-* Compare changes made to files from one version to another
-* Version control any plain text file, not just source code
-* Managing your project’s files. For example, when building a website, you will
+- Software designed to record changes to files over time
+- Ability to revert back to the previous file version or project version
+- Compare changes made to files from one version to another
+- Version control any plain text file, not just source code
+- Managing your project’s files. For example, when building a website, you will
   have a lot of files, like CSS, HTML, JS, images.
 
 ## Why Git?
@@ -36,11 +37,11 @@ Git maintains a complete history of the changes made to any project, it makes co
 
 there are three-stage of any file in the source control systems
 
-* **Committed**
+- **Committed**
   mean that files are stored safely in the repo of the project
-* **Modified**
+- **Modified**
   when making changes in the last commit, just introduced new changes but has committed them yet
-* **Staged**
+- **Staged**
   when changes finished and ready to commit.
 
 ## Three States of a git project
@@ -57,13 +58,13 @@ in the following two files, you will get all git and Github command lines to be 
 
 ### Tracked files by git have three stages
 
-* **Committed**
+- **Committed**
   Unmodified changes from the last commit snapshot, when making changes to these files
   content then moved to modified stage
-* **Modified**
+- **Modified**
   Changes made to files since last commit snapshot, when you satisfied with changes and
   stage them for commit will move to the staged area
-* **Staged**
+- **Staged**
   Changes marked to be added into the next commit snapshot, now can commit it to the origin
   repositories
 
@@ -84,7 +85,7 @@ $ git diff
 $ git diff --staged
 ```
 
- this commend answer the following two questions
+this commend answer the following two questions
 
 > 1- What changes have I staged that are ready to be committed?
 >
@@ -118,13 +119,13 @@ $ git log --patch
 There are guidelines are followed to commit message to be useful and helpful to other
 contributors there are a blog that had a lot of information about these seven rules in [this blog](https://chris.beams.io/posts/git-commit/)
 
-* Separate subject from body with a blank line
-* Limit the subject line to 50 characters
-* Capitalize the subject line
-* Do not end the subject line with a period
-* Use the imperative mood in the subject line
-* Wrap the body at 72 characters
-* Use the body to explain what and why vs. how
+- Separate subject from body with a blank line
+- Limit the subject line to 50 characters
+- Capitalize the subject line
+- Do not end the subject line with a period
+- Use the imperative mood in the subject line
+- Wrap the body at 72 characters
+- Use the body to explain what and why vs. how
 
 ### Remove and Move Files
 

@@ -18,34 +18,36 @@ tags:
   - software-design
   - c#
 ---
+
 In the [previous article](https://blog.aboelkassem.tech/blog/design-patterns-structural-patterns), we had discussed structural design patterns, Today, we will continue to explain the design patterns and we will discuss the Behavioral design patterns.
 
 ## Table of Contents
-* Behavioral Patterns
-  * Template Method Pattern
-  * Chain Of Responsibility Pattern
-  * State Pattern
-  * Command Pattern
-  * Mediator Pattern
-  * Observer pattern
-* MVC Pattern
-* Code Smells
+
+- Behavioral Patterns
+  - Template Method Pattern
+  - Chain Of Responsibility Pattern
+  - State Pattern
+  - Command Pattern
+  - Mediator Pattern
+  - Observer pattern
+- MVC Pattern
+- Code Smells
 
 ## Behavioral Patterns
 
 Behavioral design patterns dictate the interaction and assignment of responsibilities between the objects, Or in other words, they assist in answering "How to run a behavior in software component?"
 
-* Observer pattern
-* Visitor Pattern
-* Strategy Pattern
-* Interpreter Pattern
-* Template Method Pattern
-* Chain Of Responsibility Pattern
-* Command Pattern
-* Iterator Pattern
-* Mediator Pattern
-* Memento Pattern
-* State Pattern
+- Observer pattern
+- Visitor Pattern
+- Strategy Pattern
+- Interpreter Pattern
+- Template Method Pattern
+- Chain Of Responsibility Pattern
+- Command Pattern
+- Iterator Pattern
+- Mediator Pattern
+- Memento Pattern
+- State Pattern
 
 ### Template Method Pattern
 
@@ -61,10 +63,10 @@ Think of it as another technique to use when you notice you have two separate cl
 
 > Suppose we are getting some house built. The steps for building might look like
 
-* Prepare the base of house
-* Build the walls
-* Add roof
-* Add other floors
+- Prepare the base of house
+- Build the walls
+- Add roof
+- Add other floors
   The order of these steps could never be changed i.e. you can't build the roof before building the walls etc, but each of the steps could be modified for example walls can be made of wood or polyester or stone.
 
 **Class Diagram**
@@ -81,7 +83,7 @@ Think of it as another technique to use when you notice you have two separate cl
 
 **Steps to implement it**
 
-* **Step 1**: Define Abstract class and Template Method
+- **Step 1**: Define Abstract class and Template Method
 
 ```csharp
 public abstract class PastaDish
@@ -124,7 +126,7 @@ public abstract class PastaDish
 }
 ```
 
-* **Step 2**: Inherit them in concrete class
+- **Step 2**: Inherit them in concrete class
 
 ```csharp
 public class SpaghettiMeatballs : PastaDish
@@ -176,7 +178,7 @@ public class PennaAlfredo : PastaDish
 }
 ```
 
-* **In Main Program**
+- **In Main Program**
 
 ```csharp
 class Program
@@ -218,22 +220,22 @@ When a client object sends a request, the first handler in the chain will try to
 
 **Algorithm to solve problem if it's rules doesn't match and forgets to pass the request into the next filter, We will use `Template Method Pattern` to make sure follow this algorithm.**
 
-* Check if rules matches
-* If it matches, do something specific
-* If it doesn't match, call the next filter/handler in the list
+- Check if rules matches
+- If it matches, do something specific
+- If it doesn't match, call the next filter/handler in the list
 
 The intent of this pattern is to **avoid coupling** the sender to the receiver by giving more than object
 
 What the benefits?
 
-* A more extensible, object-oriented and dynamic implementation
-* Easily re-arrange in what order the handlers operate
-* Clear approach with single responsibility in min instead of different conditions
+- A more extensible, object-oriented and dynamic implementation
+- Easily re-arrange in what order the handlers operate
+- Clear approach with single responsibility in min instead of different conditions
 
 **Example**
 
 > See the [example 1](https://github.com/aboelkassem/Design-Patterns/tree/main/src/DesignPattern/DesignPattern/Behavioral/ChainOfResponsibilityPattern/NoSeparationExample) of Payment Processing system in C# with no separation
->  See the [example 2](https://github.com/aboelkassem/Design-Patterns/tree/main/src/DesignPattern/DesignPattern/Behavioral/ChainOfResponsibilityPattern/SeparationExample) of Payment Processing system in C# with improvement separation
+> See the [example 2](https://github.com/aboelkassem/Design-Patterns/tree/main/src/DesignPattern/DesignPattern/Behavioral/ChainOfResponsibilityPattern/SeparationExample) of Payment Processing system in C# with improvement separation
 
 ### State Pattern
 
@@ -265,7 +267,7 @@ A vending machine has several states, and specific actions based on those states
 
 **Steps to apply State Pattern**
 
-* **Step 1:** define State interface
+- **Step 1:** define State interface
 
 ```csharp
 public interface State
@@ -278,7 +280,7 @@ public interface State
 }
 ```
 
-* **Step2:** Implement the state's class that implements this interface
+- **Step2:** Implement the state's class that implements this interface
 
 ```csharp
 public class IdleState : State
@@ -356,7 +358,7 @@ public class OutOfStockState : State
 }
 ```
 
-* The Vending machine class will be like this
+- The Vending machine class will be like this
 
 ```csharp
 public class VendingMachine
@@ -410,8 +412,8 @@ Creating these requests as objects allows you to create very useful functionalit
 
 **what is the purposes of the command pattern?**
 
-* **Store and schedule different requests.** When you use an method of another object, you can store this command objects into lists, manipulate them before they are completed, put them onto a queue.
-* Allowing commands to be undone or redone like **undo or redo** edits in a document or any type in applications
+- **Store and schedule different requests.** When you use an method of another object, you can store this command objects into lists, manipulate them before they are completed, put them onto a queue.
+- Allowing commands to be undone or redone like **undo or redo** edits in a document or any type in applications
   ![command-pattern-2.png](https://raw.githubusercontent.com/aboelkassem/Design-Patterns/main/Images/command-pattern-2.png "command pattern diagram")
   ![command-pattern-3.png](https://raw.githubusercontent.com/aboelkassem/Design-Patterns/main/Images/command-pattern-3.png "command pattern diagram")
   ![command-pattern-4.png](https://raw.githubusercontent.com/aboelkassem/Design-Patterns/main/Images/command-pattern-4.png "command pattern example")
@@ -424,21 +426,21 @@ Creating these requests as objects allows you to create very useful functionalit
 
 ![command-pattern-5.png](https://raw.githubusercontent.com/aboelkassem/Design-Patterns/main/Images/command-pattern-5.png "command pattern uml class diagram")
 
-* **execute():** do the work that the command is supposed to do
-* **unexecute():** do the undoing the command
-* **isReversible():** determines if the the command is reversible, return `true` if the command can be undone
-* **Receiver Class**: deals with the actual work of completing the command
+- **execute():** do the work that the command is supposed to do
+- **unexecute():** do the undoing the command
+- **isReversible():** determines if the the command is reversible, return `true` if the command can be undone
+- **Receiver Class**: deals with the actual work of completing the command
 
 **The benefits of Command Pattern**
 
-* **Manipulate the commands as objects not methods calls**, which enable them add more functionalities like putting commands into queues, adding an undo/redo function.
-* **Decouples the objects of your software**
+- **Manipulate the commands as objects not methods calls**, which enable them add more functionalities like putting commands into queues, adding an undo/redo function.
+- **Decouples the objects of your software**
 
 > For Example see [the source code](https://github.com/aboelkassem/Design-Patterns/tree/main/src/DesignPattern/DesignPattern/Behavioral/CommandPattern)
 
 ### Mediator Pattern
 
-Mediator pattern adds a **third party object** (called *`mediator`*) to control the **interaction** between two or more objects (called `colleagues`). It helps reduce the coupling between the classes communicating with each other by encapsulating them. Because now they don't need to have the knowledge of each other's implementation.
+Mediator pattern adds a **third party object** (called _`mediator`_) to control the **interaction** between two or more objects (called `colleagues`). It helps reduce the coupling between the classes communicating with each other by encapsulating them. Because now they don't need to have the knowledge of each other's implementation.
 
 Imagine that you want the house of the future. You want your house to change its own temperature once you have left, to brew your coffee when the alarm on your phone goes off, and to load the latest Globe and Mail news issue onto your tablet if you're home and it's Saturday morning, you keep adding more rules and more devices. Eventually you realize interactions between two objects is becoming complicated and difficult to maintain like this:
 
@@ -464,7 +466,7 @@ The example will be the `chatroom` between team member `developer` and `tester`
 
 ![mediator-pattern-5.png](https://raw.githubusercontent.com/aboelkassem/Design-Patterns/main/Images/mediator-pattern-5.png "mediator pattern example")
 
-* Define the mediator abstract class
+- Define the mediator abstract class
 
 ```csharp
 public abstract class Chatroom
@@ -476,7 +478,7 @@ public abstract class Chatroom
 }
 ```
 
-* Define the Colleague abstract class that talk to the mediator
+- Define the Colleague abstract class that talk to the mediator
 
 ```csharp
 public abstract class TeamMember
@@ -513,7 +515,7 @@ public abstract class TeamMember
 }
 ```
 
-* Implement Concrete mediator
+- Implement Concrete mediator
 
 ```csharp
 public class TeamChatroom : Chatroom
@@ -521,7 +523,7 @@ public class TeamChatroom : Chatroom
     private List<TeamMember> members = new List<TeamMember>();
 
     // References
-    // just set up/register connection between mediator and colleague 
+    // just set up/register connection between mediator and colleague
     public override void Register(TeamMember member)
     {
         member.SetChatroom(this);
@@ -550,7 +552,7 @@ public class TeamChatroom : Chatroom
 }
 ```
 
-* Implement concrete colleagues/team members
+- Implement concrete colleagues/team members
 
 ```csharp
 public class Developer : TeamMember
@@ -582,7 +584,7 @@ public class Tester : TeamMember
 }
 ```
 
-* In Main program
+- In Main program
 
 ```csharp
 class Program
@@ -619,9 +621,9 @@ Simulate this scenario, imagine you follow a Youtube channel or blog or even Twi
 
 So **subject** superclass has three methods:
 
-* Allow a new observer to subscribe
-* Allow a current observer to unsubscribe
-* Notify all observers about a new blog post
+- Allow a new observer to subscribe
+- Allow a current observer to unsubscribe
+- Notify all observers about a new blog post
 
 So **Observer interface** which has methods that an observer can be notified to update itself.
 
@@ -637,7 +639,7 @@ So **Observer interface** which has methods that an observer can be notified to 
 
 ![observe-pattern-2.png](https://raw.githubusercontent.com/aboelkassem/Design-Patterns/main/Images/observe-pattern-2.png "observer pattern uml class diagram")
 
-* `Observer` interface
+- `Observer` interface
 
 ```csharp
 public interface Observer
@@ -646,7 +648,7 @@ public interface Observer
 }
 ```
 
-* `Subject` Superclass code
+- `Subject` Superclass code
 
 ```csharp
 public class Subject
@@ -671,7 +673,7 @@ public class Subject
 }
 ```
 
-* `Blog` class which is subclass from `Subject`
+- `Blog` class which is subclass from `Subject`
 
 ```csharp
 public class Blog : Subject
@@ -687,14 +689,14 @@ public class Blog : Subject
 }
 ```
 
-* `Subscriber` class which implement `Observer` class
+- `Subscriber` class which implement `Observer` class
 
 ```csharp
 public class Subscriber : Observer
 {
     public void update()
     {
-        // get the blog change or the changed status 
+        // get the blog change or the changed status
     }
 }
 ```
@@ -709,9 +711,9 @@ This pattern uses the **Separation of Concerns** design principle which allows y
 
 ![MVC.png](https://raw.githubusercontent.com/aboelkassem/Design-Patterns/main/Images/MVC.png "Model, View, Controller (MVC)")
 
-* **The Model:** contains the data and logic that users want to manipulate.⇒ like **Backend**
-* **The View:** give a user a way to see the data of model or parts of it ⇒ like **Frontend**
-* **The Controller:** responsible for handling requests from **view** and changing the **model**
+- **The Model:** contains the data and logic that users want to manipulate.⇒ like **Backend**
+- **The View:** give a user a way to see the data of model or parts of it ⇒ like **Frontend**
+- **The Controller:** responsible for handling requests from **view** and changing the **model**
 
 In general, **Model** corresponds to the entity objects, **View** corresponds to interfaces to deal with users (Boundary object), Controller corresponds with receives events (Control object). **Model** can exist on its own with no views or controllers.
 
@@ -723,33 +725,38 @@ In general, **Model** corresponds to the entity objects, **View** corresponds to
 
 ### Examples of Bad code (Code Smells)
 
-* **Comments**
+- **Comments**
 
-  * Comments can be an indicator of poor design. Write just effective comments
-  * **The code has no Comments or code has many comments**, which have **no comments** makes it difficult for someone to understand what the code is doing. Having a **lot of comments** might get out of sync as the code changes or a **lot of comments** to explain complicated design this means you had done a bad design.
-  * There are **reminder comments** in the code like "Don't forget to do this" or "if you make a change to this, make sure you update the code in this other method" are indicators of bad code.
-  * **Comments are just `very useful` for documenting the APIs or documenting the reason why a particular choice of data structure or algorithm.**
-* **Duplicated Code**
+  - Comments can be an indicator of poor design. Write just effective comments
+  - **The code has no Comments or code has many comments**, which have **no comments** makes it difficult for someone to understand what the code is doing. Having a **lot of comments** might get out of sync as the code changes or a **lot of comments** to explain complicated design this means you had done a bad design.
+  - There are **reminder comments** in the code like "Don't forget to do this" or "if you make a change to this, make sure you update the code in this other method" are indicators of bad code.
+  - **Comments are just `very useful` for documenting the APIs or documenting the reason why a particular choice of data structure or algorithm.**
 
-    is when you have code that is similar, but has slight differences. And appears in multiple places in your software.
+- **Duplicated Code**
 
-  * This can be a **problem**, because if something needs to change, then the code needs to be updated in multiple places. This applies to adding functionalities, updating an algorithm, or fixing a bug.
-  * Instead of if there are **no duplicated** and exist in one location, you having to update it in only one location and will make it easier to implement the changes and reduce the chance that you are missing a lock of code.
-  * Apply "D.R.Y" or "**Don't repeat yourself**" principle
-* **Long Method**
+  is when you have code that is similar, but has slight differences. And appears in multiple places in your software.
 
-  * Having a "long method" can sometimes indicate that there is more occurring in that method than should be, or its more complex than it needs to be. Sometimes a long method is appropriate
-* **Large Class**
+  - This can be a **problem**, because if something needs to change, then the code needs to be updated in multiple places. This applies to adding functionalities, updating an algorithm, or fixing a bug.
+  - Instead of if there are **no duplicated** and exist in one location, you having to update it in only one location and will make it easier to implement the changes and reduce the chance that you are missing a lock of code.
+  - Apply "D.R.Y" or "**Don't repeat yourself**" principle
 
-  * Classes should not be too large, Large classes occur when more responsibilities are needed Over time, however, these responsibilities might attract more responsibilities,  class continues to get larger and larger and take more and more responsibilities.
-  * Large class needs a lot of comments, meaning a poor design, So to solve that **keep the class cohesive, so it does one thing well**.
-* **Data Class**
+- **Long Method**
 
-  * "Data classes" are classes that contains only data and no real functionality, these classes would have getter and setter methods no much else.
-  * The class must have to do more than just store data.
-* **Data Clumps**
+  - Having a "long method" can sometimes indicate that there is more occurring in that method than should be, or its more complex than it needs to be. Sometimes a long method is appropriate
 
-  * "Data Clumps" are group of data appearing together in the instance variables of a class, or parameters to methods. for example
+- **Large Class**
+
+  - Classes should not be too large, Large classes occur when more responsibilities are needed Over time, however, these responsibilities might attract more responsibilities, class continues to get larger and larger and take more and more responsibilities.
+  - Large class needs a lot of comments, meaning a poor design, So to solve that **keep the class cohesive, so it does one thing well**.
+
+- **Data Class**
+
+  - "Data classes" are classes that contains only data and no real functionality, these classes would have getter and setter methods no much else.
+  - The class must have to do more than just store data.
+
+- **Data Clumps**
+
+  - "Data Clumps" are group of data appearing together in the instance variables of a class, or parameters to methods. for example
 
   ```csharp
   // Bad code
@@ -776,43 +783,50 @@ In general, **Model** corresponds to the entity objects, **View** corresponds to
   	publc Point3D point {get; set;}
   }
   ```
-* **Long Parameter List**
 
-  * Having a method with a long parameter list can be difficult to use, which is bad, also require extensive comments to explain each of the parameters does.
-  * Avoid global variables.
-  * To solve this, introduce all these long parameters as a parameter object.
-* **Divergent Change**
+- **Long Parameter List**
 
-  * "Divergent change" occurs when you have to change a class in many different ways, for many different reasons. Like Large Class code smell, The class has many responsibilities so the changes may be in a variety of ways for different reasons.
-  * To avoid divergent change, It will be nice if your class only had one specific purpose to reduce the number of reasons.
-  * If you find yourself changing a class in multiple ways, you should be broke the class into separate classes. Notice, **Separation of Concerns** design principles solve to code smells Large class and divergent change.
-* **Shotgun Surgery**
+  - Having a method with a long parameter list can be difficult to use, which is bad, also require extensive comments to explain each of the parameters does.
+  - Avoid global variables.
+  - To solve this, introduce all these long parameters as a parameter object.
 
-  * A change in one place requires you to fix many other areas in the code as a result. This happens when you are trying to add features, adjust code, fix bugs or change algorithms.
-  * To solve this issue, just moving methods around and organize them in a way to make sense but not in Large class code smell.
-* **Feature Envy**
+- **Divergent Change**
 
-  * This occurs when you've a method that is more interested in the details of a class other than it's own class.
-  * If you have this method that seems to like to talk a lot to another class, it may better to but it within that class.
-* **Message Chains**
+  - "Divergent change" occurs when you have to change a class in many different ways, for many different reasons. Like Large Class code smell, The class has many responsibilities so the changes may be in a variety of ways for different reasons.
+  - To avoid divergent change, It will be nice if your class only had one specific purpose to reduce the number of reasons.
+  - If you find yourself changing a class in multiple ways, you should be broke the class into separate classes. Notice, **Separation of Concerns** design principles solve to code smells Large class and divergent change.
 
-  * Message Chains occurs when the code has long message chains where you are calling, and get an object back, and then calling again, and getting another object.
-  * Like `a.getB().getC().doSomething();` this code smell cause complexity in your design and make code harder to test independently. It also can be fine if follow Law of Demeter.
-* **Primitive Obsession**
+- **Shotgun Surgery**
 
-  * This occurs when you rely on the use of built-in types too much like `int`, `long`, `float`, `string` , they should only exist where possible at the lowest levels of your code.
-  * Just use your own types better abstraction.
-* **Speculative Generality**
+  - A change in one place requires you to fix many other areas in the code as a result. This happens when you are trying to add features, adjust code, fix bugs or change algorithms.
+  - To solve this issue, just moving methods around and organize them in a way to make sense but not in Large class code smell.
 
-  * This occurs when you make a superclass, interface or code that is not needed at the time, but you think that you may use it someday. Like doing subclasses or different implementations for it. That may not actually help the code, you just **Over-Engineering** the code.
-  * With **agile development**, you want to practicie **Just in Time Design**, This means that there should be just **enough design** to take the requirements for a particular iteration to a working system. This means that all that needs to be designed for are the set of requirements chosen at the beginning of an iteration. **All other requirements in a backlog can be ignored.**
-  * You don't want to spend time writing code that may never actually get used, because the software changes frequently and Clients can change their mind at any time, and drop requirements from the backlog
-* **Refused Bequest**
+- **Feature Envy**
 
-  * This occurs when a subclass inherits something and doesn't need it, Then is it appropriate that they be subclasses of this superclass?
-  * it may make sense for a stand-alone class. if only some subclasses use them, then it may be better to define those behaviors in the subclasses only
+  - This occurs when you've a method that is more interested in the details of a class other than it's own class.
+  - If you have this method that seems to like to talk a lot to another class, it may better to but it within that class.
+
+- **Message Chains**
+
+  - Message Chains occurs when the code has long message chains where you are calling, and get an object back, and then calling again, and getting another object.
+  - Like `a.getB().getC().doSomething();` this code smell cause complexity in your design and make code harder to test independently. It also can be fine if follow Law of Demeter.
+
+- **Primitive Obsession**
+
+  - This occurs when you rely on the use of built-in types too much like `int`, `long`, `float`, `string` , they should only exist where possible at the lowest levels of your code.
+  - Just use your own types better abstraction.
+
+- **Speculative Generality**
+
+  - This occurs when you make a superclass, interface or code that is not needed at the time, but you think that you may use it someday. Like doing subclasses or different implementations for it. That may not actually help the code, you just **Over-Engineering** the code.
+  - With **agile development**, you want to practicie **Just in Time Design**, This means that there should be just **enough design** to take the requirements for a particular iteration to a working system. This means that all that needs to be designed for are the set of requirements chosen at the beginning of an iteration. **All other requirements in a backlog can be ignored.**
+  - You don't want to spend time writing code that may never actually get used, because the software changes frequently and Clients can change their mind at any time, and drop requirements from the backlog
+
+- **Refused Bequest**
+
+  - This occurs when a subclass inherits something and doesn't need it, Then is it appropriate that they be subclasses of this superclass?
+  - it may make sense for a stand-alone class. if only some subclasses use them, then it may be better to define those behaviors in the subclasses only
 
 <hr>
-
 
 [Edit this page in Github](https://github.com/aboelkassem/Design-Patterns/blob/main/README.md)
