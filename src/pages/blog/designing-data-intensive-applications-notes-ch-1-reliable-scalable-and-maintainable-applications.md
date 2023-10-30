@@ -6,7 +6,7 @@ slug: designing-data-intensive-applications-notes-ch1
 author: aboelkassem
 authorLink: https://www.aboelkassem.tech
 date: 2023-10-30T19:15:12.553Z
-cover: /img/designing-data-intensive-apps.avif
+cover: /img/designing-data-intensive-apps.jpeg
 metaTitle: "Notes on 'Designing Data-Intensive Applications' Chapter 1: Building
   Reliable, Scalable, and Maintainable Systems"
 metaDescription: Explore comprehensive notes on Chapter 1 of 'Designing
