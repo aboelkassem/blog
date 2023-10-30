@@ -23,7 +23,7 @@ tags:
   - reliability
   - maintainability
 ---
-Hello, this is new series of articles for my notes and summaries of the "Designing Data-Intensive Applications" book by Martin Kleppmann.
+Hello, this is a new series of articles for my notes and summaries of the "Designing Data-Intensive Applications" book by Martin Kleppmann.
 
 ## Table Of Content (TOC)
 - [Thinking About Data Systems](#thinking-about-data-systems)
