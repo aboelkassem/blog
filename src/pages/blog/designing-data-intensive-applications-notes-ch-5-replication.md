@@ -17,36 +17,37 @@ tags:
   - replication
   - consistency
 ---
-Continuing [our series](/tags/data-intensive-apps) for "Designing Data-Intensive Applications" book. 
+
+Continuing [our series](/tags/data-intensive-apps) for "Designing Data-Intensive Applications" book.
 In this article, we will walkthrough the second chapter of this book `Chapter.5 Replication`.
 
-
 ## Table of content
+
 - [Leaders and Followers](#leaders-and-followers)
 - [Synchronous vs Asynchronous Replication](#synchronous-vs-asynchronous-replication)
 - [Setting Up New Followers](#setting-up-new-followers)
 - [Handling Node Outages](#handling-node-outages)
-  * [Follower failure: Catch-up recovery](#follower-failure--catch-up-recovery)
-  * [Leader failure: Failover](#leader-failure--failover)
+  - [Follower failure: Catch-up recovery](#follower-failure--catch-up-recovery)
+  - [Leader failure: Failover](#leader-failure--failover)
 - [How does replication work (Implementation of replication log)](#how-does-replication-work--implementation-of-replication-log-)
-  * [Statement-based replication](#statement-based-replication)
-  * [Write-ahead log (WAL) shipping](#write-ahead-log--wal--shipping)
-  * [Logical (row-based) log replication](#logical--row-based--log-replication)
-  * [Trigger-based replication](#trigger-based-replication)
+  - [Statement-based replication](#statement-based-replication)
+  - [Write-ahead log (WAL) shipping](#write-ahead-log--wal--shipping)
+  - [Logical (row-based) log replication](#logical--row-based--log-replication)
+  - [Trigger-based replication](#trigger-based-replication)
 - [Problems with Replication Lag](#problems-with-replication-lag)
-  * [Reading your own writes](#reading-your-own-writes)
-  * [Monotonic Reads](#monotonic-reads)
-  * [Consistent Prefix reads](#consistent-prefix-reads)
+  - [Reading your own writes](#reading-your-own-writes)
+  - [Monotonic Reads](#monotonic-reads)
+  - [Consistent Prefix reads](#consistent-prefix-reads)
 - [Multi-Leader Replication](#multi-leader-replication)
-  * [Use Cases](#use-cases)
+  - [Use Cases](#use-cases)
 - [Handling Write Conflicts](#handling-write-conflicts)
-  * [Avoid Conflict](#avoid-conflict)
-  * [Converging toward a consistent state](#converging-toward-a-consistent-state)
-  * [Custom conflict resolution logic](#custom-conflict-resolution-logic)
-  * [Multi-Leader Replication Topologies](#multi-leader-replication-topologies)
+  - [Avoid Conflict](#avoid-conflict)
+  - [Converging toward a consistent state](#converging-toward-a-consistent-state)
+  - [Custom conflict resolution logic](#custom-conflict-resolution-logic)
+  - [Multi-Leader Replication Topologies](#multi-leader-replication-topologies)
 - [Leaderless Replication](#leaderless-replication)
-  * [Quorums for reading and writing](#quorums-for-reading-and-writing)
-  * [Sloppy Quorums](#sloppy-quorums)
+  - [Quorums for reading and writing](#quorums-for-reading-and-writing)
+  - [Sloppy Quorums](#sloppy-quorums)
 
 Replication means keeping a copy of the same data on multiple machines that are connected via a network. Why we do replication?
 
@@ -102,19 +103,19 @@ To set up new followers without downtime
 - Take a consistent snapshot of the leader’s database at some point in time.
 - Copy the snapshot to the new follower node.
 - The follower **connects** to the leader and **requests** all the data changes that have
-happened since the snapshot was taken.
+  happened since the snapshot was taken.
 
 ## Handling Node Outages
 
 ### Follower failure: Catch-up recovery
 
-On its local disk, each follower keeps a log or snapshot of the data changes it has received from the leader. 
+On its local disk, each follower keeps a log or snapshot of the data changes it has received from the leader.
 
 The follower can recover quite easily: from its log, it knows the last transaction that was processed before the fault occurred. Thus, the follower can connect to the leader and request all the data changes that occurred during the time when the follower was disconnected.
 
 ### Leader failure: Failover
 
-If the leader crashes, one of the following needs to be promoted to be the new leader, and clients  need to be reconfigured to send their writes to the new leader, and the other followers need to start consuming data changes from the new leader. This process is called **failover**.
+If the leader crashes, one of the following needs to be promoted to be the new leader, and clients need to be reconfigured to send their writes to the new leader, and the other followers need to start consuming data changes from the new leader. This process is called **failover**.
 
 Failover can be happened manually (by the administrator) or automatically by the following steps:
 
@@ -128,6 +129,7 @@ Automatic failover may be going wrong
 - Promoted update followers can cause conflicts and discarding some data
 
 Thus, some operations teams prefer to perform failovers manually.
+
 ## How does replication work (Implementation of replication log)
 
 ### Statement-based replication
@@ -137,7 +139,7 @@ The leader logs every write request (statement) and sends that statement (Insert
 Disadvantages of this approach
 
 - Inconsistent data when use nondeterministic function, such as **NOW()** or **RAND()**
-- If statements use an autoincrementing column, or depend on the existing data, then the queries  must be executed in exactly the same order on each replica.
+- If statements use an autoincrementing column, or depend on the existing data, then the queries must be executed in exactly the same order on each replica.
 - Statements that have side effects (e.g., triggers, stored procedures, user-defined functions) may result in different side effects occurring on each replica.
 
 ### Write-ahead log (WAL) shipping
@@ -156,7 +158,7 @@ Is the more flexible way to do replication by application code not a database sy
 
 ## Problems with Replication Lag
 
-Leader-based replication handles all writes to go through Leader and read queries go to any replica. So, its more suits to serve read-only requests. Also, it works asynchronous 
+Leader-based replication handles all writes to go through Leader and read queries go to any replica. So, its more suits to serve read-only requests. Also, it works asynchronous
 
 Also, if an application reads from an asynchronous follower, it may see outdated information if the follower has fallen behind.
 
@@ -174,8 +176,8 @@ How to implement it?
 
 - When reading something that the user may have modified, read it from the leader; otherwise, read it from a follower. Like user profile information on a social network is normally only editable by the owner of the profile. So always read the user’s own profile from the leader.
 - If most things in the app are editable by the user, then above approach won’t work. Another way is estimate one minute to the leader after last update, then after that read from followers.
-    - The problem here is the last update timestamp is associated with client device, so if there is multiple device, then cannot read from the leader at the same time, just who made the write will.
-   
+  - The problem here is the last update timestamp is associated with client device, so if there is multiple device, then cannot read from the leader at the same time, just who made the write will.
+
 ### Monotonic Reads
 
 **The problem**: Occur when reading from asynchronous followers is that it’s possible for a user to see things **moving backward in time**. Like the following diagram shows when two replica (one with little lag and other with greater lag) who read the same query from replica and when refresh didn’t read it. This scenario happens when a user refreshes a web page, it routed to random followers.
@@ -192,7 +194,7 @@ This mechanism is called **Sticky session** which each user always makes their r
 
 **The problem**: If there is disorder of sequence of writes (if the data is sharded/partitioned)
 
-For example, if there dialog between two person like this. 
+For example, if there dialog between two person like this.
 
 - Mr. Poons: How far into the future can you see, Mrs. Cake?
 - Mrs. Cake: About ten seconds usually, Mr. Poons.
@@ -215,11 +217,9 @@ Instead of one leader to handle all writes, there is another approach for multi-
 ### Use Cases
 
 - **Multi Datacenter**: With a normal leader-based replication setup, the leader has to be in one of the datacenters, and all writes must go through that datacenter. In multi-leader configuration, you can have a leader in each datacenter.
-    
-    Some databases support multi-leader configurations by default, but it is also often implemented with external tools, such as Tungsten Replicator for MySQL, BDR for PostgreSQL, and GoldenGate for Oracle.
-    
-    The big issue in this approach is the same data may be concurrently modified in two different datacenters, and those write conflicts must be resolved.
-  
+  Some databases support multi-leader configurations by default, but it is also often implemented with external tools, such as Tungsten Replicator for MySQL, BDR for PostgreSQL, and GoldenGate for Oracle.
+  The big issue in this approach is the same data may be concurrently modified in two different datacenters, and those write conflicts must be resolved.
+
 <p align="center" width="100%">
   <img src="https://raw.githubusercontent.com/aboelkassem/designing-data-intensive-applications-notes/main/Chapters/Chapter%205%20-%20Replication/images/multi-leader-based.png" width="700" hight="500"/>
 </p>
@@ -227,11 +227,10 @@ Instead of one leader to handle all writes, there is another approach for multi-
 - **Clients with offline operation**: every device has a local database that acts as a leader (it accepts write requests), and there is an asynchronous multi-leader replication process (sync) between the replicas of your calendar on all of your devices. The replication lag may be hours or even days, depending on when you have internet access available.
 - **Collaborative editing**: When one user edits a document, the changes are instantly applied to their local replica and asynchronously replicated to the server and any other users who are editing the same document.
 
-
 ## Handling Write Conflicts
 
 Example: User 1 changes the title of the page from A to B, and user 2 changes the title from A to C at the same time. Each user’s change is successfully applied to their local leader. However, when the changes are asynchronously replicated, a conflict is detected.
-  
+
 <p align="center" width="100%">
   <img src="https://raw.githubusercontent.com/aboelkassem/designing-data-intensive-applications-notes/main/Chapters/Chapter%205%20-%20Replication/images/multi-leader-based-conflicts.png" width="700" hight="500"/>
 </p>
@@ -267,7 +266,7 @@ The most general topology is all-to-all. MySQL by default supports circular topo
 
 ## Leaderless Replication
 
-When our system is *write-intensive*, leader(s) may act as a bottleneck, that's when *leader-less replication* comes in handy, also known as *Dynamo-style (*introduced by Amazon Dynamo internally , Not DynamoDB*)*. The clients send their writes and reads to several replicas in parallel.
+When our system is _write-intensive_, leader(s) may act as a bottleneck, that's when _leader-less replication_ comes in handy, also known as *Dynamo-style (*introduced by Amazon Dynamo internally , Not DynamoDB*)*. The clients send their writes and reads to several replicas in parallel.
 
 In some leaderless implementations, the client directly sends its writes to several replicas, while in others, a **coordinator node** does this on behalf of the client.
 
@@ -281,7 +280,6 @@ When the offline node comes back it uses **Read repair and anti-entropy** proces
 
 - **Read repair**: when a client makes a read from several nodes in parallel, it can detect any stale responses.
 - **Anti-entropy**: a background process that constantly looks for differences in the data between replicas and copies any missing data from one replica to another.
-
 
 ### Quorums for reading and writing
 
