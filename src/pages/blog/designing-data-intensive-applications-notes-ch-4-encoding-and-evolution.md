@@ -20,43 +20,44 @@ tags:
   - massage-passing
   - ""
 ---
-Continuing [our series](/tags/data-intensive-apps) for "Designing Data-Intensive Applications" book. 
+
+Continuing [our series](/tags/data-intensive-apps) for "Designing Data-Intensive Applications" book.
 In this article, we will walkthrough the second chapter of this book `Chapter.4  Encoding and Evolution`.
 
-
 ## Table of content
+
 - [Data Representation](#data-representation)
 - [Schema](#schema)
 - [Formats for Encoding Data](#formats-for-encoding-data)
-  * [JSON](#json)
-  * [XML](#xml)
-  * [BSON](#bson)
-  * [MessagePack](#messagepack)
-  * [Thrift and Protocol Buffer](#thrift-and-protocol-buffer)
-  * [Avro](#avro)
+  - [JSON](#json)
+  - [XML](#xml)
+  - [BSON](#bson)
+  - [MessagePack](#messagepack)
+  - [Thrift and Protocol Buffer](#thrift-and-protocol-buffer)
+  - [Avro](#avro)
 - [Dataflows](#dataflows)
-  * [Dataflow through databases](#dataflow-through-databases)
-  * [Dataflow through Services (REST and RPC)](#dataflow-through-services--rest-and-rpc-)
-  * [Dataflow through async message passing.](#dataflow-through-async-message-passing)
+  - [Dataflow through databases](#dataflow-through-databases)
+  - [Dataflow through Services (REST and RPC)](#dataflow-through-services--rest-and-rpc-)
+  - [Dataflow through async message passing.](#dataflow-through-async-message-passing)
 
 Changes to an application’s features also requires a change to data that it stores: perhaps a new field or record type needs to be captured (also, changes on Database schema).
 
 In a large application, and this application is deployed in multiple servers, the code changes often cannot happen instantaneously (at no time):
 
-- With ***server-side*** applications you may want to perform **a rolling upgrade** which new version to a few nodes/services at a time.
+- With **_server-side_** applications you may want to perform **a rolling upgrade** which new version to a few nodes/services at a time.
 - With client-side applications you’re at the mercy of the user, who may not install
-the update for some time.
+  the update for some time.
 
 So, this will cause a compatibility issue whether between client/server or between the services (in the world of microservices/SOA architecture) or even producers/consumers different version.
 
 To solve this issue, your system must support the two types of data compatibility:
 
 - **Backward compatibility**
-    - Newer code can read data that was written by older code (for example, you can open docx files written by Office 2010 with Office 2019).
-    - This is not a problem, because New code already knows the format old data, so it can handle it.
+  - Newer code can read data that was written by older code (for example, you can open docx files written by Office 2010 with Office 2019).
+  - This is not a problem, because New code already knows the format old data, so it can handle it.
 - **Forward compatibility**
-    - Older code can read data that was written by newer code (for example, your mobile app is no updated with the new version of API).
-    - Can be tricky in real world, because it requires older code to ignore additions made by a
+  - Older code can read data that was written by newer code (for example, your mobile app is no updated with the new version of API).
+  - Can be tricky in real world, because it requires older code to ignore additions made by a
     newer version of the code. Take only needed/matters.
 
 ## Data Representation
@@ -73,9 +74,10 @@ Thus, we need some kind of translation between the two representations. The tran
 Which is a collection of fields, each one have Name and datatype.
 
 - **Schema on Read**: The code infers the schema while reading.
-    - Example: Document Databases like MongoDB
+  - Example: Document Databases like MongoDB
 - **Schema on Write**: the code enforce the schema while writing.
-    - Example: Relational Databases like MySQL, Postgres
+  - Example: Relational Databases like MySQL, Postgres
+
 ## Formats for Encoding Data
 
 Like JSON, XML, and Binary Variants. This formats is standard encoding between any programming language.
@@ -138,7 +140,7 @@ message Person {
 
 Thrift has two different encoding format **BinaryProtocol** and **CompactProtocol**
 
-**BinaryProtocol** 
+**BinaryProtocol**
 
 <p align="center" width="100%">
   <img src="https://raw.githubusercontent.com/aboelkassem/designing-data-intensive-applications-notes/main/Chapters/Chapter%204%20-%20Encoding%20and%20Evolution/images/thrift-protocol.png" width="700" hight="500"/>
@@ -186,7 +188,6 @@ The main difference that Avro don’t depend on field tag like previous formats.
 
 The binary encoding is depends on the order that they appear in the schema and use the schema to tell you the datatype of each field.
 
-
 <p align="center" width="100%">
   <img src="https://raw.githubusercontent.com/aboelkassem/designing-data-intensive-applications-notes/main/Chapters/Chapter%204%20-%20Encoding%20and%20Evolution/images/avro.png" width="700" hight="500"/>
 </p>
@@ -229,7 +230,7 @@ Three popular approaches to web services: REST, SOAP, and RPC.
 
 **SOAP** is an XML-based protocol for making network API requests that also done over HTTP. Has its own features like WSDL for code generation. REST is commonly used compared to SOAP.
 
-***Remote Procedure Call* (RPC)** is a dataflow model that tries to make a request to a remote service looks like a local function call. However, it is *flawed* due to the difference between network call and local call:
+**_Remote Procedure Call_ (RPC)** is a dataflow model that tries to make a request to a remote service looks like a local function call. However, it is _flawed_ due to the difference between network call and local call:
 
 - Network call is unpredictable, client would have to retry failed requests for example
 - Network calls can return without a result due to a time out
@@ -239,7 +240,7 @@ Three popular approaches to web services: REST, SOAP, and RPC.
 
 **Thrift and Avro** come with RPC support included. **gRPC** is an RPC implementation using **Protocol Buffers.**
 
-RPC protocols with a binary encoding format can achieve better performance than something generic like JSON over REST. 
+RPC protocols with a binary encoding format can achieve better performance than something generic like JSON over REST.
 
 The main focus of RPC frameworks is on requests between services owned by the same organization, typically within the same datacenter.
 
