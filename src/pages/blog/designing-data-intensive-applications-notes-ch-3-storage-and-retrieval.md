@@ -356,7 +356,7 @@ We will store each column into a file containing the value rows.
     <p align="center" width="100%">
       <img src="https://raw.githubusercontent.com/aboelkassem/designing-data-intensive-applications-notes/main/Chapters/Chapter%203%20-%20Storage%20and%20Retrieval/images/columnar-storage-bitmap.png" width="500" hight="500"/>
     </p>
-    
+
     Bitmap helps with reads query like WHERE IN (like *WHERE product_sk IN (30, 68, 69)*), WHERE AND (like *WHERE product_sk = 31 AND store_sk = 3*) which apply AND, OR operators to binary indexes.
 
 - Vectorized processing with SIMD (single instruction multiple data)
