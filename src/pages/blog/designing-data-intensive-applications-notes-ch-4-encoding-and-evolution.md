@@ -141,7 +141,7 @@ Thrift has two different encoding format **BinaryProtocol** and **CompactProtoco
 **BinaryProtocol** 
 
 <p align="center" width="100%">
-  <img src="hhttps://raw.githubusercontent.com/aboelkassem/designing-data-intensive-applications-notes/main/Chapters/Chapter%204%20-%20Encoding%20and%20Evolution/images/thrift-protocol.png" width="700" hight="500"/>
+  <img src="https://raw.githubusercontent.com/aboelkassem/designing-data-intensive-applications-notes/main/Chapters/Chapter%204%20-%20Encoding%20and%20Evolution/images/thrift-protocol.png" width="700" hight="500"/>
 </p>
 
 The difference between this format and above format (Message Pack) is that there are no field names (userName, favoriteNumber, interests). Instead, the encoded data contains **field tags**, which are numbers (1, 2, and 3). Those are the numbers that appear in the schema definition. Field tags are like **aliases** for fields.
