@@ -19,18 +19,20 @@ tags:
   - data-mdels
   - NoSQL
 ---
-Continuing [our series](/tags/data-intensive-apps) for "Designing Data-Intensive Applications" book. 
+
+Continuing [our series](/tags/data-intensive-apps) for "Designing Data-Intensive Applications" book.
 In this article, we will walkthrough the second chapter of this book `Chapter.2     Data Models and Query Languages`.
 
 ## Table of Content (TOC)
+
 - [Relational Model vs Document Model](#relational-model-vs-document-model)
-  * [Many-to-One and Many-to-Many Relationships](#many-to-one-and-many-to-many-relationships)
+  - [Many-to-One and Many-to-Many Relationships](#many-to-one-and-many-to-many-relationships)
 - [Query Languages for Data](#query-languages-for-data)
-  * [MapReduce Querying](#mapreduce-querying)
+  - [MapReduce Querying](#mapreduce-querying)
 - [Graph-Like Data Models](#graph-like-data-models)
-  * [Property Graphs](#property-graphs)
-  * [The Cypher Query Language](#the-cypher-query-language)
-  * [Triple-Stores and SPARQL](#triple-stores-and-sparql)
+  - [Property Graphs](#property-graphs)
+  - [The Cypher Query Language](#the-cypher-query-language)
+  - [Triple-Stores and SPARQL](#triple-stores-and-sparql)
 
 Data models are perhaps the most important part of developing software, because they have such a profound effect on the way we think about the problems we're solving.
 
@@ -44,7 +46,7 @@ Relational model today’s use case for **transaction processing** (entering sal
 
 The goal of the relational model was to hide that implementation detail behind a cleaner interface.
 
-In the 2010s, NoSQL is the latest attempt to overthrow the relational model’s dominance. NoSQL name refer to 2009 twitter hashtag for new open source, non relational database meaning “**Not Only SQL**”. 
+In the 2010s, NoSQL is the latest attempt to overthrow the relational model’s dominance. NoSQL name refer to 2009 twitter hashtag for new open source, non relational database meaning “**Not Only SQL**”.
 
 <p align="center" width="100%">
   <img src="https://raw.githubusercontent.com/aboelkassem/designing-data-intensive-applications-notes/main/Chapters/Chapter%202%20-%20Data%20Models%20and%20Query%20Languages/images/history-of-data-modal.jpeg" width="700" hight="500"/>
@@ -69,13 +71,13 @@ The following image illustrate an example of resume (a LinkedIn profile) express
 
 Relational databases deal with the **one-to-many** relationship in one of three ways:
 
-- The common normalized way is to put the *many* values in a separate table, with foreign key reference to the *one* (like the above image)
+- The common normalized way is to put the _many_ values in a separate table, with foreign key reference to the _one_ (like the above image)
 - Later versions of SQL allowed multi-valued data be stored in a single row, with support for querying inside them (XML or JSON datatypes).
 - The least favorable option is to store them as encoded JSON or XML, and let the application do the internal query.
 
 JSON representation has better locality than the multi-table schema (Instead of doing multiple joins or queries in tables, in JSON all the relevant information is in one place, and one query is sufficient)
 
-Document-oriented databases on the other hand supports **one-to-many** relationship natively, and provides better *locality* for the data object, thanks to the self-contained nature of JSON.
+Document-oriented databases on the other hand supports **one-to-many** relationship natively, and provides better _locality_ for the data object, thanks to the self-contained nature of JSON.
 
 <p align="center" width="100%">
   <img src="https://raw.githubusercontent.com/aboelkassem/designing-data-intensive-applications-notes/main/Chapters/Chapter%202%20-%20Data%20Models%20and%20Query%20Languages/images/document-modal-tree.png" width="700" hight="500"/>
@@ -83,7 +85,7 @@ Document-oriented databases on the other hand supports **one-to-many** relations
 
 ### Many-to-One and Many-to-Many Relationships
 
-Removing such duplication is the key idea behind **normalization** in databases. 
+Removing such duplication is the key idea behind **normalization** in databases.
 
 Relational databases deal with **many-to-one** relationship by referring to rows in tables by ID, as joins are easy. However, Document databases doesn't nicely support **many-to-one** relationships. Instead, the application code would need to go through the overhead of simulating the join itself, which can cache it all in memory if it's small and slow-changing.
 
@@ -98,7 +100,7 @@ When comparing document model to relational model, arguments in favor of documen
 - If the data in your application has a document-like structure (i.e., a tree of **one-to-many relationships**, where typically the entire tree is loaded at once or no relationships between records) then it’s probably a good idea to use a document model.
 - If your application does use **many-to-many relationships and joins**, the relational model is more suitable.
 
-Document databases are not *schemaless*, but rather have *schema on read* (the structure of the data is implicit, and only interpreted when the data is read) similar to dynamic (runtime) in oppose to relational model's *schema on write (*where the schema is explicit and the database ensures all written data conforms to it*)*. It is not enforced by the database, but more easier to change and modify similar to static (compile-time).
+Document databases are not _schemaless_, but rather have _schema on read_ (the structure of the data is implicit, and only interpreted when the data is read) similar to dynamic (runtime) in oppose to relational model's *schema on write (*where the schema is explicit and the database ensures all written data conforms to it*)*. It is not enforced by the database, but more easier to change and modify similar to static (compile-time).
 
 Example of storing each user’s full name in one field, and you instead want to store the first name and last name separately.
 
@@ -106,8 +108,8 @@ Example of storing each user’s full name in one field, and you instead want to
 
 ```jsx
 if (user && user.name && !user.first_name) {
-	// Documents written before Dec 8, 2013 don't have first_name
-	user.first_name = user.name.split(" ")[0];
+  // Documents written before Dec 8, 2013 don't have first_name
+  user.first_name = user.name.split(" ")[0];
 }
 ```
 
@@ -128,13 +130,14 @@ have the same structure for some reason (i.e., the data is heterogeneous)—for 
 
 In situations like these, a schema may hurt more than it helps, and schemaless documents can be a much more natural data model. But in cases where all records are expected to have the same structure, schemas are a useful mechanism for documenting and enforcing that structure.
 
-For document databases to benefit from *locality* (retrieve all document data and no need to joins lookups), documents have to be relatively small in size. It is generally recommended that you keep documents fairly small and avoid writes that increase the size of a document
+For document databases to benefit from _locality_ (retrieve all document data and no need to joins lookups), documents have to be relatively small in size. It is generally recommended that you keep documents fairly small and avoid writes that increase the size of a document
 
 Google’s Spanner database offers the same locality properties in a relational data model, by allowing the schema to declare that a table’s rows should be nested within a parent table. Oracle allows the same, using a feature called multi-table index cluster tables. The column-family concept in the Bigtable data model (used in Cassandra and HBase) has a similar purpose of managing locality.
 
-It seems that relational and document databases are becoming more similar overtime. PostgreSQL and MySQL become support JSON documents.  RethinkDB supports relational-like joins, and some MongoDB drivers automatically resolve database references (effectively performing a client-side join, although this is likely to be slower than a join performed in the database).
+It seems that relational and document databases are becoming more similar overtime. PostgreSQL and MySQL become support JSON documents. RethinkDB supports relational-like joins, and some MongoDB drivers automatically resolve database references (effectively performing a client-side join, although this is likely to be slower than a join performed in the database).
 
 A hybrid of relational and document models might be the future of databases, as they are becoming more similar over time. If a database is able to handle document-like data and also perform relational queries on it, applications can use the combination of features that best fits their needs.
+
 ## Query Languages for Data
 
 SQL is a declarative query language which is attractive because it is typically more concise and easier to work with than an imperative API. it also hides implementation details of the database engine, which makes it possible for the database system to introduce performance improvements and optimizations. Like
@@ -151,45 +154,36 @@ The following HTML and CSS code to highlight the sharks as selected in the html 
 
 ```html
 <ul>
-	<li class="selected">
-		<p>Sharks</p>
-		<ul>
-			<li>Great White Shark</li>
-			<li>Tiger Shark</li>
-			<li>Hammerhead Shark</li>
-		</ul>
-	</li>
-	<li>
-		<p>Whales</p>
-		<ul>
-			<li>Blue Whale</li>
-			<li>Humpback Whale</li>
-			<li>Fin Whale</li>
-		</ul>
-	</li>
+  <li class="selected">
+    <p>Sharks</p>
+    <ul>
+      <li>Great White Shark</li>
+      <li>Tiger Shark</li>
+      <li>Hammerhead Shark</li>
+    </ul>
+  </li>
+  <li>
+    <p>Whales</p>
+    <ul>
+      <li>Blue Whale</li>
+      <li>Humpback Whale</li>
+      <li>Fin Whale</li>
+    </ul>
+  </li>
 </ul>
 
-// CSS
-li.selected > p {
-	background-color: blue;
-}
+// CSS li.selected > p { background-color: blue; }
 ```
 
 If you want to use imperative approach, in javascript using the core Document Object Model (DOM) API.
 
 ```html
-var liElements = document.getElementsByTagName("li");
-for (var i = 0; i < liElements.length; i++) {
-	if (liElements[i].className === "selected") {
-		var children = liElements[i].childNodes;
-		for (var j = 0; j < children.length; j++) {
-			var child = children[j];
-			if (child.nodeType === Node.ELEMENT_NODE && child.tagName === "P") {
-				child.setAttribute("style", "background-color: blue");
-			}
-		}
-	}
-}
+var liElements = document.getElementsByTagName("li"); for (var i = 0; i <
+liElements.length; i++) { if (liElements[i].className === "selected") { var
+children = liElements[i].childNodes; for (var j = 0; j < children.length; j++) {
+var child = children[j]; if (child.nodeType === Node.ELEMENT_NODE &&
+child.tagName === "P") { child.setAttribute("style", "background-color: blue");
+} } } }
 ```
 
 Not only is it much longer and harder to understand than the CSS equivalents. Similarly, in databases, declarative query languages like SQL turned out to be much better than imperative query APIs.
@@ -238,7 +232,7 @@ db.observations.mapReduce(
 			return Array.sum(values); // add up the number of observations
 	},
 	{
-		query: { family: "Sharks" }, // filter by only sharks 
+		query: { family: "Sharks" }, // filter by only sharks
 		out: "monthlySharkReport" // write the output to monthlySharkReport collection
 	}
 );
@@ -250,16 +244,19 @@ MongoDB 2.2 added support for a declarative query language called the aggregatio
 
 ```jsx
 db.observations.aggregate([
-	{ $match: { family: "Sharks" } },
-	{ $group: {
-		_id: {
-			year: { $year: "$observationTimestamp" },
-			month: { $month: "$observationTimestamp" }
-		},
-		totalAnimals: { $sum: "$numAnimals" }
-	}}
+  { $match: { family: "Sharks" } },
+  {
+    $group: {
+      _id: {
+        year: { $year: "$observationTimestamp" },
+        month: { $month: "$observationTimestamp" },
+      },
+      totalAnimals: { $sum: "$numAnimals" },
+    },
+  },
 ]);
 ```
+
 ## Graph-Like Data Models
 
 Graph data model is usually the most suitable model for data with a lot of **many-to-many** relationships. A graph consists of two kinds of objects: vertices (also known as nodes or entities) and edges (also known as relationships or arcs).
@@ -278,7 +275,7 @@ Facebook maintains a single graph with many different types of vertices and edge
   <img src="https://raw.githubusercontent.com/aboelkassem/designing-data-intensive-applications-notes/main/Chapters/Chapter%202%20-%20Data%20Models%20and%20Query%20Languages/images/graph-example.png" width="700" hight="500"/>
 </p>
 
-There are two kinds of graph models:  ***property graph*** model (implemented by **Neo4j**, Titan, and InfiniteGraph), and the ***triple-store*** model (implemented by Datomic, AllegroGraph, and others). Also there some good *declarative* query languages such as Cypher for efficient querying or SPARQL or Datalog.
+There are two kinds of graph models: **_property graph_** model (implemented by **Neo4j**, Titan, and InfiniteGraph), and the **_triple-store_** model (implemented by Datomic, AllegroGraph, and others). Also there some good _declarative_ query languages such as Cypher for efficient querying or SPARQL or Datalog.
 
 ### Property Graphs
 
@@ -317,7 +314,7 @@ CREATE INDEX edges_heads ON edges (head_vertex);
 
 Cypher is a declarative query language for property graphs, created for the Neo4j graph database.
 
-Subset of the data of above image represented as a cypher query 
+Subset of the data of above image represented as a cypher query
 
 ```sql
 CREATE
@@ -389,7 +386,7 @@ JOIN lives_in_europe ON vertices.vertex_id = lives_in_europe.vertex_id;
 
 ### Triple-Stores and SPARQL
 
-Triple-store model is mostly equivalent to the property graph model, using different words to describe the same ideas.  In a triple-store, all information is stored in the form of very simple three-part statements: (subject, predicate, object). For example, in the triple (Jim, likes, bananas), Jim is the subject, likes is the predicate (verb), and bananas is the object.
+Triple-store model is mostly equivalent to the property graph model, using different words to describe the same ideas. In a triple-store, all information is stored in the form of very simple three-part statements: (subject, predicate, object). For example, in the triple (Jim, likes, bananas), Jim is the subject, likes is the predicate (verb), and bananas is the object.
 
 The following example shows the same data as in above example, written as triples in a format called Turtle, a subset of Notation3.
 
