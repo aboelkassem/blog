@@ -11,7 +11,7 @@ const config = {
   googleTagManagerID: `GTM-TQMG9BC`, // GTM tracking ID //GTM_ID.
   userName: `Mohamed Abdelrahman`,
   coffeeLink: `https://www.buymeacoffee.com/aboelkassem`,
-  userTwitter: `aboel_kassem`,
+  userTwitter: `maboelkassim`,
   siteFBAppID: `mo.aboelkassem`,
   userLocation: `Beni Suef, Egypt`,
   copyright: `Copyright © Aboelkassem Blog 2020-${new Date()

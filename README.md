@@ -98,7 +98,7 @@ const config = {
   siteDescription: `aboelkassem Blog is the personal blog of Mohamed Abdelrahman. A Brew of Awesomeness with a Pinch of Magic...`, // Website description used for RSS feeds/meta description tag.
   siteRss: `/rss.xml`,
   userName: `Mohamed Abdelrahman`,
-  userTwitter: `aboel_kassem`,
+  userTwitter: `maboelkassim`,
   siteFBAppID: ``,
   userLocation: `Beni Suef, Egypt`,
   copyright: `Copyright © aboelkassem Blog 2020-${new Date()

@@ -26,7 +26,7 @@ const Socials = (props) => {
       </a>
 
       <a
-        href="https://instagram.com/ab0elkassem"
+        href="https://instagram.com/maboelkassim"
         className="link hover-pink dib mr3 black-70"
         title="Aboelkassem on Instagram"
         target="_blank"
@@ -46,7 +46,7 @@ const Socials = (props) => {
       </a>
 
       <a
-        href="https://twitter.com/aboel_kassem"
+        href="https://twitter.com/maboelkassim"
         className="link hover-light-blue dib mr3 black-70"
         target="_blank"
         title="Aboelkassem on Twitter"
