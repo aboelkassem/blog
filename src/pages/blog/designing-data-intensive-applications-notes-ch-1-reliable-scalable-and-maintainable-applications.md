@@ -7,8 +7,7 @@ author: aboelkassem
 authorLink: https://www.aboelkassem.tech
 date: 2023-10-30T19:15:12.553Z
 cover: /img/designing-data-intensive-apps.avif
-metaTitle: "Notes on 'Designing Data-Intensive Applications' Chapter 1: Building
-  Reliable, Scalable, and Maintainable Systems"
+metaTitle: Chapter.1 Reliable, Scalable, and Maintainable Applications.
 metaDescription: Explore comprehensive notes on Chapter 1 of 'Designing
   Data-Intensive Applications' by Martin Kleppmann. Uncover strategies for
   building robust, scalable, and easily maintainable data systems. Delve into
