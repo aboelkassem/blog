@@ -18,25 +18,26 @@ metaDescription: Explore the realm of data integration by combining specialized
 tags:
   - data-intensive-apps
 ---
-Continuing [our series](/tags/data-intensive-apps) for "Designing Data-Intensive Applications" book. 
+
+Continuing [our series](/tags/data-intensive-apps) for "Designing Data-Intensive Applications" book.
 In this article, we will walkthrough the second chapter of this book `Chapter.12 The Future of Data Systems`.
 
 ## Table Of Content (TOC)
+
 - [Data Integration](#data-integration)
 - [Combining Specialized Tools by Deriving Data](#combining-specialized-tools-by-deriving-data)
-  * [Batch and Stream Processing](#batch-and-stream-processing)
+  - [Batch and Stream Processing](#batch-and-stream-processing)
 - [Unbundling Databases](#unbundling-databases)
-  * [Designing Applications Around Dataflow](#designing-applications-around-dataflow)
-  * [Observing Derived State](#observing-derived-state)
-  * [Aiming for Correctness](#user-content-aiming-for-correctness)
-  * [Enforcing Constraints](#enforcing-constraints)
-  * [Timeliness and Integrity](#timeliness-and-integrity)
-  * [Trust, but Verify](#trust--but-verify)
-  * [Tools for auditable data systems](#tools-for-auditable-data-systems)
+  - [Designing Applications Around Dataflow](#designing-applications-around-dataflow)
+  - [Observing Derived State](#observing-derived-state)
+  - [Aiming for Correctness](#user-content-aiming-for-correctness)
+  - [Enforcing Constraints](#enforcing-constraints)
+  - [Timeliness and Integrity](#timeliness-and-integrity)
+  - [Trust, but Verify](#trust--but-verify)
+  - [Tools for auditable data systems](#tools-for-auditable-data-systems)
 - [Doing the Right Thing](#doing-the-right-thing)
 - [Predictive Analytics](#predictive-analytics)
 - [**Privacy and Tracking**](#--privacy-and-tracking--)
-
 
 ## Data Integration
 
@@ -50,7 +51,7 @@ For example, it is common to need to integrate an OLTP database with a full-text
 
 As the number of different representations of the data increases, the integration problem becomes harder. Besides the database and the search index, perhaps you need to keep copies of the data in analytics systems (data warehouses, or batch and stream processing systems); maintain caches or denormalized versions of objects that were derived from the original data; pass the data through machine learning, classification, ranking, or recommendation systems; or send notifications based on changes to the data.
 
-Distributed transactions decide on an ordering of writes by using locks for mutual exclusion (Two-Phase Locking (2PL) but this always comes with some limitations and overheads (like XA has poor fault tolerance and performance), while CDC and event sourcing use a log for ordering. Distributed transactions use atomic commit to ensure that changes take effect exactly once, while log-based systems are often based on deterministic retry and idempotence. 
+Distributed transactions decide on an ordering of writes by using locks for mutual exclusion (Two-Phase Locking (2PL) but this always comes with some limitations and overheads (like XA has poor fault tolerance and performance), while CDC and event sourcing use a log for ordering. Distributed transactions use atomic commit to ensure that changes take effect exactly once, while log-based systems are often based on deterministic retry and idempotence.
 
 In the absence of widespread support for a good distributed transaction protocol, I believe that log-based derived data is the most promising approach for integrating different data systems. However, guarantees such as reading your own writes are useful.
 
@@ -97,11 +98,10 @@ The difference between dataflow systems compared to microservices is that it has
 
 dataflow systems can also achieve better performance. For example, say a customer is purchasing an item that is priced in one currency but paid for in another currency. In order to perform the currency conversion, you need to know the current exchange rate. This operation could be implemented in two ways:
 
-- ***In the microservices approach,*** the code that processes the purchase would probably query an **exchange-rate service** or database in order to obtain the current rate for a particular currency
-- .***In the dataflow approach***, the code that processes purchases would subscribe to a **stream of exchange rate updates** ahead of time, and record the current rate in a local database whenever it changes. When it comes to processing the purchase, it only needs to query the local database.
+- **_In the microservices approach,_** the code that processes the purchase would probably query an **exchange-rate service** or database in order to obtain the current rate for a particular currency
+- .**_In the dataflow approach_**, the code that processes purchases would subscribe to a **stream of exchange rate updates** ahead of time, and record the current rate in a local database whenever it changes. When it comes to processing the purchase, it only needs to query the local database.
 
 Not only is the dataflow approach faster, but it is also more robust to the failure of another service. The fastest and most reliable network request is no network request at all! Instead of RPC, we now have a stream join between purchase events and exchange rate update events.
-
 
 ### Observing Derived State
 
@@ -123,7 +123,7 @@ The ideas of stream processing and messaging and not restricted to datacenters, 
 
 Transactions have been the choice for building correct applications for more than four decades by now, and while in some areas they have been completely abandoned for their overheads, they are not going away, but also correctness can be achieved in the context of dataflow.
 
-Data systems that provide strong safety properties (eg. serializable transactions) are not guaranteed to be free from data loss or corruption. However, it would be easier to recover from such mistakes by preventing faulty code from destroying good (immutable) data. One of the most effective approaches to achieve this is to make all operations *idempotent.*
+Data systems that provide strong safety properties (eg. serializable transactions) are not guaranteed to be free from data loss or corruption. However, it would be easier to recover from such mistakes by preventing faulty code from destroying good (immutable) data. One of the most effective approaches to achieve this is to make all operations _idempotent._
 
 Duplicate suppression can be happened TCP connection for a client’s connection to a database and it is currently executing the following transaction
 
@@ -137,7 +137,7 @@ COMMIT;
 
 In many databases, a transaction is tied to a client connection (if the client sends several queries, the database knows that they belong to the same transaction because they are sent on the same TCP connection). If the client suffers a network interruption and connection timeout after sending the COMMIT, but before hearing back from the database server, it does not know whether the transaction has been committed or aborted.
 
-Two-phase commits are not sufficient to ensure that the transaction will be executed once, so to make an operation idempotent, we need to consider *end-to-end flow* of the whole operation. For example, you could generate a unique identifier for an operation (such as a UUID) and include it as a hidden form field in the client application, or calculate a hash of all the relevant form fields to derive the operation ID. If the web browser submits the POST request twice, the two requests will have the same operation ID.
+Two-phase commits are not sufficient to ensure that the transaction will be executed once, so to make an operation idempotent, we need to consider _end-to-end flow_ of the whole operation. For example, you could generate a unique identifier for an operation (such as a UUID) and include it as a hidden form field in the client application, or calculate a hash of all the relevant form fields to derive the operation ID. If the web browser submits the POST request twice, the two requests will have the same operation ID.
 
 ```sql
 ALTER TABLE requests ADD UNIQUE (request_id); # if the request has the same request_id, the insert will fail
@@ -151,6 +151,7 @@ UPDATE accounts SET balance = balance + 11.00 WHERE account_id = 1234;
 UPDATE accounts SET balance = balance - 11.00 WHERE account_id = 4321;
 COMMIT;
 ```
+
 ### Enforcing Constraints
 
 The most common way of achieving consensus is by having a single leader node, but also the unbundled database approach with log-based messaging have a similar approach to enforce uniqueness constraint.
@@ -167,7 +168,7 @@ This algorithm is basically the same as in “Implementing linearizable storage 
 
 Timeliness means ensuring that users observe the system in an up-to-date state. Integrity means absence of corruption; i.e., no data loss, and no contradictory or false data
 
-Consistency conflates two different requirements, which are *timeliness* and *integrity*. Violation of timeliness is eventual consistency, whereas violation of integrity is *perpetual consistency* and can be catastrophic!
+Consistency conflates two different requirements, which are _timeliness_ and _integrity_. Violation of timeliness is eventual consistency, whereas violation of integrity is _perpetual consistency_ and can be catastrophic!
 
 For example, on your credit card statement, it is not surprising if a transaction that you made within the last 24 hours does not yet appear—it is normal that these systems have a certain lag. We know that banks reconcile and settle transactions asynchronously, and timeliness is not very important here. However, it would be very bad if the statement balance was not equal to the sum of the transactions plus the previous statement balance (an error in the sums), or if a transaction was charged to you but not paid to the merchant (disappearing money). Such problems would be violations of the integrity of the system.
 
@@ -186,11 +187,11 @@ In this context, serializable transactions are still useful as part of maintaini
 
 ### Trust, but Verify
 
-It is always a good idea not to just blindly trust the guarantees given by a software, no matter how widely used it is, because bugs can always creep in. We should have a way of finding out (preferably automatically and continually) if the data has been corrupted so that we can fix it and track down the source of error. This is known as *auditing*.
+It is always a good idea not to just blindly trust the guarantees given by a software, no matter how widely used it is, because bugs can always creep in. We should have a way of finding out (preferably automatically and continually) if the data has been corrupted so that we can fix it and track down the source of error. This is known as _auditing_.
 
 Event-based systems can provide better auditability than transaction-based systems, as it gives a clear picture of why the mutations were performed. Also, a deterministic and well-defined dataflow makes it easier to debug and trace the execution of the system.
 
-It would be better if we can check that the entire derived data pipeline is correct *end-to-end*, which can give us confidence about the correctness of any disks, networks, services, and algorithms along the path.
+It would be better if we can check that the entire derived data pipeline is correct _end-to-end_, which can give us confidence about the correctness of any disks, networks, services, and algorithms along the path.
 
 Having continuous end-to-end integrity checks gives you increased confidence about the correctness of your systems, which in turn allows you to move faster. Like automated testing, auditing increases the chances that bugs will be found quickly, and thus reduces the risk that a change to the system or a new storage technology will cause damage. If you are not afraid of making changes, you can much better evolve an application to meet changing requirements.
 
@@ -212,13 +213,13 @@ Predictive analytics systems which usually rely on machine learning can be very 
 
 Predictive analytics systems do not merely automate a human's decision by using software to specify the rules for when to say yes or no; instead we leave the rules themselves to be inferred from the data.
 
-Consequences such as feedback loops can be predicted by thinking about the entire system, including the people interacting with it – an approach known as *systems thinking*.
+Consequences such as feedback loops can be predicted by thinking about the entire system, including the people interacting with it – an approach known as _systems thinking_.
 
 ## **Privacy and Tracking**
 
-When a system only stores data that has been explicitly entered, then the system is performing a service for the user: The user is the  customer.
+When a system only stores data that has been explicitly entered, then the system is performing a service for the user: The user is the customer.
 
-Tracking the user serves not the individual but the needs of advertisers who are funding the service. This relationship is appropriately described as *surveillance*.
+Tracking the user serves not the individual but the needs of advertisers who are funding the service. This relationship is appropriately described as _surveillance_.
 
 Privacy does not mean keeping everything secret, but having the freedom to choose which things to reveal to whom, what to make public, and what to keep secret.
 
@@ -231,4 +232,3 @@ Surveillance has always existed, but it used to be expensive and manual. Trust r
 Just as the Industrial Revolution had a dark side that needed to be managed, our transition to the information age has major problems that we must confront and solve.
 
 As Bruce Schneier said, data is the pollution problem of the information age, and protecting privacy is the environmental challenge.
-
