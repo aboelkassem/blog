@@ -6,8 +6,7 @@ author: aboelkassem
 authorLink: https://www.aboelkassem.tech
 date: 2023-11-02T12:43:23.692Z
 cover: /img/designing-data-intensive-apps.avif
-metaTitle: "Exploring 'Designing Data-Intensive Applications' Chapter 3: Storage
-  and Retrieval Strategies"
+metaTitle: Chapter.3 Storage and Retrieval.
 metaDescription: Join us on a journey through Chapter 3 of 'Designing
   Data-Intensive Applications,' as we unravel the intricacies of storage and
   retrieval strategies. Delve into Log Structured Storage, SSTables, B-Trees,
