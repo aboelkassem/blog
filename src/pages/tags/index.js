@@ -1,38 +1,38 @@
-import React from 'react'
-import { kebabCase } from 'lodash'
-import { Helmet } from 'react-helmet'
-import { Link, graphql } from 'gatsby'
-import Layout from '../../components/Layout'
+import {graphql, Link} from 'gatsby'
+import {kebabCase} from 'lodash'
 import PropTypes from 'prop-types'
+import React from 'react'
+import {Helmet} from 'react-helmet'
+
+import Layout from '../../components/Layout'
 
 const TagsPage = (props) => {
-  const { data: { allMarkdownRemark: { group }, site: { siteMetadata: { title } } } } = props
+  const {
+    data : {allMarkdownRemark : {group}, site : {siteMetadata : {title}}}
+  } = props
 
   return <Layout>
-    <Helmet title={`Tags | ${title}`} />
+         <Helmet title = {`Tags | ${
+              title}`} />
 
     <section className='mw7 center avenir'>
       <header className='tc'>
-        <h1 className='f1 code mb1 fw1 dib tracked-tight'>Tags</h1>
-      </header>
+        <h1 className='f1 code mb1 fw1 dib tracked-tight'>Tags</h1><
+         /header>
 
       <ul className='list ph3 ph5-ns pv4 tc'>
         {group.map(tag => (
-          tag.fieldValue && tag.fieldValue !== '/' && (
-            <li key={tag.fieldValue} className='dib mr1 mb2'>
-              <Link
-                className='f6 f5-ns fw4 b db pa2 link dim dark-gray ba b--black-20'
-                to={`/tags/${kebabCase(tag.fieldValue)}/`}
-              >
-                {tag.fieldValue} ({tag.totalCount})
+          tag.fieldValue && tag.fieldValue !== '/' && ( <
+             li key = {tag.fieldValue} className = 'dib mr1 mb2'>< Link
+  className = 'f6 f5-ns fw4 b db pa2 link dim dark-gray ba b--black-20'
+  to = {`/tags/${kebabCase(tag.fieldValue)}/`} > { tag.fieldValue } ({tag.totalCount})
               </Link>
             </li>
           )
-        ))}
-      </ul>
+        ))
+}</ul>
 
-    </section>
-  </Layout>
+    </section>< /Layout>
 }
 
 TagsPage.propTypes = {

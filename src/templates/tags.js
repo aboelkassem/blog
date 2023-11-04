@@ -1,11 +1,19 @@
-import React from 'react'
+import {graphql, Link} from 'gatsby'
 import PropTypes from 'prop-types'
-import { Helmet } from 'react-helmet'
-import { Link, graphql } from 'gatsby'
+import React from 'react'
+import {Helmet} from 'react-helmet'
+
 import Layout from '../components/Layout'
 
-const TagRoute = (props) => {
-  const { data: { site: { siteMetadata: { title } }, allMarkdownRemark: { totalCount, edges: posts } }, pageContext: { tag } } = props
+const TagRoute =
+    (props) => {
+      const {
+        data : {
+          site : {siteMetadata : {title}},
+          allMarkdownRemark : {totalCount, edges : posts}
+        },
+        pageContext : {tag}
+      } = props
 
   const postLinks = posts.map(post => (
     <div key={post.node.fields.slug} className='pv4 bb bt b--black-10 ph3 ph0-l'>
@@ -22,49 +30,50 @@ const TagRoute = (props) => {
     </div>
   ))
 
-  const tagHeader = `${totalCount} post${
-    totalCount === 1 ? '' : 's'
-  } tagged with “${tag}”`
+            const tagHeader = `${totalCount} post${
+                totalCount === 1 ? '' : 's'} tagged with “${tag}”`
 
-  return (
-    <Layout>
-      <section className='pa3'>
-        <Helmet title={`${tag} | ${title}`} />
+            return (
+                <Layout><section className = 'pa3'>
+                <Helmet title =
+                 {
+                   `${tag} | ${title}`
+                 } />
 
         <section className='mw7 center avenir'>
           <div className='tc'>
             <h3 className='f2 lh-title fw4 mb3 mt0 pt3 bw2 avenir'>{tagHeader}</h3>
 
-            <div className='taglist'>{postLinks}</div>
+                <div className = 'taglist'>{postLinks} <
+                /div>
 
             <p className='mb5'>
-              <Link to='/tags/' className='no-underline black dim avenir'>
-                Browse all tags
-              </Link>
-            </p>
-          </div>
+              <Link to='/tags /
+                        ' className=' no -
+                    underline black dim avenir'> Browse all
+                        tags</Link>
+            </p></div>
         </section>
-      </section>
-    </Layout>
-  )
-}
+                    </section>
+    </Layout>)
+    }
 
-TagRoute.propTypes = {
-  pageContext: PropTypes.shape({
-    tag: PropTypes.string,
-  }),
-  data: PropTypes.shape({
-    site: PropTypes.shape({
-      siteMetadata: PropTypes.shape({
-        title: PropTypes.string,
+               TagRoute.propTypes = {
+      pageContext : PropTypes.shape({
+        tag : PropTypes.string,
       }),
-    }),
-    allMarkdownRemark: PropTypes.shape({
-      edges: PropTypes.array,
-      totalCount: PropTypes.number,
-    }),
-  }),
-}
+      data : PropTypes.shape({
+        site : PropTypes.shape({
+          siteMetadata : PropTypes.shape({
+            title : PropTypes.string,
+          }),
+        }),
+        allMarkdownRemark : PropTypes.shape({
+          edges : PropTypes.array,
+          totalCount : PropTypes.number,
+        }),
+      }),
+    }
 
 export default TagRoute
 
