@@ -17,6 +17,9 @@ tags:
   - data-intensive-apps
   - fault tolerance
 ---
+Continuing [our series](/tags/data-intensive-apps) for "Designing Data-Intensive Applications" book. 
+In this article, we will walkthrough the second chapter of this book `Chapter.8 The Trouble with Distributed Systems`.
+
 
 ## Table Of Content (TOC)
 - [Faults and Partial Failures](#faults-and-partial-failures)
