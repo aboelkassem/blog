@@ -18,16 +18,19 @@ const TagsPage = (props) => {
 
       <ul className='list ph3 ph5-ns pv4 tc'>
         {group.map(tag => (
-          <li key={tag.fieldValue} className='dib mr1 mb2'>
-            <Link
-              className='f6 f5-ns fw4 b db pa2 link dim dark-gray ba b--black-20'
-              to={`/tags/${kebabCase(tag.fieldValue)}/`}
-            >
-              {tag.fieldValue} ({tag.totalCount})
-            </Link>
-          </li>
+          tag.fieldValue && tag.fieldValue !== '/' && (
+            <li key={tag.fieldValue} className='dib mr1 mb2'>
+              <Link
+                className='f6 f5-ns fw4 b db pa2 link dim dark-gray ba b--black-20'
+                to={`/tags/${kebabCase(tag.fieldValue)}/`}
+              >
+                {tag.fieldValue} ({tag.totalCount})
+              </Link>
+            </li>
+          )
         ))}
       </ul>
+
     </section>
   </Layout>
 }
