@@ -18,24 +18,25 @@ tags:
   - data-consistency
   - consensus
 ---
-Continuing [our series](/tags/data-intensive-apps) for "Designing Data-Intensive Applications" book. 
+
+Continuing [our series](/tags/data-intensive-apps) for "Designing Data-Intensive Applications" book.
 In this article, we will walkthrough the second chapter of this book `Chapter.9 Consistency and Consensus`.
 
-
 ## Table Of Content (TOC)
+
 - [Consistency Guarantees](#consistency-guarantees)
 - [Linearizability](#linearizability)
-    + [Linearizability VS Serializability](#linearizability-vs-serializability)
-    + [When need to rely on Linearizability?](#user-content-when-need-to-rely-on-linearizability)
+  - [Linearizability VS Serializability](#linearizability-vs-serializability)
+  - [When need to rely on Linearizability?](#user-content-when-need-to-rely-on-linearizability)
   * [The CAP theorem](#the-cap-theorem)
-    + [Linearizability and Performance](#linearizability-and-performance)
-    + [Implementing Linearizable Systems](#implementing-linearizable-systems)
-    + [Ordering Guarantees](#ordering-guarantees)
-    + [Sequence Number Ordering](#sequence-number-ordering)
+    - [Linearizability and Performance](#linearizability-and-performance)
+    - [Implementing Linearizable Systems](#implementing-linearizable-systems)
+    - [Ordering Guarantees](#ordering-guarantees)
+    - [Sequence Number Ordering](#sequence-number-ordering)
   * [Distributed Transactions and Consensus](#distributed-transactions-and-consensus)
-    + [Atomic Commit and Two-Phase Commit (2PC)](#atomic-commit-and-two-phase-commit--2pc-)
-    + [Distributed Transactions in Practice](#distributed-transactions-in-practice)
-    + [Membership and Coordination Services](#membership-and-coordination-services)
+    - [Atomic Commit and Two-Phase Commit (2PC)](#atomic-commit-and-two-phase-commit--2pc-)
+    - [Distributed Transactions in Practice](#distributed-transactions-in-practice)
+    - [Membership and Coordination Services](#membership-and-coordination-services)
 
 The simplest way of handling system faults is to simply let the entire system fail, and then show an error message. But, the best way is to have a **general-purpose abstraction** with useful **guarantees** that we can implement.
 
@@ -43,7 +44,7 @@ One of the most important abstractions for distributed systems is **consensus**:
 
 # Consistency Guarantees
 
-Most replicated databases provide at least *eventual consistency*, with such a weak guarantee we need to be aware of its limitations, and not to assume too much, as these limitations only appear when there is a fault in the system.
+Most replicated databases provide at least _eventual consistency_, with such a weak guarantee we need to be aware of its limitations, and not to assume too much, as these limitations only appear when there is a fault in the system.
 
 Systems with stronger guarantees may have **worse performance** or be **less fault-tolerant** than systems with weaker guarantees. Nevertheless, stronger guarantees can be appealing because they are easier to use correctly.
 
@@ -108,10 +109,9 @@ Implementations of serializability based on **two-phase locking** or **actual se
 
 - **Locking and leader election**: Make sure that only one leader is elected by using a lock. To make system linearizability, ZooKeeper used to implement distributed locks and leader election by using consensus algorithms.
 - **Constraints and uniqueness guarantees**: Uniqueness constraints in database (such as username or email, if two people try to concurrently create a user or a file with the same name, one of them will be returned an error) should be linearizability. To implement it **add lock** on their chosen username or by compare-and-set **CAS(username, empty, newUserName)**.
-    - Another examples that make sure that a bank account balance never goes negative, or that you don’t sell more items than you have in stock in the warehouse, or that two people don’t concurrently book the same seat on a flight or in a theater.
+  - Another examples that make sure that a bank account balance never goes negative, or that you don’t sell more items than you have in stock in the warehouse, or that two people don’t concurrently book the same seat on a flight or in a theater.
 - **Cross-channel timing dependencie**s: if the system uses two different communication channels depending on each other. The system should be Linearizability to prevent race conditions.
-    - For the following examples shows two different communication channels (web server and image resizer) If the file storage service is linearizable, then this system should work fine. If it is not linearizable, there is the risk of a race condition: the message queue (steps 3 and 4) might be faster than the internal replication inside the storage service. In this case, when the resizer fetches the image (step 5), it might see an old version of the image, or nothing at all.
-    
+  - For the following examples shows two different communication channels (web server and image resizer) If the file storage service is linearizable, then this system should work fine. If it is not linearizable, there is the risk of a race condition: the message queue (steps 3 and 4) might be faster than the internal replication inside the storage service. In this case, when the resizer fetches the image (step 5), it might see an old version of the image, or nothing at all.
     <p align="center" width="100%">
       <img src="https://raw.githubusercontent.com/aboelkassem/designing-data-intensive-applications-notes/main/Chapters/Chapter%209%20-%20Consistency%20and%20Consensus/images/cross-channel-example.png" width="700" hight="500"/>
     </p>
@@ -120,7 +120,7 @@ Implementations of serializability based on **two-phase locking** or **actual se
 
 https://www.ibm.com/topics/cap-theorem
 
-This CAP theorem show that you cannot achieve the 3 principles together into the distributed systems. You can achieve only two of them. 
+This CAP theorem show that you cannot achieve the 3 principles together into the distributed systems. You can achieve only two of them.
 
 - CA ⇒ has strong/strict consistency
 - AP ⇒ has eventual consistency
@@ -140,15 +140,13 @@ The CAP theorem doesn’t say thing about network delays, dead nodes, or other t
 
 Although linearizability is a useful guarantee, few systems are actually linearizable in practice, as it is always slow even when there is no network fault, which decreases the performance significantly.
 
-
 ### Implementing Linearizable Systems
 
 We can implement Linearizable in two ways
 
 - **Atomic operations + Single Copy** (Not good one due to tolerate faults): which only one centralized database. If there are several requests waiting to be handled, but the datastore ensures that every request is handled atomically at a single point in time, acting on a single copy of the data, along a single timeline, without any concurrency.
-    - To implement linearizability with fault-tolerance we need either a single-leader replicated system, or to **use consensus algorithms like zookeeper do (like two-phase commit algorithm)**
+  - To implement linearizability with fault-tolerance we need either a single-leader replicated system, or to **use consensus algorithms like zookeeper do (like two-phase commit algorithm)**
 - **Two Phase commit**: there is a coordinator tell the replicas that we need to write data, should all replicas reply with Ok, then go into two phases (Prepare and Commit)
-    
     <p align="center" width="100%">
       <img src="https://raw.githubusercontent.com/aboelkassem/designing-data-intensive-applications-notes/main/Chapters/Chapter%209%20-%20Consistency%20and%20Consensus/images/two-phase-commit.png" width="700" hight="500"/>
     </p>
@@ -159,24 +157,23 @@ We can implement Linearizable in two ways
 
 **Causality** imposes an ordering on events: cause comes before effect; a message is sent before that message is received; the question comes before the answer.
 
-Ordering helps preserve causality, and a system that obeys the order imposed by causality is called *causally consistent* (eg. snapshot isolation provides causal consistency ). When you read from the database, and you see some piece of data, then you must also be able to see any data that causally precedes it.
+Ordering helps preserve causality, and a system that obeys the order imposed by causality is called _causally consistent_ (eg. snapshot isolation provides causal consistency ). When you read from the database, and you see some piece of data, then you must also be able to see any data that causally precedes it.
 
-Causality uses *partial order*, where concurrent operations may be processed in any order, but non-concurrent operations must be ordered. This is weaker than linearizability which uses *total order*, where it allows any two elements to be compared and ordered.
+Causality uses _partial order_, where concurrent operations may be processed in any order, but non-concurrent operations must be ordered. This is weaker than linearizability which uses _total order_, where it allows any two elements to be compared and ordered.
 
-Any system that is linearizable will preserve causality correctly. Linearizability doesn't have concurrent operations, however, it is one of the ways of **preserving causality**. 
+Any system that is linearizable will preserve causality correctly. Linearizability doesn't have concurrent operations, however, it is one of the ways of **preserving causality**.
 
 A system can be causally consistent without incurring the performance hit of making it linearizable (CAP theorem doesn’t apply). **Causal consistency is the strongest possible consistency model that doesn't slow down or fail due to network failures or delays**.
 
 Researchers are exploring new kinds of databases that preserve causality, with performance and availability characteristics that are similar to those of eventually consistent systems.
 
-Causal consistency needs to track causal dependencies across the entire database, not just for a single key, so *version vectors* can be used for that. However, keeping track of all dependencies can become impractical, so a better way could be to use ***sequence numbers* or *timestamps*** (from a logical clock) to order events instead. These numbers are compact and provide a total order.
-
+Causal consistency needs to track causal dependencies across the entire database, not just for a single key, so _version vectors_ can be used for that. However, keeping track of all dependencies can become impractical, so a better way could be to use **_sequence numbers_ or _timestamps_** (from a logical clock) to order events instead. These numbers are compact and provide a total order.
 
 ### Sequence Number Ordering
 
 In a database with single-leader replication, the replication log defines a total order of write operations that is consistent with causality. The leader can simply increment a counter for each operation, and thus assign a monotonically increasing sequence number to each operation in the replication log. If a follower applies the writes in the order they appear in the replication log, the state of the follower is always causally consistent (even if it is lagging behind the leader).
 
-The best known way of generating *sequence numbers* for causal consistency is **Lamport timestamps**, where every node and every client keeps track of the *maximum* counter value it has seen so far, and includes that maximum on every request. When a node receives a request or response with a maximum counter value greater than its own counter value, it immediately increases its own counter to that maximum.
+The best known way of generating _sequence numbers_ for causal consistency is **Lamport timestamps**, where every node and every client keeps track of the _maximum_ counter value it has seen so far, and includes that maximum on every request. When a node receives a request or response with a maximum counter value greater than its own counter value, it immediately increases its own counter to that maximum.
 
 <p align="center" width="100%">
   <img src="https://raw.githubusercontent.com/aboelkassem/designing-data-intensive-applications-notes/main/Chapters/Chapter%209%20-%20Consistency%20and%20Consensus/images/total-order-broadcast.png" width="700" hight="500"/>
@@ -186,7 +183,7 @@ As long as the maximum counter value is carried along with every operation, this
 
 The advantage of Lamport timestamps over version vectors is that they are more compact. The difference between Lamport timestamps and version vectors, is that version vectors can distinguish whether two operations are concurrent or weather one is causally dependent on the other, whereas Lamport timestamps always enforce total ordering. Lamport timestamps are more compact, but we cannot use it to tell whether two operations are concurrent or casually dependent.
 
-In order to use total ordering between multiple nodes, we should use ***total order broadcast***,  which is a message exchanging protocol that guarantees reliability (no messages are lost), and total ordered delivery of messages to all nodes.
+In order to use total ordering between multiple nodes, we should use **_total order broadcast_**, which is a message exchanging protocol that guarantees reliability (no messages are lost), and total ordered delivery of messages to all nodes.
 
 **Consensus services such as ZooKeeper** and etcd actually implement total order broadcast. This fact is a hint that there is a strong connection between total order broadcast and consensus, which we will explore later in this chapter.
 
@@ -200,7 +197,7 @@ Total order broadcast is used in database replication, serializable transactions
 
 Total order broadcast is asynchronous: messages are guaranteed to be delivered reliably in a fixed order, but there is no guarantee about when a message will be delivered (so one recipient may lag behind the others). By contrast, linearizability is a **recency guarantee**: a read is guaranteed to see the latest value written.
 
-You can build linearizable storage on top of it. For example, you can ensure that usernames uniquely identify user accounts. 
+You can build linearizable storage on top of it. For example, you can ensure that usernames uniquely identify user accounts.
 
 You can Implement it using atomic **compare-and-set operation**. Every register initially has the value **null** and when a user wants to create a username, you execute a compare-and-set operation on the register for that username, setting it to the user account ID.
 
@@ -234,7 +231,7 @@ the most common way of solving atomic commit and which is implemented in various
 
 Atomic commit is easy on a single node and implemented by default by storage engine, as it just depends on the order in which data is durably written to disk.
 
-but it's quite challenging when performed across multiple nodes involved in a transaction (multi-object transaction in partitioned database), as it's not sufficient to send a commit request to all nodes independently. Most NoSQL datastores don't support such transactions, but various relational systems do. 
+but it's quite challenging when performed across multiple nodes involved in a transaction (multi-object transaction in partitioned database), as it's not sufficient to send a commit request to all nodes independently. Most NoSQL datastores don't support such transactions, but various relational systems do.
 
 If some nodes commit the transaction but others abort it, the nodes become inconsistent with each other. A transaction commit must be irrevocable—you are not allowed to change your mind and retroactively abort a transaction after it has been committed. The reason for this rule is that once data has been committed, it becomes visible to other transactions, and thus other clients may start relying on that data.
 
@@ -242,7 +239,7 @@ Two-phase commit is an algorithm for achieving atomic transaction commit across 
 
 2PC is used internally in some databases, Java Transaction API and WSAtomicTransaction for SOAP web services.
 
-The 2PC protocol contains two crucial points of "no return", when a participant votes yes in the *prepare* phase, and when the coordinator decides the decision. The decision is irrevocable, but could be undone by another *compensating transaction*.
+The 2PC protocol contains two crucial points of "no return", when a participant votes yes in the _prepare_ phase, and when the coordinator decides the decision. The decision is irrevocable, but could be undone by another _compensating transaction_.
 
 <p align="center" width="100%">
   <img src="https://raw.githubusercontent.com/aboelkassem/designing-data-intensive-applications-notes/main/Chapters/Chapter%209%20-%20Consistency%20and%20Consensus/images/two-phase-commit.png" width="700" hight="500"/>
@@ -276,7 +273,6 @@ The coordinator crashes after participants vote “yes.” Database 1 does not k
 
 A 3PC algorithm can solve this issue in theory but not in practice.
 
-
 ### Distributed Transactions in Practice
 
 Some implementations of distributed transactions carry a heavy performance penalty for example, distributed transactions in MySQL are reported to be over 10 times slower than single-node transactions, so it is not surprising when people advise against using them. Much of the performance cost inherent in two-phase commit is due to the additional disk forcing (fsync) that is required for crash recovery, and the additional network round-trips.
@@ -286,11 +282,11 @@ Two types of distributed transactions
 - **Database-internal distributed transactions**: Some distributed databases (i.e., databases that use replication and partitioning in their standard configuration) support internal transactions among the nodes of that database. For example, VoltDB and MySQL Cluster’s NDB storage engine have such internal transaction support. In this case, all the nodes participating in the transaction are running the same database software.
 - **Heterogeneous distributed transactions**: In a heterogeneous transaction, the participants are two or more different technologies: for example, two databases from different vendors, or even nondatabase systems such as message brokers. A distributed transaction across these systems must ensure atomic commit, even though the systems may be entirely different under the hood.
 
-Database internal apply optimizations since uses the same database software.  
+Database internal apply optimizations since uses the same database software.
 
 **Exactly-once message processing**
 
-Heterogeneous distributed transactions allow diverse systems to be integrated in powerful ways. For example, a message from a message queue can be acknowledged as processed if and only if the **database transaction** for processing the message was successfully **committed**. 
+Heterogeneous distributed transactions allow diverse systems to be integrated in powerful ways. For example, a message from a message queue can be acknowledged as processed if and only if the **database transaction** for processing the message was successfully **committed**.
 
 The side effect of using message broker may safely redeliver the message later if transaction failed and this ensure that the message is **effectively processed exactly once**.
 
@@ -331,13 +327,13 @@ Projects like ZooKeeper or etcd are often described as “distributed key-value 
 
 As an application developer, you will **rarely** need to use ZooKeeper directly, because it is actually not well suited as a general-purpose database. It is more likely that you will end up relying on it **indirectly** via some other project: for example, HBase, Hadoop YARN, OpenStack Nova, and Kafka all rely on ZooKeeper running in the background.
 
-ZooKeeper and etcd are designed to hold small amounts of data that can fit entirely in memory.  That small amount of data is replicated across all the nodes using a fault-tolerant total order broadcast algorithm. 
+ZooKeeper and etcd are designed to hold small amounts of data that can fit entirely in memory. That small amount of data is replicated across all the nodes using a fault-tolerant total order broadcast algorithm.
 
 ZooKeeper is modeled after Google’s Chubby lock service implementing not only total order broadcast but also an interesting set of other features that turn out to be particularly useful when building distributed systems like:
 
 - **Linearizable atomic operations**: Using an atomic compare-and-set operation, you can implement a lock if several nodes concurrently try to perform the same operation, only one of them will succeed.
 - **Total ordering of operations**: when some resource is protected by a lock or lease, you need a **fencing token** to prevent clients from conflicting with each other in the case of a process pause. The fencing token is some number that monotonically increases every time the lock is acquired. ZooKeeper provides this by totally ordering all operations and giving each operation a monotonically increasing transaction ID (zxid) and version number (cversion)
 - **Failure detection**: Clients maintain a long-lived session on ZooKeeper servers, and the client and server periodically exchange heartbeats to check that the other node is still alive. Even if the connection is temporarily interrupted, or a ZooKeeper node fails, the session remains active. However, if the heartbeats end for a duration that is longer than the session timeout, ZooKeeper declares the session to be dead. Any locks held by a session can be configured to be automatically released when the session times out
-- **Change notifications**:  Not only can one client read locks and values that were created by another client, but it can also watch them for changes. Thus, a client can find out when another client joins the cluster  or if another client fails. By subscribing to notifications, a client avoids having to frequently poll to find out about changes.
+- **Change notifications**: Not only can one client read locks and values that were created by another client, but it can also watch them for changes. Thus, a client can find out when another client joins the cluster or if another client fails. By subscribing to notifications, a client avoids having to frequently poll to find out about changes.
 
-Also, ZooKeeper, etcd, and Consul are also often used for **service discovery** that is, to find out which IP address you need to connect to in order to reach a particular service.  However, it is less clear whether service discovery actually requires consensus. **DNS** is the traditional way of looking up the IP address for a service name, and it uses multiple layers of caching to achieve good performance and availability.
+Also, ZooKeeper, etcd, and Consul are also often used for **service discovery** that is, to find out which IP address you need to connect to in order to reach a particular service. However, it is less clear whether service discovery actually requires consensus. **DNS** is the traditional way of looking up the IP address for a service name, and it uses multiple layers of caching to achieve good performance and availability.
