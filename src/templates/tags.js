@@ -10,7 +10,14 @@ const TagRoute = (props) => {
   const postLinks = posts.map(post => (
     <div key={post.node.fields.slug} className='pv4 bb bt b--black-10 ph3 ph0-l'>
       <Link to={post.node.fields.slug} className='link dim no-underline black'>
-        <h2 className='if3 f2-m f-subheadline-l measure lh-title fw1 mt0 mb0'>{post.node.frontmatter.title}</h2>
+        <div>
+          <img
+            src={post.node.frontmatter.cover.publicURL}
+            alt={post.node.frontmatter.title}
+            className='w-60'
+          />
+        </div>
+        <h2 className='f4 f3-m f2-l f-subheadline-l measure lh-title fw1 mt0 mb0'>{post.node.frontmatter.title}</h2>
       </Link>
     </div>
   ))
@@ -80,7 +87,10 @@ export const tagPageQuery = graphql`
                         slug
                     }
                     frontmatter {
-                        title
+                        title,
+                        cover {
+                          publicURL
+                        }
                     }
                 }
             }
