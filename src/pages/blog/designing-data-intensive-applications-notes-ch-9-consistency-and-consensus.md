@@ -6,7 +6,7 @@ author: aboelkassem
 authorLink: https://www.aboelkassem.tech
 date: 2023-11-04T07:36:26.965Z
 cover: /img/designing-data-intensive-apps.avif
-metaTitle: Chapter Consistency and Consensus
+metaTitle: Chapter 9 Consistency and Consensus
 metaDescription: Dive deep into the intricacies of replication in distributed
   systems. Explore leader-follower dynamics, synchronous versus asynchronous
   replication, handling node outages, and the inner workings of replication
