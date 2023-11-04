@@ -16,14 +16,16 @@ tags:
   - partitioning
   - ""
 ---
-Continuing [our series](/tags/data-intensive-apps) for "Designing Data-Intensive Applications" book. 
+
+Continuing [our series](/tags/data-intensive-apps) for "Designing Data-Intensive Applications" book.
 In this article, we will walkthrough the second chapter of this book `Chapter.6 Partitioning`.
 
 ## Table of Content
+
 - [How do you partitioning data ?](#how-do-you-partitioning-data--)
-  * [Partitioning of Key-Value Data](#partitioning-of-key-value-data)
-  * [Partitioning and Secondary Indexes](#partitioning-and-secondary-indexes)
-  * [Rebalancing Partitions](#rebalancing-partitions)
+  - [Partitioning of Key-Value Data](#partitioning-of-key-value-data)
+  - [Partitioning and Secondary Indexes](#partitioning-and-secondary-indexes)
+  - [Rebalancing Partitions](#rebalancing-partitions)
 
 Partitions are defined in such a way that each pie of data (record, document) belongs to **one partition**.
 
@@ -36,6 +38,7 @@ Usually we combine replication and partitioning: each node acts as leader for so
 </p>
 
 For 10 replicas theoretically speaking, we expect to get
+
 - 10x Storage
 - 10x Read and write throughput
 
@@ -43,7 +46,7 @@ For 10 replicas theoretically speaking, we expect to get
 
 ### Partitioning of Key-Value Data
 
-The goal of partitioning is to spread data evenly across nodes, and more importantly to avoid having *skewed* partitions with most of the load (called *hot spots*).
+The goal of partitioning is to spread data evenly across nodes, and more importantly to avoid having _skewed_ partitions with most of the load (called _hot spots_).
 
 There are two main ways of partitioning keys:
 
@@ -109,9 +112,9 @@ Nevertheless, it is widely used: MongoDB, Riak, Cassandra, Elasticsearch, SolrCl
 
 **Partitioning Secondary Indexes by Term (Global Index)**
 
-Another option is to have a global secondary index which can also be partitioned, but using *term/topic* instead of *document*. Every partition would keep a secondary index of some of these terms (range of terms), 
+Another option is to have a global secondary index which can also be partitioned, but using _term/topic_ instead of _document_. Every partition would keep a secondary index of some of these terms (range of terms),
 
-This makes reads more efficient, rather than doing scatter/gather in all partitions, but writes are slower and complicated.  However, in practice updates to global secondary indexes are **asynchronous** and very fast.
+This makes reads more efficient, rather than doing scatter/gather in all partitions, but writes are slower and complicated. However, in practice updates to global secondary indexes are **asynchronous** and very fast.
 
 <p align="center" width="100%">
   <img src="https://raw.githubusercontent.com/aboelkassem/designing-data-intensive-applications-notes/main/Chapters/Chapter%206%20-%20Partitioning/images/partitioning-secondary-index-by-term.png" width="700" hight="500"/>
@@ -162,7 +165,7 @@ the issue with approach
 
 **Partitioning proportionally to nodes count**
 
-Like **Fixed number of partitions** but make the number of partition proportionally to nodes count to have a fixed number of partitions per node.  for example if I have 1000 partition for 10 nodes, if i crease the nodes to 20, then 2000 partitions. in Cassandra, 256 partitions per node by default
+Like **Fixed number of partitions** but make the number of partition proportionally to nodes count to have a fixed number of partitions per node. for example if I have 1000 partition for 10 nodes, if i crease the nodes to 20, then 2000 partitions. in Cassandra, 256 partitions per node by default
 
 It can be a good thing to have a human in the loop for rebalancing.
 
@@ -195,5 +198,3 @@ LinkedIn’s Espresso, HBase, SolrCloud, and Kafka also use **ZooKeeper** to tra
 Cassandra and Riak take a different approach: they use a **gossip protocol** among the nodes to disseminate any changes in cluster state.
 
 Couchbase does not rebalance automatically. Normally it is configured with a routing tier called **moxi.**
-
-
