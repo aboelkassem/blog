@@ -6,8 +6,7 @@ author: aboelkassem
 authorLink: https://www.aboelkassem.tech
 date: 2023-11-04T07:29:19.011Z
 cover: /img/designing-data-intensive-apps.avif
-metaTitle: "Exploring Transactions in Data-Intensive Applications: ACID, BASE,
-  and Isolation Levels"
+metaTitle: Chapter.7 Transactions.
 metaDescription: Dive into Chapter 7 of "Designing Data-Intensive Applications,"
   covering transactions, ACID and BASE models, weak isolation levels, and
   strategies for preventing issues like lost updates, write skew, and phantoms.
