@@ -6,8 +6,7 @@ author: aboelkassem
 authorLink: https://www.aboelkassem.tech
 date: 2023-11-04T07:20:47.413Z
 cover: /img/designing-data-intensive-apps.avif
-metaTitle: "Demystifying Data Partitioning: A Comprehensive Guide - Chapter 6 of
-  'Designing Data-Intensive Applications"
+metaTitle: Chapter.6 Partitioning.
 metaDescription: Explore the intricacies of data partitioning in Chapter 6 of
   'Designing Data-Intensive Applications.' Learn key strategies for
   partitioning, addressing hot spots, managing secondary indexes, and
