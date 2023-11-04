@@ -1,6 +1,6 @@
 ---
 templateKey: article-page
-title: "Designing Data Intensive Applications Notes: Ch.5 The Future of Data Systems"
+title: "Designing Data Intensive Applications Notes: Ch.12 The Future of Data Systems"
 slug: designing-data-intensive-applications-notes-ch12
 author: aboelkassem
 authorLink: https://www.aboelkassem.tech
