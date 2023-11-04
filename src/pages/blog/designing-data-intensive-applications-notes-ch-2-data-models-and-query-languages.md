@@ -7,8 +7,7 @@ author: aboelkassem
 authorLink: https://www.aboelkassem.tech
 date: 2023-11-02T11:27:28.581Z
 cover: /img/designing-data-intensive-apps.avif
-metaTitle: "Designing Data-Intensive Applications Chapter 2: Relational vs
-  Document Models, Query Languages"
+metaTitle: Chapter.2 Data Models and Query Languages.
 metaDescription: Dive into Chapter 2 of 'Designing Data-Intensive Applications,'
   exploring the tug-of-war between Relational and Document Models. Discover
   their strengths in handling one-to-many and many-to-many relationships, and
