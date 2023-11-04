@@ -150,7 +150,7 @@ We can implement Linearizable in two ways
     <p align="center" width="100%">
       <img src="https://raw.githubusercontent.com/aboelkassem/designing-data-intensive-applications-notes/main/Chapters/Chapter%209%20-%20Consistency%20and%20Consensus/images/two-phase-commit.png" width="700" hight="500"/>
     </p>
-    
+
     - Note for confusing: Two Phase commit 2PC (Linearizability) is not Two Phase Locking 2PL (Serializability)
 
 ### Ordering Guarantees
