@@ -19,12 +19,12 @@ tags:
 ---
 
 ## Table Of Content (TOC)
-- [Faults and Partial Failures](#faults-and-partial-failures)
-  * [Unreliable Networks](#unreliable-networks)
-    + [Timeouts and Unbounded Delays](#timeouts-and-unbounded-delays)
-    + [**Unreliable Clocks**](#unreliable-clocks)
-    + [**Knowledge, Truth, and Lies**](#user-content-knowledge-truth-and-lies)
 
+- [Faults and Partial Failures](#faults-and-partial-failures)
+  - [Unreliable Networks](#unreliable-networks)
+    - [Timeouts and Unbounded Delays](#timeouts-and-unbounded-delays)
+    - [**Unreliable Clocks**](#unreliable-clocks)
+    - [**Knowledge, Truth, and Lies**](#user-content-knowledge-truth-and-lies)
 
 Working with distributed systems is fundamentally different from writing software on a single computer and the main difference is that there are lots of new and excit‐ ing ways for things to go wrong.
 
@@ -52,7 +52,7 @@ Rapid feedback about a remote node being down is useful, but you can’t count o
 
 Declaring a node dead is problematic, A **long timeout** means a long wait until a node is declared dead. **A short timeout** detects faults faster but carries a higher risk of incorrectly declaring a node dead when in fact it has only suffered a temporary slowdown.
 
-Theoretically, a reasonable timeout value is `2d + r`, where `d` is the maximum delay for a packet, and `r` is the node's processing time. However, these values are hardly bounded  in practice. So, choosing the timeouts by continuous experimental measurements is usually better (**jitter**). This is happened in AWS, AKKA, Cassandra.
+Theoretically, a reasonable timeout value is `2d + r`, where `d` is the maximum delay for a packet, and `r` is the node's processing time. However, these values are hardly bounded in practice. So, choosing the timeouts by continuous experimental measurements is usually better (**jitter**). This is happened in AWS, AKKA, Cassandra.
 
 Some latency-sensitive applications, use UDP rather than TCP, as it's a good choice in situations where delayed data is worthless like in VoIP phone call, Live streaming.
 
@@ -81,15 +81,15 @@ Threads can pause for long period of time for multiple reasons (eg. garbage coll
 
 ### **Knowledge, Truth, and Lies**
 
-In a distributed system, a node cannot know anything for sure, but we can state the assumptions we are making about the behavior (*the system model*), and algorithms can be proved to function correctly within certain system models.
+In a distributed system, a node cannot know anything for sure, but we can state the assumptions we are making about the behavior (_the system model_), and algorithms can be proved to function correctly within certain system models.
 
-A node cannot trust its own judgment, and must abide by the voting (*quorum*) decision of other nodes, even if it only effects itself.
+A node cannot trust its own judgment, and must abide by the voting (_quorum_) decision of other nodes, even if it only effects itself.
 
-When using lock or lease to protect access to some resource, a mechanism such as *fencing* should be enforced to prevent a node that falsely believe it has the access, from disrupting the rest of the system. It's unwise for a  service to assume that its clients will always behave well.
+When using lock or lease to protect access to some resource, a mechanism such as _fencing_ should be enforced to prevent a node that falsely believe it has the access, from disrupting the rest of the system. It's unwise for a service to assume that its clients will always behave well.
 
-Distributed systems problems become much harder if there is a risk that nodes may lie, such a behavior is known as *Byzantine fault*, and a system is *byzantine fault-tolerant* if it continues to operate correctly even if some nodes are malfunctioning or under malicious attack.
+Distributed systems problems become much harder if there is a risk that nodes may lie, such a behavior is known as _Byzantine fault_, and a system is _byzantine fault-tolerant_ if it continues to operate correctly even if some nodes are malfunctioning or under malicious attack.
 
-*Byzantine fault-tolerant* algorithms are quite complicated and costly to deploy, making them impractical, especially when all nodes are running inside the companies datacenters, but it might make sense in a peer-to-peer network.
+_Byzantine fault-tolerant_ algorithms are quite complicated and costly to deploy, making them impractical, especially when all nodes are running inside the companies datacenters, but it might make sense in a peer-to-peer network.
 
 Even if we trust our nodes, there is still a weak form of lying, such as hardware issues, software bugs, or misconfiguration. Luckily, we can tolerate this using checksum on TCP or application level for example, and by input validation.
 
@@ -105,8 +105,8 @@ And from node failure perspective, system models include:
 - **Crash-recovery-faults**, where the node can crash at any moment, but perhaps respond again after some unknown time
 - **Byzantine-faults**, where nodes can do anything including trying to trick other nodes
 
-The most useful model in real systems is the *partially synchronous model* with *crash-recovery*.
+The most useful model in real systems is the _partially synchronous model_ with _crash-recovery_.
 
-It's important to distinguish between two kind of properties, *safety* and *liveness*, because it is common to require that safety properties always hold, while with liveness properties we are allowed to make caveats.
+It's important to distinguish between two kind of properties, _safety_ and _liveness_, because it is common to require that safety properties always hold, while with liveness properties we are allowed to make caveats.
 
 We do have to make some assumptions about faults that can happen. However, real implementation might still have to handle impossible cases, even by just firing an error message.
