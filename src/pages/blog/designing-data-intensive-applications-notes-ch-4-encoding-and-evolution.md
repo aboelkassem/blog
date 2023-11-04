@@ -6,8 +6,7 @@ author: aboelkassem
 authorLink: https://www.aboelkassem.tech
 date: 2023-11-02T13:48:29.436Z
 cover: /img/designing-data-intensive-apps.avif
-metaTitle: Exploring Data Representation, Schema, and Encoding Formats in
-  "Designing Data-Intensive Applications" Chapter 4
+metaTitle: Chapter.4 Encoding and Evolution.
 metaDescription: Dive into Chapter 4 of "Designing Data-Intensive Applications"
   covering data representation, schema strategies, and various encoding formats
   like JSON, XML, BSON, MessagePack, Thrift, Protocol Buffer, and Avro.
