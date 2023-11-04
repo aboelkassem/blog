@@ -6,8 +6,7 @@ author: aboelkassem
 authorLink: https://www.aboelkassem.tech
 date: 2023-11-02T13:58:33.106Z
 cover: /img/designing-data-intensive-apps.avif
-metaTitle: "Understanding Data-Intensive Applications: Chapter 5 - Replication
-  Strategies Explained"
+metaTitle: Chapter.5 Replication.
 metaDescription: Dive into Chapter 5 of 'Designing Data-Intensive Applications'
   focusing on Replication. Explore leader-based and leaderless replication,
   quorums, and sloppy quorums. Learn how replication enhances availability and
