@@ -20,25 +20,26 @@ tags:
   - batch-processing
   - MapReduce
 ---
-Continuing [our series](/tags/data-intensive-apps) for "Designing Data-Intensive Applications" book. 
+
+Continuing [our series](/tags/data-intensive-apps) for "Designing Data-Intensive Applications" book.
 In this article, we will walkthrough the second chapter of this book `Chapter.10 Batch Processing`.
 
 ## Table of content (TOC)
+
 - [Batch Processing with Unix Tools](#batch-processing-with-unix-tools)
 - [MapReduce and Distributed Filesystems](#mapreduce-and-distributed-filesystems)
-  * [MapReduce Job Execution](#mapreduce-job-execution)
-  * [Joins in batch processing](#joins-in-batch-processing)
+  - [MapReduce Job Execution](#mapreduce-job-execution)
+  - [Joins in batch processing](#joins-in-batch-processing)
 - [The Output of Batch Workflows](#the-output-of-batch-workflows)
 - [Comparing Hadoop to Distributed Databases](#comparing-hadoop-to-distributed-databases)
 - [Beyond MapReduce](#beyond-mapreduce)
-  * [Materialization of Intermediate State](#materialization-of-intermediate-state)
-
+  - [Materialization of Intermediate State](#materialization-of-intermediate-state)
 
 All systems can fit into three main categories:
 
 - **Services (online)**, where it waits for requests from a client to arrive, tries to handle them as quickly as possible, and sends back a response.
-- **Batch Processing Systems (offline)**, takes a large amount of input data where it runs a job to process a large amount of *bounded* input, and produce some output data. It is often scheduled periodically, and can take up to several days as no user is typically waiting for it to finish.
-- **Stream Processing Systems (near-real-time)**, Stream processing is somewhere between online and offline/batch processing, where is consumes *unbounded* input/events shortly after its available, processes it, and produces output.  It build upon batch processing and have lower latency.
+- **Batch Processing Systems (offline)**, takes a large amount of input data where it runs a job to process a large amount of _bounded_ input, and produce some output data. It is often scheduled periodically, and can take up to several days as no user is typically waiting for it to finish.
+- **Stream Processing Systems (near-real-time)**, Stream processing is somewhere between online and offline/batch processing, where is consumes _unbounded_ input/events shortly after its available, processes it, and produces output. It build upon batch processing and have lower latency.
 
 <p align="center" width="100%">
   <img src="https://raw.githubusercontent.com/aboelkassem/designing-data-intensive-applications-notes/main/Chapters/Chapter%2010%20-%20Batch%20Processing/images/types-of-systems.png" width="700" hight="500"/>
@@ -114,7 +115,7 @@ HDFS is based on the shared-nothing principle. Which consists of a daemon proces
 
 ### MapReduce Job Execution
 
-MapReduce is a programming framework with which you can write code to process large datasets in a distributed filesystem like HDFS.  The previous example of Unix log analysis, this how data processing in MapReduce.
+MapReduce is a programming framework with which you can write code to process large datasets in a distributed filesystem like HDFS. The previous example of Unix log analysis, this how data processing in MapReduce.
 
 1. Read a set of input files, and break it up into records. In the web server log example, each record is one line in the log (that is, \n is the record separator).
 2. Call the **mapper function** to extract a key and value from each input record. In the preceding example, the mapper function is awk '{print $7}': it extracts the URL ($7) as the key, and leaves the value empty.
@@ -138,13 +139,13 @@ The following diagram shows the dataflow in Hadoop MapReduce job. The input is a
   <img src="https://raw.githubusercontent.com/aboelkassem/designing-data-intensive-applications-notes/main/Chapters/Chapter%2010%20-%20Batch%20Processing/images/map-reduce.png" width="700" hight="500"/>
 </p>
 
-Application code (e.g., JAR files if java application) is run in the map task and the MapReduce framework first copy this code to the appropriate machines, then starts the map task and begins reading the input file, passing one record at a time to the mapper callback. The output of the mapper consists of key-value pairs. 
+Application code (e.g., JAR files if java application) is run in the map task and the MapReduce framework first copy this code to the appropriate machines, then starts the map task and begins reading the input file, passing one record at a time to the mapper callback. The output of the mapper consists of key-value pairs.
 
 The key-value pairs must be sorted, but the dataset is likely too large, Instead, the sorting is performed in stages. First, each map task **partitions** its output by reducer, based on the hash of the key. Each of these partitions is written to a sorted file on the mapper’s local disk. The reducers connect to each of the mappers and download the files of sorted key-value pairs for their partition.
 
 The reduce task takes the files from the mappers and merges them together, preserving the sort order. Thus, if different mappers produced records with the same key, they will be adjacent in the merged reducer input
 
-MapReduce jobs cannot have any randomness, and the range of problems we can solve with single MapReduce job is limited, so commonly jobs are chained together to form a *workflow* (output of one job becomes the input to the next job), Hadoop MapReduce framework does not have any particular support for workflows, so it done implicitly using directory names.
+MapReduce jobs cannot have any randomness, and the range of problems we can solve with single MapReduce job is limited, so commonly jobs are chained together to form a _workflow_ (output of one job becomes the input to the next job), Hadoop MapReduce framework does not have any particular support for workflows, so it done implicitly using directory names.
 
 ### Joins in batch processing
 
@@ -156,7 +157,7 @@ For example: analysis of user activity events, On the left is a log of events an
   <img src="https://raw.githubusercontent.com/aboelkassem/designing-data-intensive-applications-notes/main/Chapters/Chapter%2010%20-%20Batch%20Processing/images/batch-processing-example.png" width="700" hight="500"/>
 </p>
 
-To do joins is to query the file needed for join over the network (go over the activity events one by  one and query the user database (on a remote server) for every user ID), however such an approach is most likely to suffer from poor performance, and also can lead to inconsistency if the data changes over the time of round-trip for remote database. So, a better approach would be to clone the other database into the distributed system (using ETL (Extract, Transform, Load) process).
+To do joins is to query the file needed for join over the network (go over the activity events one by one and query the user database (on a remote server) for every user ID), however such an approach is most likely to suffer from poor performance, and also can lead to inconsistency if the data changes over the time of round-trip for remote database. So, a better approach would be to clone the other database into the distributed system (using ETL (Extract, Transform, Load) process).
 
 **Sort-merge joins**
 
@@ -174,7 +175,7 @@ Since the reducer processes all of the records for a particular user ID in one g
 
 Skewed/hot key can happened in single reducer (for example in social media and celebrity has millions of records). Since a MapReduce job is only complete when all of its mappers and reducers have completed, any subsequent jobs must wait for the slowest reducer to complete before they can start.
 
-To Solve hot keys, When performing the actual join, the mappers send any records relating to a hot key to one of several reducers, chosen at random. 
+To Solve hot keys, When performing the actual join, the mappers send any records relating to a hot key to one of several reducers, chosen at random.
 
 **Map-Side Joins**
 
@@ -239,7 +240,7 @@ Intermediate state: is when you know the output of one job is only ever used as 
 
 MapReduce's approach is fully materialized, which means to eagerly compute results of some operations and write them out rather than computing them on demand. This prevents any job from starting until all its preceding jobs are completed, mappers are often redundant, and this extra intermediate storage have to be replicated which wastes a lot of resources.
 
-Dataflow engines (eg. **Spark**, Tex, Flink, etc.) fixed MapReduce disadvantages by handling and entire workflow as one job,  rather than small independent sub-jobs. Like MapReduce, they work by repeatedly calling a user-defined function to process one record at a time on a single thread. They parallelize work by partitioning inputs, and they copy the output of one function/operator over the network to become the input to another function/operator. It also provides more flexible callback functions (*operations*) rather than only map and reduce.
+Dataflow engines (eg. **Spark**, Tex, Flink, etc.) fixed MapReduce disadvantages by handling and entire workflow as one job, rather than small independent sub-jobs. Like MapReduce, they work by repeatedly calling a user-defined function to process one record at a time on a single thread. They parallelize work by partitioning inputs, and they copy the output of one function/operator over the network to become the input to another function/operator. It also provides more flexible callback functions (_operations_) rather than only map and reduce.
 
 This style of processing engine is based on research systems like Dryad and Nephele which can do in-place sorting when required only. there are no unnecessary map tasks, and other advantages.
 
