@@ -22,20 +22,22 @@ tags:
   - reliability
   - maintainability
 ---
+
 Hello, this is a [new series](/tags/data-intensive-apps) of articles for my notes and summaries of the "Designing Data-Intensive Applications" book by Martin Kleppmann.
 
 In this article, we will walkthrough the first chapter of this book `Chapter.1 Reliable, Scalable, and Maintainable Applications`.
 
 ## Table Of Content (TOC)
+
 - [Thinking About Data Systems](#thinking-about-data-systems)
 - [Reliability](#reliability)
-  * [Hardware Faults](#hardware-faults)
-  * [Software Errors](#software-errors)
-  * [Human Errors](#human-errors)
+  - [Hardware Faults](#hardware-faults)
+  - [Software Errors](#software-errors)
+  - [Human Errors](#human-errors)
 - [Scalability](#scalability)
-  * [Describing Load (Twitter example)](#user-content-describing-load-twitter-example)
-  * [Describing Performance](#describing-performance)
-  * [Approaches for Coping with Load](#approaches-for-coping-with-load)
+  - [Describing Load (Twitter example)](#user-content-describing-load-twitter-example)
+  - [Describing Performance](#describing-performance)
+  - [Approaches for Coping with Load](#approaches-for-coping-with-load)
 - [Maintainability](#maintainability)
 
 CPU power is rarely the limiting factor anymore, it is the data size that is.
@@ -60,13 +62,13 @@ If you have an application-managed caching layer (using Memcached or similar), o
 
 ## Reliability
 
-***System should continue to work correctly, even in the face of faults and human errors***.
+**_System should continue to work correctly, even in the face of faults and human errors_**.
 
 The things that can go wrong are called faults, and systems that anticipate faults and can cope with them are called fault-tolerant or resilient.
 
 Note that a fault is not the same as a failure. A fault is a one component of the system deviating from its specs, while failure is the when the system as a whole stops working. It's impossible to prevent faults, but we should try to prevent faults from causing failures by designing fault-tolerance mechanisms.
 
-**The Netflix Chaos Monkey** is an approach to continued test the app for handling faults. 
+**The Netflix Chaos Monkey** is an approach to continued test the app for handling faults.
 
 ### Hardware Faults
 
@@ -99,7 +101,7 @@ Some approaches for making reliable systems, in spite of unreliable human action
 
 ## Scalability
 
-***As system grows, there should be reasonable ways for dealing with that growth***.
+**_As system grows, there should be reasonable ways for dealing with that growth_**.
 
 ### Describing Load (Twitter example)
 
@@ -137,7 +139,7 @@ Twitter is moving to a hybrid of both approaches. Most users’ tweets continue 
 
 ### Describing Performance
 
-Throughput is the most important metric in batch processing systems, while *response time* is the most important metrics for online systems.
+Throughput is the most important metric in batch processing systems, while _response time_ is the most important metrics for online systems.
 
 The following image Illustrating mean and percentiles: response times for a sample of 100 requests to a service.
 
@@ -167,22 +169,22 @@ In an early stage startup, it's more important to be able to iterate quickly on 
 
 ## Maintainability
 
-***Different people who works on the system should all be able to work on it productively***
+**_Different people who works on the system should all be able to work on it productively_**
 
 To minimize pain during maintenance, there are some design principles take into your consideration.
 
 - **Operability**: Make it easy for operations teams to keep the system running smoothly.
-    - Good monitoring
-    - Providing good support for automation and integration with standard tools
-    - Avoiding dependency on individual machines
-    - Good documentation
-    - Keeping software and platforms up to date, including security patches
-    - Providing good default behavior, while giving administrators the option to override
-    - Self-healing, while giving administrators a manual control
+  - Good monitoring
+  - Providing good support for automation and integration with standard tools
+  - Avoiding dependency on individual machines
+  - Good documentation
+  - Keeping software and platforms up to date, including security patches
+  - Providing good default behavior, while giving administrators the option to override
+  - Self-healing, while giving administrators a manual control
 - **Simplicity**: Make it easy for new engineers to understand the system, by removing as much complexity as possible from the system.
-    - A good system should be simple, this can be done by reducing complexity, which doesn't necessarily mean reducing its functionality, but rather by making **abstractions**.
-    - good abstraction can hide a great deal of implementation detail behind a clean, simple-to-understand façade.
-    - A good abstraction can also be used for a wide range of different applications.
+  - A good system should be simple, this can be done by reducing complexity, which doesn't necessarily mean reducing its functionality, but rather by making **abstractions**.
+  - good abstraction can hide a great deal of implementation detail behind a clean, simple-to-understand façade.
+  - A good abstraction can also be used for a wide range of different applications.
 - **Evolvability**: Make it easy for engineers to make changes to the system in the future, adapting it for unanticipated use cases as requirements change
-    - Agile is one of the best working patterns for maintaining evolvable systems.
-    - Test-driven development (TDD) and refactoring also used for evolvability
+  - Agile is one of the best working patterns for maintaining evolvable systems.
+  - Test-driven development (TDD) and refactoring also used for evolvability
