@@ -18,26 +18,27 @@ tags:
   - data-intensive-apps
   - message-queue
 ---
-Continuing [our series](/tags/data-intensive-apps) for "Designing Data-Intensive Applications" book. 
+
+Continuing [our series](/tags/data-intensive-apps) for "Designing Data-Intensive Applications" book.
 In this article, we will walkthrough the second chapter of this book `Chapter.11 Stream Processing`.
 
-
 ## Table Of Content (TOC)
+
 - [Messaging System](#messaging-system)
 - [Partitioned Logs (Kafka)](#user-content-partitioned-logs-kafka)
 - [Partitioned Log Broker vs Message Queue/Passing Broker](#partitioned-log-broker-vs-message-queue-passing-broker)
 - [Databases and Streams](#databases-and-streams)
-  * [Keeping systems in Sync](#keeping-systems-in-sync)
-  * [Change Data Capture (CDC)](#user-content-change-data-capture-cdc)
-  * [Event Sourcing](#event-sourcing)
+  - [Keeping systems in Sync](#keeping-systems-in-sync)
+  - [Change Data Capture (CDC)](#user-content-change-data-capture-cdc)
+  - [Event Sourcing](#event-sourcing)
 - [Processing Streams](#processing-streams)
 - [Uses of Stream Processing](#uses-of-stream-processing)
 - [Stream Operations](#stream-operations)
-  * [Complex Event Processing (CEP)](#user-content-complex-event-processing-cep)
-  * [Stream Analytics](#stream-analytics)
-  * [Search Streams](#search-streams)
-  * [Join Streams](#join-streams)
-  * [Fault Tolerance](#fault-tolerance)
+  - [Complex Event Processing (CEP)](#user-content-complex-event-processing-cep)
+  - [Stream Analytics](#stream-analytics)
+  - [Search Streams](#search-streams)
+  - [Join Streams](#join-streams)
+  - [Fault Tolerance](#fault-tolerance)
 
 What is Steam?
 
@@ -70,7 +71,7 @@ Within this publish/subscribe model, it might be helpful to ask the following tw
 
 One option for a messaging system is **direct network communication**, such as UDP multi-cast, broker-less messaging libraries like ZeroMQ, or direct HTTP or RPC requests. However, their biggest drawback is that they require applications to be aware of loss possibility.
 
-Another more **widely** used option is communication via a ***message broker* or *message queue***, which acts as a server that both producers and consumers connect to, it automatically deletes a message after delivery, it supports some way of subscribing to a subset of **topics**, and **it notifies clients when data changes**. Consumers are generally **asynchronous**: when a producer sends a message, it normally only waits for the broker to confirm that it has buffered the message and does not wait for the message to be processed by consumers
+Another more **widely** used option is communication via a **_message broker_ or _message queue_**, which acts as a server that both producers and consumers connect to, it automatically deletes a message after delivery, it supports some way of subscribing to a subset of **topics**, and **it notifies clients when data changes**. Consumers are generally **asynchronous**: when a producer sends a message, it normally only waits for the broker to confirm that it has buffered the message and does not wait for the message to be processed by consumers
 
 <p align="center" width="100%">
   <img src="https://raw.githubusercontent.com/aboelkassem/designing-data-intensive-applications-notes/main/Chapters/Chapter%2011%20-%20Stream%20Processing/images/broker.png" width="700" hight="500"/>
@@ -94,7 +95,7 @@ In load balancing approach, The following example, consumer 2 crashes while proc
   <img src="https://raw.githubusercontent.com/aboelkassem/designing-data-intensive-applications-notes/main/Chapters/Chapter%2011%20-%20Stream%20Processing/images/message-broker-acknowledgment.png" width="700" hight="500"/>
 </p>
 
-But this leads to inconsistency with the order that were sent by producer 1. Message broker tries to preserve the order of messages and use a separate queue per consumer to solve this issue. 
+But this leads to inconsistency with the order that were sent by producer 1. Message broker tries to preserve the order of messages and use a separate queue per consumer to solve this issue.
 
 <p align="center" width="100%">
   <img src="https://raw.githubusercontent.com/aboelkassem/designing-data-intensive-applications-notes/main/Chapters/Chapter%2011%20-%20Stream%20Processing/images/messagning-systems.png" width="700" hight="500"/>
@@ -122,11 +123,9 @@ Apache Kafka, Amazon Kinesis Streams, and Twitter’s DistributedLog are log-bas
   <img src="https://raw.githubusercontent.com/aboelkassem/designing-data-intensive-applications-notes/main/Chapters/Chapter%2011%20-%20Stream%20Processing/images/partitioned-logs-vs-message-queue-1.png" width="700" hight="500"/>
 </p>
 
-
 <p align="center" width="100%">
   <img src="https://raw.githubusercontent.com/aboelkassem/designing-data-intensive-applications-notes/main/Chapters/Chapter%2011%20-%20Stream%20Processing/images/partitioned-logs-vs-message-queue-2.png" width="700" hight="500"/>
 </p>
-
 
 <p align="center" width="100%">
   <img src="https://raw.githubusercontent.com/aboelkassem/designing-data-intensive-applications-notes/main/Chapters/Chapter%2011%20-%20Stream%20Processing/images/partitioned-logs-vs-message-queue-3.png" width="700" hight="500"/>
@@ -134,7 +133,7 @@ Apache Kafka, Amazon Kinesis Streams, and Twitter’s DistributedLog are log-bas
 
 ## Databases and Streams
 
-A database can be represented as a stream, where an *event* can be something that was written to a database, it can be captured, stored, and processed. This representation opens up powerful  opportunities for integrating systems.
+A database can be represented as a stream, where an _event_ can be something that was written to a database, it can be captured, stored, and processed. This representation opens up powerful opportunities for integrating systems.
 
 ### Keeping systems in Sync
 
@@ -145,16 +144,17 @@ If an item is updated in the database, it also needs to be updated in the cache,
 The problems with dual writes:
 
 - Race condition can happened
-  
-    In the database, X is first set to A and then to B, while at the search index the writes arrive in the opposite order.
-    
+
+  In the database, X is first set to A and then to B, while at the search index the writes arrive in the opposite order.
+
     <p align="center" width="100%">
       <img src="https://raw.githubusercontent.com/aboelkassem/designing-data-intensive-applications-notes/main/Chapters/Chapter%2011%20-%20Stream%20Processing/images/derived-system-race-condition.png" width="700" hight="500"/>
     </p>
-    
+
+
 - There is no Atomic Commit
 
-A better approach for data sync is *change data capture* (CDC).
+A better approach for data sync is _change data capture_ (CDC).
 
 ### Change Data Capture (CDC)
 
@@ -170,11 +170,11 @@ A log-based message broker is well suited for transporting the change events fro
 
 LinkedIn’s Databus, Facebook’s Wormhole, and Yahoo!’s Sherpa use this idea at large scale. Bottled Water implements CDC for PostgreSQL using an API that decodes the write-ahead log, Maxwell and Debezium do something similar for MySQL by parsing the binlog, Mongoriver reads the MongoDB oplog, and GoldenGate provides similar facilities for Oracle.
 
-It is usually implemented by parsing the replication log of the database, which relies on taking consistent snapshots regularly and *log compaction* to avoid running out of space. Which is periodically looks for log records with the same key, throws away any duplicates, and keeps only the most recent update for each key, an update with a special null value (a tombstone) indicates that a key was deleted. This compaction and merging process runs in the background.
+It is usually implemented by parsing the replication log of the database, which relies on taking consistent snapshots regularly and _log compaction_ to avoid running out of space. Which is periodically looks for log records with the same key, throws away any duplicates, and keeps only the most recent update for each key, an update with a special null value (a tombstone) indicates that a key was deleted. This compaction and merging process runs in the background.
 
 Now, whenever you want to rebuild a derived data system such as a search index, you can start a new consumer from offset 0 of the log-compacted topic, and sequentially scan over all messages in the log. This log compaction feature is supported by Apache Kafka.
 
-Kafka Connect is an effort to integrate change data capture tools for a wide range of database systems with Kafka. 
+Kafka Connect is an effort to integrate change data capture tools for a wide range of database systems with Kafka.
 
 ### Event Sourcing
 
@@ -189,7 +189,7 @@ For example, storing the event “student cancelled their course enrollment” c
 
 Applications that use event sourcing need to take the log of events and transform it into application state that is suitable for showing to a user. This transformation can use arbitrary logic, but it should be deterministic so that you can run it again and derive the same application state from the event log.
 
-The biggest downside of CDC and event sourcing is that the consumers of the event log are usually asynchronous, which might lead to failure in *reading your own writes*. One solution is perform updates on read view synchronously, but a better approach might be to implement linearizable storage using total order broadcast. However, if the event log and application state are partitioned in the same way,  then a single-threaded log consumer needs no concurrency control for  writes.
+The biggest downside of CDC and event sourcing is that the consumers of the event log are usually asynchronous, which might lead to failure in _reading your own writes_. One solution is perform updates on read view synchronously, but a better approach might be to implement linearizable storage using total order broadcast. However, if the event log and application state are partitioned in the same way, then a single-threaded log consumer needs no concurrency control for writes.
 
 The limitations of immutability is that immutable history may grow very large, causing the system to perform poorly. Also, for administrative reasons, data must be completely deleted in some cases, which is surprisingly hard.
 
@@ -231,11 +231,10 @@ Many open source distributed stream processing frameworks are designed with **an
 **Types of windows**
 
 - **Tumbling window**: Fixed length, for example, if you have a 1-minute tumbling window, all the events with timestamps between 10:03:00 and 10:03:59 are grouped into one window.
-    
     <p align="center" width="100%">
       <img src="https://raw.githubusercontent.com/aboelkassem/designing-data-intensive-applications-notes/main/Chapters/Chapter%2011%20-%20Stream%20Processing/images/tumbling-window.png" width="700" hight="500"/>
     </p>
-    
+
 - **Hopping window:** also has a fixed length, but allows windows to overlap in order to provide **some smoothing**. For example, a 5-minute window with a hop size of 1 minute would contain the events between 10:03:00 and 10:07:59, then the next window would cover events between 10:04:00 and 10:08:59, and so on.
 
     <p align="center" width="100%">
@@ -247,13 +246,15 @@ Many open source distributed stream processing frameworks are designed with **an
     <p align="center" width="100%">
       <img src="https://raw.githubusercontent.com/aboelkassem/designing-data-intensive-applications-notes/main/Chapters/Chapter%2011%20-%20Stream%20Processing/images/sliding-window.png" width="700" hight="500"/>
     </p>
-    
+
+
 - **Session window**: defined by grouping together all events for the same user that occur closely together in time, and the window ends when the user has been inactive for some time
 
     <p align="center" width="100%">
       <img src="https://raw.githubusercontent.com/aboelkassem/designing-data-intensive-applications-notes/main/Chapters/Chapter%2011%20-%20Stream%20Processing/images/session-window.png" width="700" hight="500"/>
     </p>
-    
+
+
 When to use each of window type?
 
 - **Tumbling** ⇒ Event appears at only one window.
@@ -275,17 +276,17 @@ Same as batch processing, stream processing needs to do joins, either by joining
 
 In order to provide fault-tolerance to stream processing, we might want to break the stream into small blocks, and treat each block as a batch (batch size is typically around a second). Also, atomic commits might be necessary to avoid causing side effects twice, and luckily, the overhead of transaction protocols can be amortized by processing several messages within a single transaction.
 
-An alternative for transactions is *idempotence writes*, which are operations that can be performed multiple times and still has the effect as if it was performed once. Any operation can be made idempotent with some extra metadata.
+An alternative for transactions is _idempotence writes_, which are operations that can be performed multiple times and still has the effect as if it was performed once. Any operation can be made idempotent with some extra metadata.
 
 ### Fault Tolerance
 
-The batch processing approach to fault tolerance exposes ***exactly-once** semantics*, where it appears as though every record was processed exactly once.
+The batch processing approach to fault tolerance exposes **\*exactly-once** semantics\*, where it appears as though every record was processed exactly once.
 
 In stream processing, waiting until a task is finished before making its output visible is not an option, because a stream is infinite.
 
 **Microbatching and checkpointing**
 
-- *Microbatching* breaks the stream into small blocks and treats each block like a miniature batch process.
+- _Microbatching_ breaks the stream into small blocks and treats each block like a miniature batch process.
 - With microbatching, small batches incur greater scheduling and coordination overhead, while larger batches mean a longer delay before results of the stream processor become available.
 - An alternative is to periodically generate rolling checkpoints of state and write them to durable storage.
 - Once the output leaves the stream processor, the framework cannot discard the output of a failed batch. Restarting a failed task causes its external side-effects to happen twice, regardless of checkpointing or microbatching.
